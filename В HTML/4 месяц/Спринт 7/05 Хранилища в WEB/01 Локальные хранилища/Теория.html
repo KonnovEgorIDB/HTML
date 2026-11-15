@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Локальные хранилища</title>
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+  <meta charset="utf-8">
+<style>body{font-family:Helvetica,arial,sans-serif;font-size:14px;line-height:1.6;background-color:#fff;padding:30px;color:#333;max-width:1140px;margin:0 auto}body > :first-child{margin-top:0!important}body > :last-child{margin-bottom:0!important}a{color:#4183C4;text-decoration:none}a.absent{color:#c00}a.anchor{display:block;padding-left:30px;margin-left:-30px;cursor:pointer;position:absolute;top:0;left:0;bottom:0}h1,h2,h3,h4,h5,h6{margin:20px 0 10px;padding:0;font-weight:700;-webkit-font-smoothing:antialiased;cursor:text;position:relative}h2:first-child,h1:first-child,h1:first-child + h2,h3:first-child,h4:first-child,h5:first-child,h6:first-child{margin-top:0;padding-top:0}h1:hover a.anchor,h2:hover a.anchor,h3:hover a.anchor,h4:hover a.anchor,h5:hover a.anchor,h6:hover a.anchor{text-decoration:none}h1 tt,h1 code{font-size:inherit}h2 tt,h2 code{font-size:inherit}h3 tt,h3 code{font-size:inherit}h4 tt,h4 code{font-size:inherit}h5 tt,h5 code{font-size:inherit}h6 tt,h6 code{font-size:inherit}h1{font-size:28px;color:#000}h2{font-size:24px;border-bottom:1px solid #ccc;color:#000}h3{font-size:18px}h4{font-size:16px}h5{font-size:14px}h6{color:#777;font-size:14px}p,blockquote,ul,ol,dl,li,table,pre{margin:15px 0}hr {padding:0;margin-bottom:-8px;height:1px;border:none;background:black}body > h2:first-child{margin-top:0;padding-top:0}body > h1:first-child{margin-top:0;padding-top:0}body > h1:first-child + h2{margin-top:0;padding-top:0}body > h3:first-child,body > h4:first-child,body > h5:first-child,body > h6:first-child{margin-top:0;padding-top:0}a:first-child h1,a:first-child h2,a:first-child h3,a:first-child h4,a:first-child h5,a:first-child h6{margin-top:0;padding-top:0}h1 p,h2 p,h3 p,h4 p,h5 p,h6 p{margin-top:0}li p.first{display:inline-block}ul,ol{padding-left:30px}ul :first-child,ol :first-child{margin-top:0}ul :last-child,ol :last-child{margin-bottom:0}dl{padding:0}dl dt{font-size:14px;font-weight:700;font-style:italic;padding:0;margin:15px 0 5px}dl dt:first-child{padding:0}dl dt > :first-child{margin-top:0}dl dt > :last-child{margin-bottom:0}dl dd{margin:0 0 15px;padding:0 15px}dl dd > :first-child{margin-top:0}dl dd > :last-child{margin-bottom:0}blockquote{border-left:4px solid #ddd;padding:0 15px;color:#777}blockquote > :first-child{margin-top:0}blockquote > :last-child{margin-bottom:0}table{padding:0}table tr{border-top:1px solid #ccc;background-color:#fff;margin:0;padding:0}table tr:nth-child(2n){background-color:#f8f8f8}table tr th{font-weight:700;border:1px solid #ccc;text-align:left;margin:0;padding:6px 13px}table tr td{border:1px solid #ccc;text-align:left;margin:0;padding:6px 13px}table tr th :first-child,table tr td :first-child{margin-top:0}table tr th :last-child,table tr td :last-child{margin-bottom:0}img{max-width:100%}span.frame{display:block;overflow:hidden}span.frame > span{border:1px solid #ddd;display:block;float:left;overflow:hidden;margin:13px 0 0;padding:7px;width:auto}span.frame span img{display:block;float:left}span.frame span span{clear:both;color:#333;display:block;padding:5px 0 0}span.align-center{display:block;overflow:hidden;clear:both}span.align-center > span{display:block;overflow:hidden;margin:13px auto 0;text-align:center}span.align-center span img{margin:0 auto;text-align:center}span.align-right{display:block;overflow:hidden;clear:both}span.align-right > span{display:block;overflow:hidden;margin:13px 0 0;text-align:right}span.align-right span img{margin:0;text-align:right}span.float-left{display:block;margin-right:13px;overflow:hidden;float:left}span.float-left span{margin:13px 0 0}span.float-right{display:block;margin-left:13px;overflow:hidden;float:right}span.float-right > span{display:block;overflow:hidden;margin:13px auto 0;text-align:right}code,tt{margin:0 2px;padding:0 5px;white-space:nowrap;border:1px solid #eaeaea;background-color:#f8f8f8;border-radius:3px}pre code{margin:0;padding:0;white-space:pre;border:none;background:transparent}.highlight pre{background-color:#f8f8f8;border:1px solid #ccc;font-size:13px;line-height:19px;overflow:auto;padding:6px 10px;border-radius:3px}pre{background-color:#f8f8f8;border:1px solid #ccc;font-size:13px;line-height:19px;overflow:auto;padding:6px 10px;border-radius:3px}pre code,pre tt{background-color:transparent;border:none}.slasher{color:#000000}</style></head>
+<body>
+
+<h1>Локальные хранилища</h1>
+
+<h2>localStorage и sessionStorage</h2>
+
+<p>Бывают ситуации, когда фронтенд-приложение должно сохранить какие-то данные на длительный срок, но при этом сделать это без бэкенда. Представьте в модальном окне большую и сложную форму с десятками полей (да, десятки полей — это плохой UX, но для примера самое то). Пользователь сидит и долго заполняет данные, тянется мышью к следующему полю, промахивается и кликает вне модального окна — модалка закрывается, форма теряет свои значения. Или кошка пробежала по клавиатуре, нажала F5, и страница перезагрузилась. Представляете отчаяние и боль?</p>
+
+<p>Для защиты от таких ситуаций было бы хорошо сохранять вводимые данные, чтобы можно было легко их восстановить. Отправлять на каждый ввод запрос на сервер — слишком дорогая операция. И здесь нам помогут браузерные хранилища данных.</p>
+
+<p>В браузере есть два хранилища, которые позволяют хранить данные в формате ключ-значение: <code>localStorage</code> и <code>sessionStorage</code>. Их отличительная особенность в том, что данные сохраняются в браузере даже после обновления страницы. В случае с <code>localStorage</code> они останутся даже после перезапуска браузера.</p>
+
+<p>Теоретически эти хранилища похожи на cookie — так же что-то хранят, так же в виде ключ-значения. Но есть важное отличие: cookie — это механизм хранения, с которым работает и сам браузер. Браузер сохраняет куки при получении соответствующих заголовков в ответах от сервера и отправляет куки вместе со всеми запросами на сервер. Данные же из <code>localStorage</code> и <code>sessionStorage</code> никак не связаны с запросами на сервер и не подставляются автоматически в каждый запрос. Поэтому если вы храните, например, JWT-токен в хранилище, то сами подставляйте его в запросы с помощью JavaScript.</p>
+
+<p>Хранилища принадлежат точно так же, как и cookie: к домену, протоколу или порту. Такой подход позволяет не смешивать хранилища от разных приложений в одно общее «болото». С точки зрения безопасности: у мошенников меньше возможностей перехватить данные с других хранилищ пользователя, если удалось воспользоваться XSS.</p>
+
+<p>Размер хранилища составляет как минимум 2 мегабайта. В настройках браузера можно выставить своё число. По умолчанию:</p>
+
+<ul>
+<li>Chrome, Firefox и Opera ~ 5 МБ;</li>
+<li>IE ~ 4,8 МБ;</li>
+<li>iOS Safari, OS X Safari ~ 2,5 МБ;</li>
+<li>Android ~ 5 МБ.</li>
+</ul>
+
+<p>API у <code>localStorage</code> и <code>sessionStorage</code> одинаковое:</p>
+
+<ul>
+<li><code>setItem(key: string, value: string)</code> — сохраняет пару ключ-значение. Значение должно быть строкой, или оно будет автоматически преобразовано к строке. Потому стоит самим делать преобразование. Например, через <code>JSON.stringify</code>.</li>
+<li><code>getItem(key: string)</code> — получить данные по ключу.</li>
+<li><code>removeItem(key: string)</code> — удалить данные по ключу.</li>
+<li><code>clear()</code> — удалить всё.</li>
+<li><code>key(index: number)</code> — получить ключ на заданной позиции.</li>
+<li><code>length</code> — количество элементов в хранилище.</li>
+</ul>
+
+<p>API очень напоминает интерфейс структур <code>Map</code> и <code>Set</code>.</p>
+
+<p>Рассмотрим работу <code>localStorage</code>. Данное хранилище представляет собой единый объект на все вкладки в рамках единого источника (под единым источником подразумевается один и тот же домен, протокол, порт; о чём говорили в первом модуле). У данных нет <code>expires</code>, после которого всё очищается. Данные можно получить после перезагрузки браузера или даже всей операционной системы.</p>
+
+<p>Примеры использования можно найти в «<a href="https://learn.javascript.ru/localstorage">Современном учебнике JavaScript</a>».</p>
+
+<p>Основное, что нужно знать:</p>
+
+<ul>
+<li>Можно добавить в значение любые данные, но всегда преобразуйте их в строку. В dev-консоли всё будет выглядеть нормально. Например, если это был объект, он будет показан как объект.</li>
+<li>Не обращайтесь напрямую к свойствам, работайте с методами.</li>
+<li>Для перебора используйте <code>Object.keys</code> или <code>for..in</code> с проверкой на <code>hasOwnProperty</code>.</li>
+</ul>
+
+<p>У <code>sessionStorage</code> такое же API. Это хранилище отличается своим жизненным циклом, то есть доступно только в рамках текущей вкладки и сессии. Если перезагрузить страницу, данные будут сохранены. Но если перезагрузить браузер (не говоря уже про операционную систему), то данные в <code>sessionStorage</code> сотрутся. Учитывайте это.</p>
+
+<p>Чаще используют <code>localStorage</code>, так как его срок жизни не ограничен. Однако могут быть случаи, когда долго хранить данные нерезонно. Например, если вы решили держать серверную сессию открытой только до закрытия браузера или выключения компьютера — <code>sessionStorage</code> ваш выбор, и при новом заходе на сайт надо будет заново авторизоваться.</p>
+
+<p>Можно обрабатывать события изменения хранилища. То есть если ваше приложение (из любой вкладки браузера) поменяло данные в хранилище, то вы узнаете об этом:</p>
+
+<pre><code class="language-tsx">// Срабатывает при обновлениях, сделанных в том же хранилище, но на других вкладках (это важно)
+window.onstorage = event =&gt; { // Не забываем про addEventListener
+  // Работает с event
+};
+
+localStorage.setItem('now', Date.now());
+</code></pre>
+
+<p>Такое отслеживание изменений может применяться как способ обмена данными между вкладками, но об этом расскажем дальше.</p>
+
+<h2>Cookie</h2>
+
+<p>Cookie — это уже знакомый вам механизм, описывать который заново не будем, но, как работать с ним на уровне JavaScript, покажем.</p>
+
+<blockquote>
+<p>Важно: не используйте работу с cookie без необходимости. Если у вас есть доступ к пользовательским кукам с бэкенда без определённой цели, попросите бэкендеров добавить атрибут <code>httpOnly</code> (и тем более атрибут <code>secure</code>).</p>
+</blockquote>
+
+<p>Для работы с cookie, в JavaScript используют свойство объекта <code>document</code>:</p>
+
+<pre><code class="language-jsx">console.log(document.cookie); // name1=value1; name2=value2; ...
+</code></pre>
+
+<p>Значение данного свойства — это строка, которая состоит из пар ключ-значение, которые разделены через <code>;</code>.</p>
+
+<p>Запись в куки производится через простое присваивание:</p>
+
+<pre><code class="language-jsx">document.cookie = 'userScore=1042';
+console.log(document.cookie); // Будут отображены все куки
+</code></pre>
+
+<p>Вы можете также выставлять для них атрибуты. Для куки работают все те же правила, что и при получении или отправке по HTTP.</p>
+
+<pre><code class="language-jsx">// Находясь на странице game.com,
+// сделаем куки доступным для всех поддоменов *.game.com:
+document.cookie = &quot;userScore=1042; domain=site.com&quot;
+
+// позже
+
+// на forum.game.com
+console.log(document.cookie); // есть куки userScore=1042
+</code></pre>
+
+</body>
+</html>

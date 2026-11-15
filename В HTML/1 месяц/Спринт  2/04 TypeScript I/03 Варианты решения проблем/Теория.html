@@ -1,0 +1,182 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Варианты решения проблем</title>
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+  <meta charset="utf-8">
+<style>body{font-family:Helvetica,arial,sans-serif;font-size:14px;line-height:1.6;background-color:#fff;padding:30px;color:#333;max-width:1140px;margin:0 auto}body > :first-child{margin-top:0!important}body > :last-child{margin-bottom:0!important}a{color:#4183C4;text-decoration:none}a.absent{color:#c00}a.anchor{display:block;padding-left:30px;margin-left:-30px;cursor:pointer;position:absolute;top:0;left:0;bottom:0}h1,h2,h3,h4,h5,h6{margin:20px 0 10px;padding:0;font-weight:700;-webkit-font-smoothing:antialiased;cursor:text;position:relative}h2:first-child,h1:first-child,h1:first-child + h2,h3:first-child,h4:first-child,h5:first-child,h6:first-child{margin-top:0;padding-top:0}h1:hover a.anchor,h2:hover a.anchor,h3:hover a.anchor,h4:hover a.anchor,h5:hover a.anchor,h6:hover a.anchor{text-decoration:none}h1 tt,h1 code{font-size:inherit}h2 tt,h2 code{font-size:inherit}h3 tt,h3 code{font-size:inherit}h4 tt,h4 code{font-size:inherit}h5 tt,h5 code{font-size:inherit}h6 tt,h6 code{font-size:inherit}h1{font-size:28px;color:#000}h2{font-size:24px;border-bottom:1px solid #ccc;color:#000}h3{font-size:18px}h4{font-size:16px}h5{font-size:14px}h6{color:#777;font-size:14px}p,blockquote,ul,ol,dl,li,table,pre{margin:15px 0}hr {padding:0;margin-bottom:-8px;height:1px;border:none;background:black}body > h2:first-child{margin-top:0;padding-top:0}body > h1:first-child{margin-top:0;padding-top:0}body > h1:first-child + h2{margin-top:0;padding-top:0}body > h3:first-child,body > h4:first-child,body > h5:first-child,body > h6:first-child{margin-top:0;padding-top:0}a:first-child h1,a:first-child h2,a:first-child h3,a:first-child h4,a:first-child h5,a:first-child h6{margin-top:0;padding-top:0}h1 p,h2 p,h3 p,h4 p,h5 p,h6 p{margin-top:0}li p.first{display:inline-block}ul,ol{padding-left:30px}ul :first-child,ol :first-child{margin-top:0}ul :last-child,ol :last-child{margin-bottom:0}dl{padding:0}dl dt{font-size:14px;font-weight:700;font-style:italic;padding:0;margin:15px 0 5px}dl dt:first-child{padding:0}dl dt > :first-child{margin-top:0}dl dt > :last-child{margin-bottom:0}dl dd{margin:0 0 15px;padding:0 15px}dl dd > :first-child{margin-top:0}dl dd > :last-child{margin-bottom:0}blockquote{border-left:4px solid #ddd;padding:0 15px;color:#777}blockquote > :first-child{margin-top:0}blockquote > :last-child{margin-bottom:0}table{padding:0}table tr{border-top:1px solid #ccc;background-color:#fff;margin:0;padding:0}table tr:nth-child(2n){background-color:#f8f8f8}table tr th{font-weight:700;border:1px solid #ccc;text-align:left;margin:0;padding:6px 13px}table tr td{border:1px solid #ccc;text-align:left;margin:0;padding:6px 13px}table tr th :first-child,table tr td :first-child{margin-top:0}table tr th :last-child,table tr td :last-child{margin-bottom:0}img{max-width:100%}span.frame{display:block;overflow:hidden}span.frame > span{border:1px solid #ddd;display:block;float:left;overflow:hidden;margin:13px 0 0;padding:7px;width:auto}span.frame span img{display:block;float:left}span.frame span span{clear:both;color:#333;display:block;padding:5px 0 0}span.align-center{display:block;overflow:hidden;clear:both}span.align-center > span{display:block;overflow:hidden;margin:13px auto 0;text-align:center}span.align-center span img{margin:0 auto;text-align:center}span.align-right{display:block;overflow:hidden;clear:both}span.align-right > span{display:block;overflow:hidden;margin:13px 0 0;text-align:right}span.align-right span img{margin:0;text-align:right}span.float-left{display:block;margin-right:13px;overflow:hidden;float:left}span.float-left span{margin:13px 0 0}span.float-right{display:block;margin-left:13px;overflow:hidden;float:right}span.float-right > span{display:block;overflow:hidden;margin:13px auto 0;text-align:right}code,tt{margin:0 2px;padding:0 5px;white-space:nowrap;border:1px solid #eaeaea;background-color:#f8f8f8;border-radius:3px}pre code{margin:0;padding:0;white-space:pre;border:none;background:transparent}.highlight pre{background-color:#f8f8f8;border:1px solid #ccc;font-size:13px;line-height:19px;overflow:auto;padding:6px 10px;border-radius:3px}pre{background-color:#f8f8f8;border:1px solid #ccc;font-size:13px;line-height:19px;overflow:auto;padding:6px 10px;border-radius:3px}pre code,pre tt{background-color:transparent;border:none}.slasher{color:#000000}</style></head>
+<body>
+
+<h1>Варианты решения проблем</h1>
+
+<p>Кроме JavaScript существует большое число различных надстроек над языком и других компилируемых в машинный код ЯП для браузеров.</p>
+
+<p>Подробно рассматривать аналоги не будем, но для знания о существовании каждого из них — ниже приведём самые популярные примеры.</p>
+
+<h3>Полифиллы</h3>
+
+<p>Можно писать собственные реализации той или иной фичи стандарта. Пример:</p>
+
+<pre><code class="language-JavaScript">if (!Object.is) {
+	Object.is = function(x, y) {
+	  if (x === y) { 
+			return x !== 0 || 1 / x === 1 / y; 
+		}
+	  else { 
+			return x !== x &amp;&amp; y !== y; 
+		}
+	}
+}
+</code></pre>
+
+<p><strong>Проблема:</strong> заново написать все стандарты и покрыть их тестами — это займёт много времени. И всё так же нет типов, придётся проверять их вручную.</p>
+
+<p>На самом деле все полифилы давно написаны за нас, и можно их поставить из npm. Но если бездумно ставить полифилы — вес приложения может заметно вырасти.</p>
+
+<h3>Транспиляция из ES.Next</h3>
+
+<p>С помощью специальных компиляторов можно преобразовывать современный код в более старый и поддерживаемый различными ранними версиями браузеров, набор которых можно указать при конфигурации. Например: «компилируй современный JS в более старый JS, который бы поддерживался в IE8+». Пример такого компилятора — <a href="https://babeljs.io/">Babel</a>. На его сайте есть <a href="https://babeljs.io/repl#?browsers=&amp;build=&amp;builtIns=false&amp;spec=false&amp;loose=false&amp;code_lz=IYZwngdgxgBAZgV2gFwJYHsI2QUxMgCgEoYBvAKAEhgB3YVZGAFgCYBucgXyA&amp;debug=false&amp;forceAllTransforms=false&amp;shippedProposals=false&amp;circleciRepo=&amp;evaluate=false&amp;fileSize=false&amp;timeTravel=false&amp;sourceType=module&amp;lineWrap=true&amp;presets=env%2Cenv&amp;prettier=false&amp;targets=&amp;version=7.11.0&amp;externalPlugins=">playground</a>, где можно посмотреть, как инструмент компилирует современный код под различные версии и настройки.</p>
+
+<p>Babel обладает плагинной системой, которая позволяет настроить компилятор так, как он должен работать под ваших пользователей. Примеры:</p>
+
+<ul>
+<li>arrow-functions,</li>
+<li>classes,</li>
+<li>destructuring,</li>
+<li>duplicate-keys,</li>
+<li>for-of.</li>
+</ul>
+
+<pre><code class="language-JavaScript">import { decorator } from 'lib';
+
+class ChatBase {
+	constructor({ name, ...rest}) {
+		console.log(`Привет, ${name}, твои свойства:`, rest);
+	}
+}
+
+@decorator
+class Chats extends ChatBase {
+	async *doSmth(...staff) {
+		// something...
+	}
+}
+</code></pre>
+
+<p><strong>Проблема:</strong> Ура! Можно использовать последние стандарты и компилировать их под нужные браузеры. Но всё так же нет типизации.</p>
+
+<h2>Отдельные языки со своими компиляторами</h2>
+
+<p>Языки вроде <a href="https://dart.dev/">Dart</a>, <a href="https://coffeescript.org/">CoffeeScript</a>, <a href="https://clojure.org/">Clojure</a> и <a href="https://elm-lang.org/">Elm</a> в целом неплохие, но основная проблема — это не «родной» JavaScript. Читаемость кода упадёт, переключаться будет сложнее, всплывут вопросы с поддержкой и интеграцией, а зоопарк различного фронтенда будет только мешать. Даже с типизацией и многими крутыми вещами «из коробки».</p>
+
+<p>Для примера приведены сниппеты кода подобных языков:</p>
+
+<h3><a href="https://dart.dev/">Dart</a></h3>
+
+<pre><code class="language-JavaScript">import 'dart:async';
+import 'dart:math' show Random;
+ 
+Stream&lt;double&gt; computePi({int batch: 1000000}) async* { ... }
+ 
+main() async {
+  print('Compute π using the Monte Carlo method.');
+  await for (var estimate in computePi()) {
+    print('π ≅ $estimate');
+  }
+}
+</code></pre>
+
+<h3><a href="https://coffeescript.org/">CoffeeScript</a></h3>
+
+<pre><code class="language-JavaScript">class Animal
+  constructor: (@name) -&gt;
+
+  move: (meters) -&gt;
+    alert @name + &quot; moved #{meters}m.&quot;
+
+class Snake extends Animal
+  move: -&gt;
+    alert &quot;Slithering...&quot;
+    super 5
+
+class Horse extends Animal
+  move: -&gt;
+    alert &quot;Galloping...&quot;
+    super 45
+
+sam = new Snake &quot;Sammy the Python&quot;
+tom = new Horse &quot;Tommy the Palomino&quot;
+
+sam.move()
+tom.move()
+</code></pre>
+
+<h3><a href="https://clojurescript.org/">ClojureScript</a></h3>
+
+<pre><code class="language-JavaScript">(ns hello-world.core
+  (:require [cljs.nodejs :as nodejs]))
+ 
+(nodejs/enable-util-print!)
+ 
+(defn -main [&amp; args]
+  (println &quot;Hello world!&quot;))
+ 
+(set! *main-cli-fn* -main)
+</code></pre>
+
+<h3><a href="https://elm-lang.org/">Elm</a></h3>
+
+<pre><code class="language-JavaScript">import Html exposing (text)
+ 
+main =
+  text (toString (zip [&quot;Tom&quot;, &quot;Sue&quot;, &quot;Bob&quot;] [45, 31, 26]))
+ 
+zip : List a -&gt; List b -&gt; List (a,b)
+zip xs ys =
+  case (xs, ys) of
+	( x :: xBack, y :: yBack ) -&gt;
+		(x,y) :: zip xBack yBack
+ 
+	(_, _) -&gt;
+		[]
+</code></pre>
+
+<h2>Типизированный JS</h2>
+
+<h3><a href="https://flow.org/">Flowjs</a></h3>
+
+<p>Инструмент позволяет начать покрывать типами JS-код прямо сейчас, без регистрации и смс. Не нужно переписывать весь проект, достаточно комментариями показывать, какие файлы нужно начать обрабатывать с типизацией.</p>
+
+<pre><code class="language-JavaScript">// @flow
+function square(n: number): number {
+  return n * n;
+}
+
+square(&quot;2&quot;); // Error!
+</code></pre>
+
+<h3><a href="https://www.typescriptlang.org/index.html">TypeScript</a></h3>
+
+<p>Один из самых популярных инструментов для типизации клиентской части. Имеет более сложную систему обработки типов, местами более гибкую настройку и большую поддержку.</p>
+
+<pre><code class="language-JavaScript">interface Person {
+  name: string;
+  age: number;
+}
+
+function meet(person: Person) {
+  return `Привет, я ${person.name}, мне ${person.age}`;
+}
+
+const user = { name: &quot;Иннокентий&quot;, age: 21 };
+console.log(meet(user));
+</code></pre>
+
+<p>Flow и TypeScript часто сравнивают. У каждого из них есть большие дыры, из-за которых можно даже не полениться написать issue в GitHub, но это всё ещё два очень мощных инструмента.</p>
+
+<p>Их проблема — это хоть и статическая типизация с выводом типов и компиляцией, однако это не полноценный язык со статической типизацией. Существуют места с плохим выводом типов и места, где можно довериться разработчику. Что плохо. Можно сделать так, что их вывод работать не будет, а проект превратится в JS с оверхедом на написание неработающих типов.</p>
+
+<p>«Готовить» подобные вещи нужно осторожно и проверять то, что пишете.</p>
+
+</body>
+</html>

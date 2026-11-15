@@ -1,0 +1,223 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Делаем TODO лист</title>
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+  <meta charset="utf-8">
+<style>body{font-family:Helvetica,arial,sans-serif;font-size:14px;line-height:1.6;background-color:#fff;padding:30px;color:#333;max-width:1140px;margin:0 auto}body > :first-child{margin-top:0!important}body > :last-child{margin-bottom:0!important}a{color:#4183C4;text-decoration:none}a.absent{color:#c00}a.anchor{display:block;padding-left:30px;margin-left:-30px;cursor:pointer;position:absolute;top:0;left:0;bottom:0}h1,h2,h3,h4,h5,h6{margin:20px 0 10px;padding:0;font-weight:700;-webkit-font-smoothing:antialiased;cursor:text;position:relative}h2:first-child,h1:first-child,h1:first-child + h2,h3:first-child,h4:first-child,h5:first-child,h6:first-child{margin-top:0;padding-top:0}h1:hover a.anchor,h2:hover a.anchor,h3:hover a.anchor,h4:hover a.anchor,h5:hover a.anchor,h6:hover a.anchor{text-decoration:none}h1 tt,h1 code{font-size:inherit}h2 tt,h2 code{font-size:inherit}h3 tt,h3 code{font-size:inherit}h4 tt,h4 code{font-size:inherit}h5 tt,h5 code{font-size:inherit}h6 tt,h6 code{font-size:inherit}h1{font-size:28px;color:#000}h2{font-size:24px;border-bottom:1px solid #ccc;color:#000}h3{font-size:18px}h4{font-size:16px}h5{font-size:14px}h6{color:#777;font-size:14px}p,blockquote,ul,ol,dl,li,table,pre{margin:15px 0}hr {padding:0;margin-bottom:-8px;height:1px;border:none;background:black}body > h2:first-child{margin-top:0;padding-top:0}body > h1:first-child{margin-top:0;padding-top:0}body > h1:first-child + h2{margin-top:0;padding-top:0}body > h3:first-child,body > h4:first-child,body > h5:first-child,body > h6:first-child{margin-top:0;padding-top:0}a:first-child h1,a:first-child h2,a:first-child h3,a:first-child h4,a:first-child h5,a:first-child h6{margin-top:0;padding-top:0}h1 p,h2 p,h3 p,h4 p,h5 p,h6 p{margin-top:0}li p.first{display:inline-block}ul,ol{padding-left:30px}ul :first-child,ol :first-child{margin-top:0}ul :last-child,ol :last-child{margin-bottom:0}dl{padding:0}dl dt{font-size:14px;font-weight:700;font-style:italic;padding:0;margin:15px 0 5px}dl dt:first-child{padding:0}dl dt > :first-child{margin-top:0}dl dt > :last-child{margin-bottom:0}dl dd{margin:0 0 15px;padding:0 15px}dl dd > :first-child{margin-top:0}dl dd > :last-child{margin-bottom:0}blockquote{border-left:4px solid #ddd;padding:0 15px;color:#777}blockquote > :first-child{margin-top:0}blockquote > :last-child{margin-bottom:0}table{padding:0}table tr{border-top:1px solid #ccc;background-color:#fff;margin:0;padding:0}table tr:nth-child(2n){background-color:#f8f8f8}table tr th{font-weight:700;border:1px solid #ccc;text-align:left;margin:0;padding:6px 13px}table tr td{border:1px solid #ccc;text-align:left;margin:0;padding:6px 13px}table tr th :first-child,table tr td :first-child{margin-top:0}table tr th :last-child,table tr td :last-child{margin-bottom:0}img{max-width:100%}span.frame{display:block;overflow:hidden}span.frame > span{border:1px solid #ddd;display:block;float:left;overflow:hidden;margin:13px 0 0;padding:7px;width:auto}span.frame span img{display:block;float:left}span.frame span span{clear:both;color:#333;display:block;padding:5px 0 0}span.align-center{display:block;overflow:hidden;clear:both}span.align-center > span{display:block;overflow:hidden;margin:13px auto 0;text-align:center}span.align-center span img{margin:0 auto;text-align:center}span.align-right{display:block;overflow:hidden;clear:both}span.align-right > span{display:block;overflow:hidden;margin:13px 0 0;text-align:right}span.align-right span img{margin:0;text-align:right}span.float-left{display:block;margin-right:13px;overflow:hidden;float:left}span.float-left span{margin:13px 0 0}span.float-right{display:block;margin-left:13px;overflow:hidden;float:right}span.float-right > span{display:block;overflow:hidden;margin:13px auto 0;text-align:right}code,tt{margin:0 2px;padding:0 5px;white-space:nowrap;border:1px solid #eaeaea;background-color:#f8f8f8;border-radius:3px}pre code{margin:0;padding:0;white-space:pre;border:none;background:transparent}.highlight pre{background-color:#f8f8f8;border:1px solid #ccc;font-size:13px;line-height:19px;overflow:auto;padding:6px 10px;border-radius:3px}pre{background-color:#f8f8f8;border:1px solid #ccc;font-size:13px;line-height:19px;overflow:auto;padding:6px 10px;border-radius:3px}pre code,pre tt{background-color:transparent;border:none}.slasher{color:#000000}</style></head>
+<body>
+
+<h1>Делаем TODO лист</h1>
+
+<p>Советуем сделать в своём локальном проекте ровно то же самое, что и мы. Просто читать будет не так эффективно.</p>
+
+<p>Составим список того, что хотим реализовать:</p>
+
+<ol>
+<li>Инпут для создания элемента и кнопка добавления;</li>
+<li>Инпут с фильтрацией списка по имени;</li>
+<li>Сам список;</li>
+<li>Кнопка удаления элемента из списка.</li>
+</ol>
+
+<p>Реализуем сначала компонент для работы с <code>TODO</code>:</p>
+
+<pre><code class="language-tsx">const Todos: FC&lt;{}&gt; = () =&gt; {
+  const handleChangeAddElementInput = useCallback((event: React.ChangeEvent&lt;HTMLInputElement&gt;) =&gt; {
+		// TODO
+  }, []);
+
+  const handleFilter = useCallback((event: React.ChangeEvent&lt;HTMLInputElement&gt;) =&gt; {
+    // TODO
+  }, []);
+
+  const handleAdd = useCallback(() =&gt; {
+    // TODO
+  }, [text, todos]);
+
+  const handleRemove = useCallback((id: number) =&gt; {
+    // TODO
+  }, [todos]);
+
+  return (
+	  &lt;div&gt;
+      &lt;Input
+        customField=&quot;str&quot;
+        placeholder=&quot;Введите название нового поля&quot;
+        onChange={handleChangeAddElementInput}
+      /&gt;
+      &lt;Button onClick={handleAdd}&gt;
+        Добавить
+      &lt;/Button&gt;
+	
+      &lt;div&gt;
+        &lt;Input
+          customField=&quot;filter&quot;
+          placeholder=&quot;Фильтруем&quot;
+          onChange={handleFilter}
+        /&gt;
+      &lt;/div&gt;
+	  &lt;/div&gt;
+  )
+}
+</code></pre>
+
+<p>Разделили список на:</p>
+
+<ul>
+<li>инпут,</li>
+<li>кнопку,</li>
+<li>список,</li>
+<li>обработчики.</li>
+</ul>
+
+<p>На самом деле список можно было декомпозировать и вытащить в ещё один компонент. Чтобы пример был простым, оставим всё как есть.</p>
+
+<p>Реализуем в начале кнопку, которая будет принимать текст и обработчики:</p>
+
+<pre><code class="language-tsx">// Button.tsx
+
+export const Button: FC&lt;Props&gt; = ({onClick, children}) =&gt; (
+  &lt;button onClick={onClick}&gt;
+    {children}
+  &lt;/button&gt;
+)
+</code></pre>
+
+<p>Точно так же реализуем компонент <code>Input</code>:</p>
+
+<pre><code class="language-tsx">// Input.tsx
+
+const Input: FC&lt;Props&gt; = ({ onChange, value }) =&gt; {
+  return (
+    &lt;input onChange={onChange} value={value}/&gt;
+  );
+}
+</code></pre>
+
+<p>Пока что всё идёт по плану. Начнём оживлять список. Для начала к компоненту <code>TODO</code> нужно добавить импорты реализованных выше <code>Input</code> и <code>Button</code>:</p>
+
+<pre><code class="language-jsx">import Button from '../Button';
+import Input from '../Input';
+</code></pre>
+
+<p>Теперь добавим стейт для хранения названия элемента при добавлении текста при фильтрации и чтобы хранить сам список элементов:</p>
+
+<pre><code class="language-tsx">import Button from '../Button';
+import Input from '../Input';
+
+const Todos: FC&lt;{}&gt; = () =&gt; {
+  const [text, setText] = useState&lt;string&gt;('');
+  const [filterText, setFilterText] = useState&lt;string&gt;('');
+  const [todos, setTodos] = useState&lt;Todo[]&gt;([]);
+
+  ...
+}
+</code></pre>
+
+<p>Применим эти значения к рендеру:</p>
+
+<pre><code class="language-tsx">import Button from '../Button';
+import Input from '../Input';
+
+const Todos: FC&lt;{}&gt; = () =&gt; {
+  const [text, setText] = useState&lt;string&gt;('');
+  const [filterText, setFilterText] = useState&lt;string&gt;('');
+  const [todos, setTodos] = useState&lt;Todo[]&gt;([]);
+
+  /*
+	 * Handlers
+	 */
+
+  return (
+    &lt;div&gt;
+      &lt;Input
+        customField=&quot;str&quot;
+        value={text}
+        placeholder=&quot;Введите название нового поля&quot;
+        onChange={handleChangeAddElementInput}
+      /&gt;
+      &lt;Button onClick={handleAdd}&gt;
+        Добавить
+      &lt;/Button&gt;
+
+      &lt;div&gt;
+        &lt;Input
+          customField=&quot;filter&quot;
+          placeholder=&quot;Фильтруем&quot;
+          onChange={handleFilter}
+        /&gt;
+
+        &lt;ul&gt;
+          {todos
+            .filter((item: Todo) =&gt; item.title.includes(filterText))
+            .map(({title, id}) =&gt; (
+              &lt;li key={id}&gt;
+                &lt;span&gt;{title} ({id})&lt;/span&gt;
+                &lt;Button onClick={() =&gt; handleRemove(id)}&gt;
+                  Удалить
+                &lt;/Button&gt;
+              &lt;/li&gt;
+            ))
+          }
+        &lt;/ul&gt;
+      &lt;/div&gt;
+	  &lt;/div&gt;
+  )
+}
+</code></pre>
+
+<p>Осталось написать обработчики.</p>
+
+<p>По порядку. Сначала реализуем функцию, которая отслеживает изменения букв в инпуте нового списка:</p>
+
+<pre><code class="language-tsx">const handleChangeAddElementInput = useCallback((event) =&gt; {
+  setText(event.target.value);
+}, []);
+</code></pre>
+
+<p>Функция принимает <code>event</code>, так как мы прокидываем её вот так: <code>onChange={handleChangeAddElementInput}</code>. <code>event</code> от синтетического события, потому можем получить <code>value</code>, будто бы мы получили событие DOM-элемента через <code>target.value</code>.</p>
+
+<p>С помощью функции <code>setText</code> обновим состояние инпута.</p>
+
+<p>Теперь реализуем кнопку добавления:</p>
+
+<pre><code class="language-tsx">const handleAdd = useCallback(() =&gt; {
+  setTodos([ ...todos, { title: text, id: todos.length + 1 } ]);
+}, [text, todos]);
+</code></pre>
+
+<p>Здесь происходит то же самое — добавляем в стейт данные.</p>
+
+<p>Метод фильтрации работает аналогично методу <code>handleChangeAddElementInput</code>, потому описывать его не будем, но ниже по ссылке на репозиторий сможете найти его реализацию.</p>
+
+<p>Остался всего один хендлер — удаление элемента из списка. Тут необходимо пробросить хендлер с контекстом каждой строки в списке.</p>
+
+<pre><code class="language-tsx">const handleRemove = useCallback((id: number) =&gt; {
+  setTodos(todos.filter((item: Todo) =&gt; item.id !== id));
+}, [todos]);
+</code></pre>
+
+<p>Важно не забыть, что при клике на кнопку удаления нужно пробрасывать id:</p>
+
+<pre><code class="language-tsx">&lt;ul&gt;
+  {todos
+    .filter((item: Todo) =&gt; item.title.includes(filterText))
+    .map(({title, id}) =&gt; (
+      &lt;li key={id}&gt;
+        &lt;span&gt;{title} ({id})&lt;/span&gt;
+        &lt;Button onClick={() =&gt; handleRemove(id)}&gt;
+          Удалить
+        &lt;/Button&gt;
+      &lt;/li&gt;
+    ))
+  }
+&lt;/ul&gt;
+</code></pre>
+
+<p>Используется это так: в <code>onClick</code> кнопки у каждого элемента списка будет вызван <code>handleRemove</code> с нужным id. Теперь появилась возможность фильтровать по нужному элементу.</p>
+
+<p>Полный пример можно увидеть в <a href="https://github.com/Yandex-Practicum/-ya-praktikum-todo-list">ветке этого репозитория</a>.</p>
+
+</body>
+</html>

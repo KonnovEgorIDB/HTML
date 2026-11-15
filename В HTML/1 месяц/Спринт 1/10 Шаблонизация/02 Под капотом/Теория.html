@@ -1,0 +1,165 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Под капотом</title>
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+  <meta charset="utf-8">
+<style>body{font-family:Helvetica,arial,sans-serif;font-size:14px;line-height:1.6;background-color:#fff;padding:30px;color:#333;max-width:1140px;margin:0 auto}body > :first-child{margin-top:0!important}body > :last-child{margin-bottom:0!important}a{color:#4183C4;text-decoration:none}a.absent{color:#c00}a.anchor{display:block;padding-left:30px;margin-left:-30px;cursor:pointer;position:absolute;top:0;left:0;bottom:0}h1,h2,h3,h4,h5,h6{margin:20px 0 10px;padding:0;font-weight:700;-webkit-font-smoothing:antialiased;cursor:text;position:relative}h2:first-child,h1:first-child,h1:first-child + h2,h3:first-child,h4:first-child,h5:first-child,h6:first-child{margin-top:0;padding-top:0}h1:hover a.anchor,h2:hover a.anchor,h3:hover a.anchor,h4:hover a.anchor,h5:hover a.anchor,h6:hover a.anchor{text-decoration:none}h1 tt,h1 code{font-size:inherit}h2 tt,h2 code{font-size:inherit}h3 tt,h3 code{font-size:inherit}h4 tt,h4 code{font-size:inherit}h5 tt,h5 code{font-size:inherit}h6 tt,h6 code{font-size:inherit}h1{font-size:28px;color:#000}h2{font-size:24px;border-bottom:1px solid #ccc;color:#000}h3{font-size:18px}h4{font-size:16px}h5{font-size:14px}h6{color:#777;font-size:14px}p,blockquote,ul,ol,dl,li,table,pre{margin:15px 0}hr {padding:0;margin-bottom:-8px;height:1px;border:none;background:black}body > h2:first-child{margin-top:0;padding-top:0}body > h1:first-child{margin-top:0;padding-top:0}body > h1:first-child + h2{margin-top:0;padding-top:0}body > h3:first-child,body > h4:first-child,body > h5:first-child,body > h6:first-child{margin-top:0;padding-top:0}a:first-child h1,a:first-child h2,a:first-child h3,a:first-child h4,a:first-child h5,a:first-child h6{margin-top:0;padding-top:0}h1 p,h2 p,h3 p,h4 p,h5 p,h6 p{margin-top:0}li p.first{display:inline-block}ul,ol{padding-left:30px}ul :first-child,ol :first-child{margin-top:0}ul :last-child,ol :last-child{margin-bottom:0}dl{padding:0}dl dt{font-size:14px;font-weight:700;font-style:italic;padding:0;margin:15px 0 5px}dl dt:first-child{padding:0}dl dt > :first-child{margin-top:0}dl dt > :last-child{margin-bottom:0}dl dd{margin:0 0 15px;padding:0 15px}dl dd > :first-child{margin-top:0}dl dd > :last-child{margin-bottom:0}blockquote{border-left:4px solid #ddd;padding:0 15px;color:#777}blockquote > :first-child{margin-top:0}blockquote > :last-child{margin-bottom:0}table{padding:0}table tr{border-top:1px solid #ccc;background-color:#fff;margin:0;padding:0}table tr:nth-child(2n){background-color:#f8f8f8}table tr th{font-weight:700;border:1px solid #ccc;text-align:left;margin:0;padding:6px 13px}table tr td{border:1px solid #ccc;text-align:left;margin:0;padding:6px 13px}table tr th :first-child,table tr td :first-child{margin-top:0}table tr th :last-child,table tr td :last-child{margin-bottom:0}img{max-width:100%}span.frame{display:block;overflow:hidden}span.frame > span{border:1px solid #ddd;display:block;float:left;overflow:hidden;margin:13px 0 0;padding:7px;width:auto}span.frame span img{display:block;float:left}span.frame span span{clear:both;color:#333;display:block;padding:5px 0 0}span.align-center{display:block;overflow:hidden;clear:both}span.align-center > span{display:block;overflow:hidden;margin:13px auto 0;text-align:center}span.align-center span img{margin:0 auto;text-align:center}span.align-right{display:block;overflow:hidden;clear:both}span.align-right > span{display:block;overflow:hidden;margin:13px 0 0;text-align:right}span.align-right span img{margin:0;text-align:right}span.float-left{display:block;margin-right:13px;overflow:hidden;float:left}span.float-left span{margin:13px 0 0}span.float-right{display:block;margin-left:13px;overflow:hidden;float:right}span.float-right > span{display:block;overflow:hidden;margin:13px auto 0;text-align:right}code,tt{margin:0 2px;padding:0 5px;white-space:nowrap;border:1px solid #eaeaea;background-color:#f8f8f8;border-radius:3px}pre code{margin:0;padding:0;white-space:pre;border:none;background:transparent}.highlight pre{background-color:#f8f8f8;border:1px solid #ccc;font-size:13px;line-height:19px;overflow:auto;padding:6px 10px;border-radius:3px}pre{background-color:#f8f8f8;border:1px solid #ccc;font-size:13px;line-height:19px;overflow:auto;padding:6px 10px;border-radius:3px}pre code,pre tt{background-color:transparent;border:none}.slasher{color:#000000}</style></head>
+<body>
+
+<h1>Под капотом</h1>
+
+<h2>Проблема с нативным DOM API</h2>
+
+<p>Вы могли слышать о JSX. Он используется в React, о котором подробнее поговорим во втором модуле.</p>
+
+<pre><code class="language-JSX">const className = 'myClassName';
+const list = [1, 2, 3];
+
+const element = (
+	&lt;div className={className}&gt;
+		{list.map(item =&gt; (
+			&lt;span key={item}&gt;{item}&lt;/span&gt;
+		))}
+	&lt;/div&gt;
+);
+</code></pre>
+
+<p>Такой код просто читать, даже не зная JSX. Ведь он максимально напоминает обычный HTML. Помимо JSX, существует множество других шаблонизаторов. Например, <a href="https://handlebarsjs.com/">Handlebars</a>.</p>
+
+<pre><code class="language-html">&lt;ul class=&quot;people_list&quot;&gt;
+  {{#each people}}
+    &lt;li&gt;{{this}}&lt;/li&gt;
+  {{/each}}
+&lt;/ul&gt; 
+</code></pre>
+
+<pre><code class="language-JSX">Handlebars.compile(tmpl)({
+	  people: [
+		    'Аркадий Волож',
+		    'Стив Джобс',
+		    'Марк Цукерберг',
+	  ],
+});
+</code></pre>
+
+<p>Но всё же это не HTML. И возвращают шаблонизаторы тоже не просто HTML.</p>
+
+<h2>Как работают шаблонизаторы</h2>
+
+<p>На вход шаблонизатору подаётся обычная строка и контекст. Под контекстом подразумевается набор информации, который подставляется вместо переменных в шаблонной строке:</p>
+
+<pre><code class="language-html">&lt;ul class=&quot;people_list&quot;&gt;
+  {{#each people}}
+    &lt;li&gt;{{this}}&lt;/li&gt;
+  {{/each}}
+&lt;/ul&gt; 
+</code></pre>
+
+<pre><code class="language-JSX">Handlebars.compile(tmpl)({
+	  people: [
+		    'Аркадий Волож',
+		    'Стив Джобс',
+		    'Марк Цукерберг',
+	  ],
+});
+</code></pre>
+
+<p>Строка с HTML-разметкой содержит переменные — <code>people</code> и <code>this</code>.  Первую переменную мы явно передаём в виде объекта-контекста в JavaScript коде. <code>this</code> — это «синтаксический сахар» от Handlebars, для ещё более наглядного использования шаблона.</p>
+
+<p>Необязательно хранить в виде JS-константы именно строку. Это можно сделать в файле с любым расширением. У популярных шаблонизаторов зафиксированы свои расширения, чтобы редакторы кода могли их легко распознавать. Однако никто не мешает создать вот такой шаблон и передать в шаблонизатор:</p>
+
+<pre><code class="language-html">// chats.tmpl
+// Это файл с шаблоном, здесь мы разрешаем комментарии вида `//`
+
+&lt;div class=&quot;{{ wrapperClassName }}&quot;&gt;
+	&lt;div class=&quot;chat__button&quot;&gt;
+		&lt;button class=&quot;button&quot;&gt;
+			&lt;span&gt;{{ buttonText }}&lt;/span&gt;
+		&lt;/button&gt;
+	&lt;/div&gt;
+
+	&lt;ul class=&quot;{{ chatListClassName }}&quot;&gt;
+		{{ chatListItems }}
+	&lt;/ul&gt;
+&lt;/div&gt;
+</code></pre>
+
+<pre><code class="language-JSX">// Напишем на NodeJS, но и на клиенте всё работает точно так же
+
+const templator = require('lib');
+const tmpl = require('./chats.tmpl');
+const fs = require('fs');
+
+const stringTmpl = fs.readFileSync('./chats.tmpl', 'utf8');
+console.log(stringTmpl); // Выведет в консоль содержимое файла chats.tmpl
+
+templator(stringTmpl); // Передаст тот же файл шаблонизатору
+</code></pre>
+
+<p>Так шаблонизатор получает строку и объект с контекстом.</p>
+
+<p>Рассмотрим процесс преобразования шаблона и что он выдаст на выходе. Ранее уже рассказывали о регулярных выражениях (<code>RegExp</code>). Они позволяют написать свой шаблонизатор. В момент обработки шаблонной строки с разметкой применяется поиск шаблонных переменных с помощью <code>RegExp</code>. Например, так:</p>
+
+<pre><code class="language-JSX">'&lt;ul&gt;text&lt;/ul&gt;'.match(/&lt;(.*?)&gt;/gi); // ['&lt;ul&gt;', '&lt;/ul&gt;']
+</code></pre>
+
+<p>В данном примере с помощью регулярного выражения нашли имена тегов. Но можно находить как значения внутри тега, так и атрибуты со значениями.</p>
+
+<p>Так шаблонизатор проходится в цикле по строке, пока не найдёт все переменные. Он умеет выдавать на выходе различные ответы. Например, он способен возвращать сразу строку с разметкой, которую можно вставить в DOM через свойство <code>innerHTML</code>. Учтите, этот способ небезопасный.</p>
+
+<p>Есть другой вариант, более безопасный, который применяется по умолчанию. Шаблонизатор на основе полученного дерева из названий тегов генерирует JavaScript код, который делает все необходимые <code>createElement</code> с подстановкой атрибутов и значений. Дальше пользователь библиотеки запускает этот код после компиляции, после чего создаются элементы и безопасно вставляются в DOM-дерево.</p>
+
+<h2>Итог</h2>
+
+<p><strong>У шаблонизаторов есть несколько режимов работы:</strong></p>
+
+<ol>
+<li><p>На вход подаём строку определённого формата и контекст для этой строки, а на выходе получаем строку с разметкой, которую можно вставить через свойство элементов <code>innerHTML</code>. Этот способ не самый безопасный и годится только для тренировок при написании своего шаблонизатора:</p>
+
+<pre><code class="language-JSX">// Вход
+const tmpl = '&lt;div&gt;{{ content }}&lt;/div&gt;';
+const result = templator(tmpl)({content: 'Любой текст или даже &lt;span&gt;вёрстка&lt;/span&gt;'});
+
+
+// Выход
+console.log(result); // '&lt;div&gt;Любой текст или даже &lt;span&gt;вёрстка&lt;/span&gt;&lt;/div&gt;'
+</code></pre></li>
+
+<li><p>На выходе получаем готовый JavaScript код с набором команд для создания DOM-дерева такой же структуры, как мы передали в шаблонной строке. Данный способ намного безопаснее, но реализовать его сложнее, чем просто заменить несколько строк регулярным выражением:</p>
+
+<pre><code class="language-JSX">// Вход
+const tmpl = '&lt;div&gt;{{ content }}&lt;/div&gt;';
+const result = templator(tmpl)({content: 'Любой текст или даже &lt;span&gt;вёрстка&lt;/span&gt;'});
+
+
+// Выход
+console.log(typeof result); // function
+const block = result(); // Вернулся dom-элемент (&lt;div&gt;Любой текст или даже &lt;span&gt;вёрстка&lt;/span&gt;&lt;/div&gt;)
+document.body.appendChild(block); // Вставляем как DOM-элемент
+
+
+/*
+Внутри result примерно такое:
+
+
+function render() {
+	const div = document.createElement('div'); // Имена к тегам и свойства берутся из внутренней структуры данных — дерева
+
+
+	const text = document.createElement('span');
+	text.textContent = 'вёрстка';
+
+
+	div.appendChild('Любой текст или даже &lt;span&gt;вёрстка&lt;/span&gt;');
+	div.appendChild(text);
+
+
+	return div;
+	}
+*/
+</code></pre></li>
+</ol>
+
+</body>
+</html>

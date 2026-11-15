@@ -1,0 +1,250 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Redux</title>
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+  <meta charset="utf-8">
+<style>body{font-family:Helvetica,arial,sans-serif;font-size:14px;line-height:1.6;background-color:#fff;padding:30px;color:#333;max-width:1140px;margin:0 auto}body > :first-child{margin-top:0!important}body > :last-child{margin-bottom:0!important}a{color:#4183C4;text-decoration:none}a.absent{color:#c00}a.anchor{display:block;padding-left:30px;margin-left:-30px;cursor:pointer;position:absolute;top:0;left:0;bottom:0}h1,h2,h3,h4,h5,h6{margin:20px 0 10px;padding:0;font-weight:700;-webkit-font-smoothing:antialiased;cursor:text;position:relative}h2:first-child,h1:first-child,h1:first-child + h2,h3:first-child,h4:first-child,h5:first-child,h6:first-child{margin-top:0;padding-top:0}h1:hover a.anchor,h2:hover a.anchor,h3:hover a.anchor,h4:hover a.anchor,h5:hover a.anchor,h6:hover a.anchor{text-decoration:none}h1 tt,h1 code{font-size:inherit}h2 tt,h2 code{font-size:inherit}h3 tt,h3 code{font-size:inherit}h4 tt,h4 code{font-size:inherit}h5 tt,h5 code{font-size:inherit}h6 tt,h6 code{font-size:inherit}h1{font-size:28px;color:#000}h2{font-size:24px;border-bottom:1px solid #ccc;color:#000}h3{font-size:18px}h4{font-size:16px}h5{font-size:14px}h6{color:#777;font-size:14px}p,blockquote,ul,ol,dl,li,table,pre{margin:15px 0}hr {padding:0;margin-bottom:-8px;height:1px;border:none;background:black}body > h2:first-child{margin-top:0;padding-top:0}body > h1:first-child{margin-top:0;padding-top:0}body > h1:first-child + h2{margin-top:0;padding-top:0}body > h3:first-child,body > h4:first-child,body > h5:first-child,body > h6:first-child{margin-top:0;padding-top:0}a:first-child h1,a:first-child h2,a:first-child h3,a:first-child h4,a:first-child h5,a:first-child h6{margin-top:0;padding-top:0}h1 p,h2 p,h3 p,h4 p,h5 p,h6 p{margin-top:0}li p.first{display:inline-block}ul,ol{padding-left:30px}ul :first-child,ol :first-child{margin-top:0}ul :last-child,ol :last-child{margin-bottom:0}dl{padding:0}dl dt{font-size:14px;font-weight:700;font-style:italic;padding:0;margin:15px 0 5px}dl dt:first-child{padding:0}dl dt > :first-child{margin-top:0}dl dt > :last-child{margin-bottom:0}dl dd{margin:0 0 15px;padding:0 15px}dl dd > :first-child{margin-top:0}dl dd > :last-child{margin-bottom:0}blockquote{border-left:4px solid #ddd;padding:0 15px;color:#777}blockquote > :first-child{margin-top:0}blockquote > :last-child{margin-bottom:0}table{padding:0}table tr{border-top:1px solid #ccc;background-color:#fff;margin:0;padding:0}table tr:nth-child(2n){background-color:#f8f8f8}table tr th{font-weight:700;border:1px solid #ccc;text-align:left;margin:0;padding:6px 13px}table tr td{border:1px solid #ccc;text-align:left;margin:0;padding:6px 13px}table tr th :first-child,table tr td :first-child{margin-top:0}table tr th :last-child,table tr td :last-child{margin-bottom:0}img{max-width:100%}span.frame{display:block;overflow:hidden}span.frame > span{border:1px solid #ddd;display:block;float:left;overflow:hidden;margin:13px 0 0;padding:7px;width:auto}span.frame span img{display:block;float:left}span.frame span span{clear:both;color:#333;display:block;padding:5px 0 0}span.align-center{display:block;overflow:hidden;clear:both}span.align-center > span{display:block;overflow:hidden;margin:13px auto 0;text-align:center}span.align-center span img{margin:0 auto;text-align:center}span.align-right{display:block;overflow:hidden;clear:both}span.align-right > span{display:block;overflow:hidden;margin:13px 0 0;text-align:right}span.align-right span img{margin:0;text-align:right}span.float-left{display:block;margin-right:13px;overflow:hidden;float:left}span.float-left span{margin:13px 0 0}span.float-right{display:block;margin-left:13px;overflow:hidden;float:right}span.float-right > span{display:block;overflow:hidden;margin:13px auto 0;text-align:right}code,tt{margin:0 2px;padding:0 5px;white-space:nowrap;border:1px solid #eaeaea;background-color:#f8f8f8;border-radius:3px}pre code{margin:0;padding:0;white-space:pre;border:none;background:transparent}.highlight pre{background-color:#f8f8f8;border:1px solid #ccc;font-size:13px;line-height:19px;overflow:auto;padding:6px 10px;border-radius:3px}pre{background-color:#f8f8f8;border:1px solid #ccc;font-size:13px;line-height:19px;overflow:auto;padding:6px 10px;border-radius:3px}pre code,pre tt{background-color:transparent;border:none}.slasher{color:#000000}</style></head>
+<body>
+
+<h1>Redux</h1>
+
+<p>Теперь научимся управлять хранилищем приложения. Оказывается, на сервере можно выставлять значения по умолчанию для тех или иных редьюсеров. Например, вы заранее получили данные из API и положили их на сервере в <code>initialState</code>, который на клиенте уже оказывается доступен с нужными значениями. Или узнали, из какой страны пользователь (или с какого устройства сидит), и в Redux положили всю необходимую информацию по нему: девайс, язык.</p>
+
+<p>Шаги простые:</p>
+
+<ol>
+<li>Создать хранилище на сервере.</li>
+<li>Заполнить его значениями (через диспатч или через начальные состояния).</li>
+<li>Передать в виде объекта на клиент.</li>
+<li>Создать на клиенте хранилище, используя полученный объект как начальное состояние.</li>
+<li><strong>PROFIT!</strong></li>
+</ol>
+
+<p>От слов к делу. У нас уже есть готовый каркас проекта, добавим в него Redux.</p>
+
+<h2>Создание хранилища</h2>
+
+<p>Здесь всё тривиально и делается по <a href="https://react-redux.js.org/introduction/quick-start">документации Redux</a>:</p>
+
+<pre><code class="language-tsx">function configureStore(reducers = {}, initialState = {}, options?: StoreOptions) {
+  const {isLogger} = options || ({} as StoreOptions);
+
+  const middlewares: Middleware[] = [
+    thunkMiddleware,
+  ];
+
+  if (!isServer &amp;&amp; process.env.NODE_ENV !== config.__PROD__ &amp;&amp; isLogger) {
+    const logger = createLogger({collapsed: true});
+    middlewares.push(logger);
+  }
+
+  const store = createStore(
+    combineReducers(reducers),
+    initialState,
+    compose(applyMiddleware(...middlewares)),
+  );
+  store.dispatch({type: '@@redux/INIT'});
+
+  // Можем добавить hot-reload
+
+  return {store};
+}
+</code></pre>
+
+<p>С помощью такой функции будем создавать хранилище на сервере и на клиенте. Начнём с сервера.</p>
+
+<h2>Серверная часть</h2>
+
+<p><a href="https://github.com/Yandex-Practicum/web-middle-ssr/blob/master/react-redux/server/middlewares/render/bundle.tsx#L81">Создадим хранилище</a> на сервере через написанную выше функцию:</p>
+
+<pre><code class="language-tsx">import {Provider} from 'react-redux';
+
+export default ({bundleName, data}: RenderBundleArguments) =&gt; {
+  const {store} = configureStore(
+    reducers,
+    {},
+    {isLogger: false},
+  );
+
+  const bundleHtml = renderToString(
+    (
+      &lt;Provider store={store}&gt;
+        &lt;Bundle data={data}/&gt;
+      &lt;/Provider&gt;
+    ),
+  );
+
+  return {
+    html: getPageHtml({
+      bundleName,
+      bundleHtml,
+      data,
+      store,
+    }),
+  };
+};
+</code></pre>
+
+<p>Хранилище создаётся через <code>configureStore</code>, а потом добавляется в <code>Provider</code>, которым обрамляется JSX-приложение, как и в клиенте.</p>
+
+<p>Теперь у нас есть хранилище на сервере. Redux — это не клиентская библиотека, а общая. Данную модель можно использовать хоть на сервере, хоть на клиенте. Потому на сервере мы можем даже диспатчить экшены.</p>
+
+<p>Создали хранилище с нашей моделью данных. Что с ней делать дальше? А дальше всё просто: преобразовать всё хранилище в объект через метод <code>.getState()</code> и отправить на клиент.</p>
+
+<p>Поскольку мы сами регулируем, что отправлять на клиент, воспользуемся уже <a href="https://github.com/Yandex-Practicum/web-middle-ssr/blob/master/react-redux/server/middlewares/render/bundle.tsx#L51">знакомой методикой</a>:</p>
+
+<pre><code class="language-tsx">function getPageHtml(params: PageHtmlParams) {
+  const {bundleName, bundleHtml, data, store} = params;
+
+  // ...
+
+  const html = renderToStaticMarkup(
+    &lt;html&gt;
+      &lt;head&gt;
+        { /* ... */ }
+      &lt;/head&gt;
+      &lt;body&gt;
+        &lt;div id=&quot;root&quot; dangerouslySetInnerHTML={{__html: bundleHtml}}/&gt;
+
+        &lt;script
+          dangerouslySetInnerHTML={{
+            __html: `window.__PRELOADED_STATE__ = ${renderObject(store.getState())}`,
+          }}
+        /&gt;
+
+        {vendorsMeta.hasJs &amp;&amp; &lt;script src={`${vendorsFilePath}.js`}/&gt;}
+        &lt;script src={`${bundleFilePath}.ru.js`}/&gt;
+        &lt;script
+          dangerouslySetInnerHTML={{
+            __html: `Client.default(${htmlescape(data)});`,
+          }}
+        /&gt;
+      &lt;/body&gt;
+    &lt;/html&gt;,
+  );
+
+  return `&lt;!doctype html&gt;${html}`;
+}
+</code></pre>
+
+<p>Через глобальный объект передали информацию с сервера. На клиенте останется её только принять и отправить в начальное состояние такого же хранилища.</p>
+
+<p>Рассмотрим детальнее, как мы отправляем данные. Во-первых, с помощью метода <code>getState</code> мы получаем объект с уже предзаполненной моделью данных. Во-вторых, применяем функцию <code>renderObject</code>, чтобы снова не пропустить XSS-уязвимость.</p>
+
+<p><a href="https://github.com/Yandex-Practicum/web-middle-ssr/blob/master/react-redux/server/utils/renderObject.ts">Реализация данного метода</a> состоит из буквально одной строчки:</p>
+
+<pre><code class="language-tsx">import serialize from 'serialize-javascript';
+
+export const renderObject = (data: unknown) =&gt; serialize(data).replace(/&lt;/g, '\\\u003c');
+</code></pre>
+
+<p>Благодаря сериализации и реплейсу дамп нашего хранилища становится безопасным для инлайн-вставки в HTML-разметку.</p>
+
+<h3>Начальное состояние на сервере</h3>
+
+<p>Допустим, вам необходимо сразу проверить авторизацию пользователя или получить информацию по текущей платформе пользователя из юзер-агента. Можно это сделать сразу на сервере: положить в хранилище на сервере и передать предзаполненные данные сразу на этот же сервер.</p>
+
+<p>Можем сделать следующим образом:</p>
+
+<pre><code class="language-tsx">// Через библиотеку is-mobile можно узнать по юзер-агенту реальное устройство пользователя
+const isMobile = checkMobile(req);
+
+const {store} = configureStore(
+  reducers,
+  makeInitialStore({meta: {device: {device: isMobile ? 'mobile' : 'desktop'}}}),
+  {isLogger: false},
+);
+
+const bundleHtml = renderToString(
+  (
+    &lt;Provider store={store}&gt;
+      &lt;Bundle data={data}/&gt;
+    &lt;/Provider&gt;
+	),
+);
+</code></pre>
+
+<p>Функция <code>makeInitialStore</code> просто возвращает объект с той схемой, которая содержится в хранилище. Таким образом, можно использовать данные в качестве начального состояния. Пример можно <a href="https://github.com/Yandex-Practicum/web-middle-ssr/blob/master/react-redux/server/utils/makeInitialStore.ts">увидеть здесь</a>.</p>
+
+<p>В <code>makeInitialStore</code> можно инкапсулировать обработку параметров. Например, не в методе преобразования JSX в строку проверять <code>isMobile</code> → значение <code>'isMobile'</code>, иначе <code>'desktop'</code>, а в самой функции создания начального состояния.</p>
+
+<p>Кроме того, никто не запрещает в начале создать хранилище <code>store</code>, а затем использовать его при добавлении значений. Например, так:</p>
+
+<pre><code class="language-tsx">Promise.all([
+  checkMobile(req).then(isMobile =&gt; {
+    store.dispatch(metaDeviceActions.setPlatform(isMobile ? 'mobile' : 'desktop'));
+  }),
+  checkUserAuth().then(data =&gt; { /* Do your stuff with store.dispatch */ }),
+  // ...
+]);
+</code></pre>
+
+<p>Мы научились создавать хранилище на сервере, теперь научимся получать значения на клиенте.</p>
+
+<h2>Клиентская часть</h2>
+
+<p>Для начала <a href="https://github.com/Yandex-Practicum/web-middle-ssr/blob/master/react-redux/%40types/app/window.d.ts">расширим глобальный</a> тип <code>Window</code>, чтобы мы могли обращаться к новому глобальному свойству:</p>
+
+<pre><code class="language-tsx">declare global {
+  interface Window {
+    // В d.ts нам неважно, что это за тип,
+    // так как он сразу попадает в redux store на клиенте
+    __PRELOADED_STATE__?: object;
+  }
+}
+</code></pre>
+
+<p>Теперь мы можем на клиенте обращаться к свойству <code>__PRELOADED_STATE__</code> у объекта <code>window</code>:</p>
+
+<pre><code class="language-tsx">const state = window.__PRELOADED_STATE__; // Здесь будет объект с данными с сервера
+delete window.__PRELOADED_STATE__;
+</code></pre>
+
+<p>Создадим хранилище, используя переданное с сервера (<code>__PRELOADED_STATE__</code>) как начальное состояние:</p>
+
+<pre><code class="language-tsx">const {store: reduxStore} = configureStore(reducers, state, {isLogger: true});
+</code></pre>
+
+<p>Как итог получаем простой алгоритм из трёх строк:</p>
+
+<pre><code class="language-tsx">const state = window.__PRELOADED_STATE__; // Здесь будет объект с данными с сервера
+delete window.__PRELOADED_STATE__;
+
+const {store: reduxStore} = configureStore(reducers, state, {isLogger: true});
+</code></pre>
+
+<p>Удаляем из глобального объекта <code>window</code> ключ, потому что теперь нет смысла держать один и тот же объект с данными (может, даже немаленького размера) и в <code>window</code>, и в клиентском хранилище.</p>
+
+<p>Заметим, что в дополнительных настройках <code>configureStore</code> на сервере мы отключаем логгер, а на клиенте включаем.</p>
+
+<p>Осталось обернуть сам бандл в <code>Provider</code> от Redux и добавить созданный на клиенте <code>store</code>. Делается это через знакомый уже <code>client/bundles/desktop.tsx</code>:</p>
+
+<pre><code class="language-tsx">export default data =&gt; {
+  hydrate(
+    &lt;Provider store={store}&gt;
+      &lt;DesktopBundle data={data}/&gt;
+    &lt;/Provider&gt;,
+    document.getElementById('root'),
+  );
+};
+</code></pre>
+
+<p>Чтобы вы могли найти все части из нашего примера, добавим ссылки на GitHub.</p>
+
+<p>Серверная часть:</p>
+
+<ul>
+<li><a href="https://github.com/Yandex-Practicum/web-middle-ssr/blob/master/react-redux/server/middlewares/render/bundle.tsx#L81">создание хранилища и его передача на клиент</a>.</li>
+</ul>
+
+<p>Клиентская часть:</p>
+
+<ul>
+<li><a href="https://github.com/Yandex-Practicum/web-middle-ssr/blob/master/react-redux/%40types/app/window.d.ts">расширяем глобальный тип window</a>;</li>
+<li><a href="https://github.com/Yandex-Practicum/web-middle-ssr/blob/master/react-redux/client/utils/infrastructure/store.ts#L15">создаём хранилище на клиенте, опираясь на данные с сервера</a>;</li>
+<li><a href="https://github.com/Yandex-Practicum/web-middle-ssr/blob/master/react-redux/client/bundles/desktop.tsx#L32">используем провайдер и передаём созданное хранилище</a>.</li>
+</ul>
+
+</body>
+</html>

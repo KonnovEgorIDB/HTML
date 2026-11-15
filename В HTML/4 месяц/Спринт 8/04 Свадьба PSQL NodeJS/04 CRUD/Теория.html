@@ -1,0 +1,208 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>CRUD</title>
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+  <meta charset="utf-8">
+<style>body{font-family:Helvetica,arial,sans-serif;font-size:14px;line-height:1.6;background-color:#fff;padding:30px;color:#333;max-width:1140px;margin:0 auto}body > :first-child{margin-top:0!important}body > :last-child{margin-bottom:0!important}a{color:#4183C4;text-decoration:none}a.absent{color:#c00}a.anchor{display:block;padding-left:30px;margin-left:-30px;cursor:pointer;position:absolute;top:0;left:0;bottom:0}h1,h2,h3,h4,h5,h6{margin:20px 0 10px;padding:0;font-weight:700;-webkit-font-smoothing:antialiased;cursor:text;position:relative}h2:first-child,h1:first-child,h1:first-child + h2,h3:first-child,h4:first-child,h5:first-child,h6:first-child{margin-top:0;padding-top:0}h1:hover a.anchor,h2:hover a.anchor,h3:hover a.anchor,h4:hover a.anchor,h5:hover a.anchor,h6:hover a.anchor{text-decoration:none}h1 tt,h1 code{font-size:inherit}h2 tt,h2 code{font-size:inherit}h3 tt,h3 code{font-size:inherit}h4 tt,h4 code{font-size:inherit}h5 tt,h5 code{font-size:inherit}h6 tt,h6 code{font-size:inherit}h1{font-size:28px;color:#000}h2{font-size:24px;border-bottom:1px solid #ccc;color:#000}h3{font-size:18px}h4{font-size:16px}h5{font-size:14px}h6{color:#777;font-size:14px}p,blockquote,ul,ol,dl,li,table,pre{margin:15px 0}hr {padding:0;margin-bottom:-8px;height:1px;border:none;background:black}body > h2:first-child{margin-top:0;padding-top:0}body > h1:first-child{margin-top:0;padding-top:0}body > h1:first-child + h2{margin-top:0;padding-top:0}body > h3:first-child,body > h4:first-child,body > h5:first-child,body > h6:first-child{margin-top:0;padding-top:0}a:first-child h1,a:first-child h2,a:first-child h3,a:first-child h4,a:first-child h5,a:first-child h6{margin-top:0;padding-top:0}h1 p,h2 p,h3 p,h4 p,h5 p,h6 p{margin-top:0}li p.first{display:inline-block}ul,ol{padding-left:30px}ul :first-child,ol :first-child{margin-top:0}ul :last-child,ol :last-child{margin-bottom:0}dl{padding:0}dl dt{font-size:14px;font-weight:700;font-style:italic;padding:0;margin:15px 0 5px}dl dt:first-child{padding:0}dl dt > :first-child{margin-top:0}dl dt > :last-child{margin-bottom:0}dl dd{margin:0 0 15px;padding:0 15px}dl dd > :first-child{margin-top:0}dl dd > :last-child{margin-bottom:0}blockquote{border-left:4px solid #ddd;padding:0 15px;color:#777}blockquote > :first-child{margin-top:0}blockquote > :last-child{margin-bottom:0}table{padding:0}table tr{border-top:1px solid #ccc;background-color:#fff;margin:0;padding:0}table tr:nth-child(2n){background-color:#f8f8f8}table tr th{font-weight:700;border:1px solid #ccc;text-align:left;margin:0;padding:6px 13px}table tr td{border:1px solid #ccc;text-align:left;margin:0;padding:6px 13px}table tr th :first-child,table tr td :first-child{margin-top:0}table tr th :last-child,table tr td :last-child{margin-bottom:0}img{max-width:100%}span.frame{display:block;overflow:hidden}span.frame > span{border:1px solid #ddd;display:block;float:left;overflow:hidden;margin:13px 0 0;padding:7px;width:auto}span.frame span img{display:block;float:left}span.frame span span{clear:both;color:#333;display:block;padding:5px 0 0}span.align-center{display:block;overflow:hidden;clear:both}span.align-center > span{display:block;overflow:hidden;margin:13px auto 0;text-align:center}span.align-center span img{margin:0 auto;text-align:center}span.align-right{display:block;overflow:hidden;clear:both}span.align-right > span{display:block;overflow:hidden;margin:13px 0 0;text-align:right}span.align-right span img{margin:0;text-align:right}span.float-left{display:block;margin-right:13px;overflow:hidden;float:left}span.float-left span{margin:13px 0 0}span.float-right{display:block;margin-left:13px;overflow:hidden;float:right}span.float-right > span{display:block;overflow:hidden;margin:13px auto 0;text-align:right}code,tt{margin:0 2px;padding:0 5px;white-space:nowrap;border:1px solid #eaeaea;background-color:#f8f8f8;border-radius:3px}pre code{margin:0;padding:0;white-space:pre;border:none;background:transparent}.highlight pre{background-color:#f8f8f8;border:1px solid #ccc;font-size:13px;line-height:19px;overflow:auto;padding:6px 10px;border-radius:3px}pre{background-color:#f8f8f8;border:1px solid #ccc;font-size:13px;line-height:19px;overflow:auto;padding:6px 10px;border-radius:3px}pre code,pre tt{background-color:transparent;border:none}.slasher{color:#000000}</style></head>
+<body>
+
+<h1>CRUD</h1>
+
+<p>С помощью ORM можно быстро написать классический CRUD любой сущности.</p>
+
+<p>Кстати, CRUD — это всего лишь акроним, описывающий 4 базовые функции для работы с базой:</p>
+
+<ol>
+<li><strong>C</strong> — Create,</li>
+<li><strong>R</strong> — Read,</li>
+<li><strong>U</strong> — Update,</li>
+<li><strong>D</strong> — Delete.</li>
+</ol>
+
+<h3>Create</h3>
+
+<p>Создание строки работает через метод <code>create</code>:</p>
+
+<pre><code class="language-typescript">await User.create({
+  name: 'User 1',
+});
+</code></pre>
+
+<p>Обратите внимание, вам нужно всего лишь импортировать вашу модель для вызова методов.</p>
+
+<pre><code class="language-javascript">import User from './models/User';
+
+// User.create();
+// User.findOne();
+// ...
+</code></pre>
+
+<p>Если вам нужно множественное (bulk) создание сразу нескольких строчек — можно использовать метод <code>bulkCreate</code>. Избегайте исполнения операций в цикле:</p>
+
+<pre><code class="language-typescript">for (какое-то условие) { 
+  User.create();
+}
+</code></pre>
+
+<p>Это плохо тем, что вы вместо одного запроса на создание делаете N запросов. Это приводит к максимально неэффективному использованию базы данных, и ваши пользователи очень быстро начнут страдать от долгой загрузки данных.</p>
+
+<p>Вместо этого в <code>bulkCreate</code> можно передать массив сущностей и будет выполнен один запрос INSERT в базу:</p>
+
+<pre><code class="language-typescript">await User.bulkCreate([
+	{
+	  name: 'User 1',
+	},
+	{
+	  name: 'User 2',
+	}
+]);
+</code></pre>
+
+<p>Кстати, вот тут пригодится дженерик класса <code>Model</code> — он принимает <code>TModelAttributes</code> и <code>TCreationAttributes</code>, которые позволяют TypeScript корректно понимать передаваемые в <code>create</code> или <code>bulkCreate</code> объекты и защищать вас от ошибок неверных типов (например, если в <code>name</code> передать число — должна быть ошибка типов).</p>
+
+<h3>Read</h3>
+
+<p>Операции чтения работают через методы <code>find*</code>.</p>
+
+<p>Получить все строки можно через метод <code>findAll</code>:</p>
+
+<pre><code class="language-typescript">const user = await User.findOne({
+  where: {
+    name: 'User 1'
+  }
+});
+const {name} = user;
+</code></pre>
+
+<pre><code class="language-typescript">await User.findAll({
+  where: {
+    ownerId: 1
+  },
+  attributes: ['id', 'name']
+});
+</code></pre>
+
+<p>Можно регулировать получаемые атрибуты. По умолчанию получаете всё:</p>
+
+<pre><code class="language-typescript">const user = await User.findOne({
+  where: {
+    name: 'User 1'
+  },
+  attributes: ['id', ['name', 'other_field']]
+});
+</code></pre>
+
+<p>Если нужно делать более сложные запросы, например, с оператором OR, можно использовать операторы из ORM <code>Op</code>:</p>
+
+<pre><code class="language-typescript">import { Op } from 'sequelize';
+
+const userModel = await User.findOne({
+  where: {
+    [Op.or]: [
+      { name: { [Op.like]: 'А%' } },
+      { saveDate: { [Op.gt]: '2018-04-09 13:25:13' } }
+    ]
+  }
+});
+</code></pre>
+
+<p>Больше про операторы можно почитать в <a href="https://sequelize.org/master/manual/model-querying-basics.html#operators">документации</a>.</p>
+
+<p>Поиск по <code>id</code> можно делать как через <code>findOne</code>:</p>
+
+<pre><code class="language-typescript">await User.findOne({
+  where: { id: 23 }
+});
+</code></pre>
+
+<p>Так и через отдельный метод:</p>
+
+<pre><code class="language-typescript">await User.findByPk(23);
+</code></pre>
+
+<p>Также можно работать и с <code>count</code>, <code>offset</code>, <code>order</code>, <code>limit</code>:</p>
+
+<pre><code class="language-typescript">await User.findAll({
+  order: [
+    ['name', 'DESC']
+  ],
+  offset: 2,
+  limit: 2
+});
+
+await User.count({
+  where: {
+    id: 1
+  }
+});
+</code></pre>
+
+<p>ORM позволяет делать все стандартные действия. В том числе и группировку:</p>
+
+<pre><code class="language-typescript">await User.findAll({
+  attributes: [
+    'id',
+    [
+      Sequelize.fn('count', Sequelize.col('name')),
+      'countNotes'
+    ]
+  ],
+  group: ['id']
+});
+</code></pre>
+
+<p>Интересно также то, что можно использовать метод, который выполняет создание объекта, если не нашёл его в базе:</p>
+
+<pre><code class="language-typescript">const user = await User.findOrCreate({
+  where: { name: 'User 1' },
+  defaults: {
+    name: 'User 1',
+		...other_fields,
+  }
+});
+</code></pre>
+
+<p>Этот метод вряд ли будет применяться к сущности пользователей, но, например, к сущности заметок отлично может подойти.</p>
+
+<h3>Update</h3>
+
+<p>Обновление строк происходит через метод <code>update</code>:</p>
+
+<pre><code class="language-typescript">await User.update(
+  {
+    field: 'some value'
+  },
+  {
+    where: { id: 1 }
+  }
+);
+</code></pre>
+
+<p>ORM позволяет изменять сущности и через мутацию полученного объекта:</p>
+
+<pre><code class="language-typescript">const user = await User.findOne({
+  where: { id: 1 }
+});
+user.some_field = 'some value';
+await user.save();
+</code></pre>
+
+<h3>Delete</h3>
+
+<p>Удаление можно делать как через метод <code>destroy</code>, так и через вызов метода у инстанса найденной сущности:</p>
+
+<pre><code class="language-javascript">await User.destroy({
+  where: { id: 23 }
+});
+
+const user = await User.findOne({
+  where: { id: 23 }
+});
+await user.destroy();
+</code></pre>
+
+<p>Примеры простых CRUD операций вы можете найти в <a href="https://github.com/Yandex-Practicum/orm-simple-template/blob/d7e0670807d8e4a339558c4324afadb65bdc91a0/app/index.ts#L6">репозитории раздела</a>.</p>
+
+</body>
+</html>

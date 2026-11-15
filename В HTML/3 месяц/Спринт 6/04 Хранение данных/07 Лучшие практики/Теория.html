@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Лучшие практики</title>
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+  <meta charset="utf-8">
+<style>body{font-family:Helvetica,arial,sans-serif;font-size:14px;line-height:1.6;background-color:#fff;padding:30px;color:#333;max-width:1140px;margin:0 auto}body > :first-child{margin-top:0!important}body > :last-child{margin-bottom:0!important}a{color:#4183C4;text-decoration:none}a.absent{color:#c00}a.anchor{display:block;padding-left:30px;margin-left:-30px;cursor:pointer;position:absolute;top:0;left:0;bottom:0}h1,h2,h3,h4,h5,h6{margin:20px 0 10px;padding:0;font-weight:700;-webkit-font-smoothing:antialiased;cursor:text;position:relative}h2:first-child,h1:first-child,h1:first-child + h2,h3:first-child,h4:first-child,h5:first-child,h6:first-child{margin-top:0;padding-top:0}h1:hover a.anchor,h2:hover a.anchor,h3:hover a.anchor,h4:hover a.anchor,h5:hover a.anchor,h6:hover a.anchor{text-decoration:none}h1 tt,h1 code{font-size:inherit}h2 tt,h2 code{font-size:inherit}h3 tt,h3 code{font-size:inherit}h4 tt,h4 code{font-size:inherit}h5 tt,h5 code{font-size:inherit}h6 tt,h6 code{font-size:inherit}h1{font-size:28px;color:#000}h2{font-size:24px;border-bottom:1px solid #ccc;color:#000}h3{font-size:18px}h4{font-size:16px}h5{font-size:14px}h6{color:#777;font-size:14px}p,blockquote,ul,ol,dl,li,table,pre{margin:15px 0}hr {padding:0;margin-bottom:-8px;height:1px;border:none;background:black}body > h2:first-child{margin-top:0;padding-top:0}body > h1:first-child{margin-top:0;padding-top:0}body > h1:first-child + h2{margin-top:0;padding-top:0}body > h3:first-child,body > h4:first-child,body > h5:first-child,body > h6:first-child{margin-top:0;padding-top:0}a:first-child h1,a:first-child h2,a:first-child h3,a:first-child h4,a:first-child h5,a:first-child h6{margin-top:0;padding-top:0}h1 p,h2 p,h3 p,h4 p,h5 p,h6 p{margin-top:0}li p.first{display:inline-block}ul,ol{padding-left:30px}ul :first-child,ol :first-child{margin-top:0}ul :last-child,ol :last-child{margin-bottom:0}dl{padding:0}dl dt{font-size:14px;font-weight:700;font-style:italic;padding:0;margin:15px 0 5px}dl dt:first-child{padding:0}dl dt > :first-child{margin-top:0}dl dt > :last-child{margin-bottom:0}dl dd{margin:0 0 15px;padding:0 15px}dl dd > :first-child{margin-top:0}dl dd > :last-child{margin-bottom:0}blockquote{border-left:4px solid #ddd;padding:0 15px;color:#777}blockquote > :first-child{margin-top:0}blockquote > :last-child{margin-bottom:0}table{padding:0}table tr{border-top:1px solid #ccc;background-color:#fff;margin:0;padding:0}table tr:nth-child(2n){background-color:#f8f8f8}table tr th{font-weight:700;border:1px solid #ccc;text-align:left;margin:0;padding:6px 13px}table tr td{border:1px solid #ccc;text-align:left;margin:0;padding:6px 13px}table tr th :first-child,table tr td :first-child{margin-top:0}table tr th :last-child,table tr td :last-child{margin-bottom:0}img{max-width:100%}span.frame{display:block;overflow:hidden}span.frame > span{border:1px solid #ddd;display:block;float:left;overflow:hidden;margin:13px 0 0;padding:7px;width:auto}span.frame span img{display:block;float:left}span.frame span span{clear:both;color:#333;display:block;padding:5px 0 0}span.align-center{display:block;overflow:hidden;clear:both}span.align-center > span{display:block;overflow:hidden;margin:13px auto 0;text-align:center}span.align-center span img{margin:0 auto;text-align:center}span.align-right{display:block;overflow:hidden;clear:both}span.align-right > span{display:block;overflow:hidden;margin:13px 0 0;text-align:right}span.align-right span img{margin:0;text-align:right}span.float-left{display:block;margin-right:13px;overflow:hidden;float:left}span.float-left span{margin:13px 0 0}span.float-right{display:block;margin-left:13px;overflow:hidden;float:right}span.float-right > span{display:block;overflow:hidden;margin:13px auto 0;text-align:right}code,tt{margin:0 2px;padding:0 5px;white-space:nowrap;border:1px solid #eaeaea;background-color:#f8f8f8;border-radius:3px}pre code{margin:0;padding:0;white-space:pre;border:none;background:transparent}.highlight pre{background-color:#f8f8f8;border:1px solid #ccc;font-size:13px;line-height:19px;overflow:auto;padding:6px 10px;border-radius:3px}pre{background-color:#f8f8f8;border:1px solid #ccc;font-size:13px;line-height:19px;overflow:auto;padding:6px 10px;border-radius:3px}pre code,pre tt{background-color:transparent;border:none}.slasher{color:#000000}</style></head>
+<body>
+
+<h1>Лучшие практики</h1>
+
+<h2>Упрощайте себе жизнь</h2>
+
+<p>С развитием приложения использование чистого Redux может стать (станет) очень громоздким. Описания экшенов, редьюсеров и прочего со временем сильно разрастутся. Их будет сложно читать и появится большое количество почти «бесполезных» строчек кода.</p>
+
+<p>Прежде чем использовать любую библиотеку, убедитесь в том, что её поддерживают в типизации и других важных для вашего проекта вещах.</p>
+
+<p>Библиотеки для упрощения создания редьюсеров, экшенов и других полезных вещей:</p>
+
+<ul>
+<li><a href="https://github.com/immerjs/immer">Immer</a>,</li>
+<li><a href="https://github.com/agiledigital/typed-redux-saga">Typed Redux Saga</a> — если используете <a href="https://habr.com/ru/post/351168/">«саги»</a>,</li>
+<li><a href="https://github.com/piotrwitek/typesafe-actions">typesafe-actions</a> — удобно генерировать редьюсер,</li>
+<li><a href="https://github.com/reduxjs/redux-thunk">Redux Thunk</a> — для работы с асинхронными запросами (посмотрите код этой библиотеки и удивитесь!),</li>
+<li><a href="https://redux-saga.js.org/">Redux-Saga</a> — более мощный и сложный инструмент для работы с логикой приложения и асинхронностью (вспомните про генераторы).</li>
+</ul>
+
+<p>Про основное качество Redux, которое поможет понять, когда можно «велосипедить», поговорим дальше.</p>
+
+<h2>Используйте биндинг экшенов</h2>
+
+<p>Иногда в проекте появляется экшн, который надо «копипастить» во многие компоненты:</p>
+
+<pre><code class="language-tsx">class Test extends PureComponent&lt;Props&gt; {
+  // ...
+}
+
+const mapDispatchToProps = (dispatch: DispatchType): DispatchProps =&gt; ({
+  loadPendingUserStatus: () =&gt; {
+    dispatch(loadPending());
+  },
+});
+
+export default connect(null, mapDispatchToProps)(Test);
+
+</code></pre>
+
+<p>Делать экшн вида <code>loadPending</code>, скорее всего, придётся во многих местах. Довольно «многокодно» каждый раз копировать эту функцию и добавлять в <code>mapDispatchToProps</code>.</p>
+
+<p>А что, если мы скажем вам, что можно вообще избавиться от <code>mapDispatchToProps</code>? Получится вот так:</p>
+
+<pre><code class="language-tsx">import commonActions from 'path/to/actions';
+
+class Test extends PureComponent&lt;Props&gt; {
+  public componentDidMount() {
+    // Не нужно более явно делать dispatch и mapDispatchToProps
+    // Достаточно вызвать функцию из общего объекта
+    commonActions.user.status.pending();
+  }
+
+  // ...
+}
+
+const mapStateToProps = state =&gt; ({
+  some: ...,
+});
+
+export default connect(null)(Test);
+
+</code></pre>
+
+<p>Объект <code>commonActions.user.status</code> в этом коде можно назвать «сервисом» — сущностью, которая хранит некоторую логику, и её используют несколько потребителей. Нетрудно догадаться, что если был <code>mapDispatchToProps</code>, который вызывал  <code>dispatch</code> с нужным действием, то и <code>commonActions.user.status.pending()</code> должен делать то же самое. Реализуем подобное поведение:</p>
+
+<pre><code class="language-tsx">// важно иметь под рукой экземпляр хранилища Redux, в нём есть dispatch
+import { store } from './storage';
+import { loadSuccess, setUser } from 'reducers/user';
+
+export const userService = {
+	success: () =&gt; store.dispatch(loadSuccess(payload)),
+	setUser: (user) =&gt; store.dispatch(setUser(user))
+};
+</code></pre>
+
+<p>Теперь есть объект <code>userService</code>, в котором хранятся функции, напрямую вызывающие <code>dispatch</code> нужных действий.</p>
+
+<p>В Redux уже есть готовая функция для создания подобных сервисов — <a href="https://redux.js.org/api/bindactioncreators">bindActionCreators</a>. Она принимает на вход объект с action creators, а на выходе даёт сервис. Почитайте про неё в документации.</p>
+
+<h2>Используйте middleware</h2>
+
+<p>Что такое <a href="https://xsltdev.ru/react/redux/middleware-usiliteli/">middleware</a>, можно почитать здесь.</p>
+
+<p>При использовании хранилища могут быть вопросы:</p>
+
+<ul>
+<li>Как логгировать и понимать, когда и с какими данными выполнился тот или иной экшен — <code>console.log</code>?</li>
+<li>Есть ли для браузера утилиты как React Tools или подобные?</li>
+</ul>
+
+<p>Полезные утилиты при создании хранилища:</p>
+
+<ul>
+<li><a href="https://github.com/zalmoxisus/redux-devtools-extension">Redux DevTools Extension</a> — возможность просматривать в браузере историю экшенов и состояния хранилища. Подробнее о преимуществах в документации;</li>
+<li><a href="https://github.com/LogRocket/redux-logger">Logger for Redux</a> — логгер, который отписывает в консоль браузера по факту вызова экшена. Вы можете настраивать разные уровни логов, форматы и многое, многое другое.</li>
+</ul>
+
+</body>
+</html>

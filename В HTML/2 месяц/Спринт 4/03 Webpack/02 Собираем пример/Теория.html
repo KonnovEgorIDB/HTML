@@ -1,0 +1,187 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Собираем пример</title>
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+  <meta charset="utf-8">
+<style>body{font-family:Helvetica,arial,sans-serif;font-size:14px;line-height:1.6;background-color:#fff;padding:30px;color:#333;max-width:1140px;margin:0 auto}body > :first-child{margin-top:0!important}body > :last-child{margin-bottom:0!important}a{color:#4183C4;text-decoration:none}a.absent{color:#c00}a.anchor{display:block;padding-left:30px;margin-left:-30px;cursor:pointer;position:absolute;top:0;left:0;bottom:0}h1,h2,h3,h4,h5,h6{margin:20px 0 10px;padding:0;font-weight:700;-webkit-font-smoothing:antialiased;cursor:text;position:relative}h2:first-child,h1:first-child,h1:first-child + h2,h3:first-child,h4:first-child,h5:first-child,h6:first-child{margin-top:0;padding-top:0}h1:hover a.anchor,h2:hover a.anchor,h3:hover a.anchor,h4:hover a.anchor,h5:hover a.anchor,h6:hover a.anchor{text-decoration:none}h1 tt,h1 code{font-size:inherit}h2 tt,h2 code{font-size:inherit}h3 tt,h3 code{font-size:inherit}h4 tt,h4 code{font-size:inherit}h5 tt,h5 code{font-size:inherit}h6 tt,h6 code{font-size:inherit}h1{font-size:28px;color:#000}h2{font-size:24px;border-bottom:1px solid #ccc;color:#000}h3{font-size:18px}h4{font-size:16px}h5{font-size:14px}h6{color:#777;font-size:14px}p,blockquote,ul,ol,dl,li,table,pre{margin:15px 0}hr {padding:0;margin-bottom:-8px;height:1px;border:none;background:black}body > h2:first-child{margin-top:0;padding-top:0}body > h1:first-child{margin-top:0;padding-top:0}body > h1:first-child + h2{margin-top:0;padding-top:0}body > h3:first-child,body > h4:first-child,body > h5:first-child,body > h6:first-child{margin-top:0;padding-top:0}a:first-child h1,a:first-child h2,a:first-child h3,a:first-child h4,a:first-child h5,a:first-child h6{margin-top:0;padding-top:0}h1 p,h2 p,h3 p,h4 p,h5 p,h6 p{margin-top:0}li p.first{display:inline-block}ul,ol{padding-left:30px}ul :first-child,ol :first-child{margin-top:0}ul :last-child,ol :last-child{margin-bottom:0}dl{padding:0}dl dt{font-size:14px;font-weight:700;font-style:italic;padding:0;margin:15px 0 5px}dl dt:first-child{padding:0}dl dt > :first-child{margin-top:0}dl dt > :last-child{margin-bottom:0}dl dd{margin:0 0 15px;padding:0 15px}dl dd > :first-child{margin-top:0}dl dd > :last-child{margin-bottom:0}blockquote{border-left:4px solid #ddd;padding:0 15px;color:#777}blockquote > :first-child{margin-top:0}blockquote > :last-child{margin-bottom:0}table{padding:0}table tr{border-top:1px solid #ccc;background-color:#fff;margin:0;padding:0}table tr:nth-child(2n){background-color:#f8f8f8}table tr th{font-weight:700;border:1px solid #ccc;text-align:left;margin:0;padding:6px 13px}table tr td{border:1px solid #ccc;text-align:left;margin:0;padding:6px 13px}table tr th :first-child,table tr td :first-child{margin-top:0}table tr th :last-child,table tr td :last-child{margin-bottom:0}img{max-width:100%}span.frame{display:block;overflow:hidden}span.frame > span{border:1px solid #ddd;display:block;float:left;overflow:hidden;margin:13px 0 0;padding:7px;width:auto}span.frame span img{display:block;float:left}span.frame span span{clear:both;color:#333;display:block;padding:5px 0 0}span.align-center{display:block;overflow:hidden;clear:both}span.align-center > span{display:block;overflow:hidden;margin:13px auto 0;text-align:center}span.align-center span img{margin:0 auto;text-align:center}span.align-right{display:block;overflow:hidden;clear:both}span.align-right > span{display:block;overflow:hidden;margin:13px 0 0;text-align:right}span.align-right span img{margin:0;text-align:right}span.float-left{display:block;margin-right:13px;overflow:hidden;float:left}span.float-left span{margin:13px 0 0}span.float-right{display:block;margin-left:13px;overflow:hidden;float:right}span.float-right > span{display:block;overflow:hidden;margin:13px auto 0;text-align:right}code,tt{margin:0 2px;padding:0 5px;white-space:nowrap;border:1px solid #eaeaea;background-color:#f8f8f8;border-radius:3px}pre code{margin:0;padding:0;white-space:pre;border:none;background:transparent}.highlight pre{background-color:#f8f8f8;border:1px solid #ccc;font-size:13px;line-height:19px;overflow:auto;padding:6px 10px;border-radius:3px}pre{background-color:#f8f8f8;border:1px solid #ccc;font-size:13px;line-height:19px;overflow:auto;padding:6px 10px;border-radius:3px}pre code,pre tt{background-color:transparent;border:none}.slasher{color:#000000}</style></head>
+<body>
+
+<h1>Собираем пример</h1>
+
+<p>Создадим проект, где будет:</p>
+
+<ul>
+<li>ES6+,</li>
+<li>TypeScript,</li>
+<li>подключение SVG как модуль,</li>
+<li>работа с SCSS.</li>
+</ul>
+
+<p>Использовать будем утилиту <code>identity</code>:</p>
+
+<pre><code class="language-tsx">import identity from '__utils/identity';
+import Logo from '__assets/ya-praktikum.png';
+
+import '__styles/main.scss';
+
+const logo = document.createElement('img');
+logo.src = Logo;
+
+const greeting = document.createElement('h1');
+greeting.textContent = identity('Header');
+
+const app = document.querySelector('#root');
+app.append(greeting, logo);
+</code></pre>
+
+<p>Этот пример и даже больше можете посмотреть на <a href="https://github.com/vladpereskokov/frontend-boilerplates/tree/master/ts-vanilla">GitHub</a>.</p>
+
+<p>В проекте содержатся:</p>
+
+<ul>
+<li><code>*.ts</code> файлы — TypeScript,</li>
+<li><code>*.scss</code> — стили,</li>
+<li><code>*.png</code> — картинки,</li>
+<li>и многое другое.</li>
+</ul>
+
+<p>Картинки будем добавлять в проект инлайново, то есть вставлять внутрь JS-файлов. Стили вынесем отдельными файлами-бандлами.</p>
+
+<p>Сборка состоит из четырёх частей:</p>
+
+<ol>
+<li>Входные и выходные пути;</li>
+<li>Загрузчики, обработчики и свойства для обработки скриптов;</li>
+<li>Загрузчики, обработчики и свойства для обработки стилей;</li>
+<li>Загрузчики, обработчики для всего остального: картинки, кастомные форматы.</li>
+</ol>
+
+<p>Добавим в проект следующие зависимости:</p>
+
+<pre><code class="language-bash">npm i --save-dev webpack webpack-cli
+</code></pre>
+
+<p>Эти библиотеки необходимы для запуска сборки и удобного управления командами.</p>
+
+<p>Полезные утилиты для работы со сборками и проектами:</p>
+
+<ul>
+<li><a href="https://webpack.js.org/configuration/dev-server/">webpack-dev-server</a> — агрегация Express-сервера, который описывается небольшим конфигурационным файлом. Утилита умеет работать с прокси, локейшенами, автооткрытием браузера и другими полезными настройками;</li>
+<li><a href="https://www.npmjs.com/package/webpack-merge">webpack-merge</a> — утилита для слияния Webpack-конфигов. По сути, просто глубокий <code>merge</code>, в котором сохраняются вложенные элементы массивов и объектов.</li>
+</ul>
+
+<p>Об этих утилитах поговорим далее. Начнём с простой компиляции и сборки проекта.</p>
+
+<p>Достаточно написать несколько файлов:</p>
+
+<pre><code class="language-tsx">// identity.ts
+
+export default function identity&lt;T&gt;(arg: T): T {
+return arg;
+}
+</code></pre>
+
+<pre><code class="language-tsx">// module.ts
+
+import identity from './identity';
+
+const data = identity('test');
+export default data;
+</code></pre>
+
+<pre><code class="language-tsx">// index.ts
+
+import data from './module';
+import identity from './identity';
+
+console.log(data);
+console.log(identity({test: 'test'}));
+
+</code></pre>
+
+<p>Итого в проекте три файла, он работает с ES6+, и разные модули импортируются друг в друга. Если начать подключать подобное в браузер через тег <code>script</code>, то:</p>
+
+<ol>
+<li>Не все браузеры поддерживают ES6 импорты;</li>
+<li>TypeScript нужно скомпилировать, а для этого придётся добавлять команды вручную.</li>
+</ol>
+
+<p>Напишем простой сборщик TypeScript без <code>index.html</code> для компиляции JS-кода:</p>
+
+<pre><code class="language-JavaScript">// webpack.config.js
+
+const path = require('path');
+
+module.exports = {
+  mode: 'development',
+  entry: './index.ts',
+  output: {
+    path: path.resolve(__dirname, 'dist'),
+    filename: 'project-name.bundle.js'
+  },
+  resolve: {
+    extensions: ['.ts', '.js', '.json']
+  },
+  module: {
+    rules: [
+      {
+        test: /\.tsx?$/,
+        use: [
+          {
+            loader: 'ts-loader',
+            options: {
+              configFile: path.resolve(__dirname, 'tsconfig.json'),
+            },
+          },
+        ],
+        exclude: /(node_modules)/
+      }
+    ]
+  }
+};
+</code></pre>
+
+<p>Для запуска Webpack достаточно одной команды:</p>
+
+<pre><code class="language-bash">node ./node_modules/.bin/webpack
+</code></pre>
+
+<p>После завершения, если всё сделали верно, увидим в консоли что-то подобное:</p>
+
+<pre><code class="language-bash">Hash: ad0b0a1c43156bab7bf9
+Version: webpack 4.29.4
+Time: 1553ms
+Built at: 07/05/2020 11:57:58 PM
+		Asset      Size  Chunks             Chunk Names
+project-name.bundle.js  5.34 KiB    main  [emitted]  main
+Entrypoint main = project-name.bundle.js
+[./identity.ts] 73 bytes {main} [built]
+[./index.ts] 136 bytes {main} [built]
+[./module.ts] 98 bytes {main} [built]
+</code></pre>
+
+<p>Появится папка <code>dist</code>, в которой будет лежать файл <code>project-name.bundle.js</code>. В нём будет скомпилированный код, который через IIFE и <code>eval</code> запустит необходимый JS-код. Сборка не минифицирована, только для разработки.</p>
+
+<p>Чтобы сделать сборку быстрее, лучше и без дубликатов — необходимо подключать дополнительные опции.</p>
+
+<p>Чтобы подключить Sass и PNG — используйте <code>sass-loader</code> и <code>url-loader</code>. У каждого лоадера есть свой набор опций. Чтобы подключить Sass, сначала нужно обработать его Sass-лоадером, а затем CSS-лоадером. Такая последовательность позволит из JS-кода получить доступ к CSS-дереву.</p>
+
+<p>Полезное:</p>
+
+<ul>
+<li><a href="https://webpack.js.org/">Документация Webpack</a>;</li>
+<li><a href="https://github.com/vladpereskokov/frontend-boilerplates/tree/master/ts-simple">Пример из урока</a>;</li>
+<li><a href="https://github.com/vladpereskokov/frontend-boilerplates">Репозиторий с примерами сборок</a>;</li>
+<li><a href="https://habr.com/ru/company/plarium/blog/309230/">10 особенностей Webpack</a>;</li>
+<li><a href="https://medium.com/@hpux/webpack-4-in-production-how-make-your-life-easier-4d03e2e5b081">Про Webpack 4, анализ кода и вариации сборок</a>;</li>
+<li><a href="https://medium.com/fafnur/сборка-typescript-приложения-с-помощью-webpack-8cd04eba6a8f">Сборка TS + Sass</a>;</li>
+<li><a href="https://webpack.js.org/configuration/dev-server/">Про dev-server</a>;</li>
+<li><a href="https://habr.com/ru/post/350886/">Пример сборки статического проекта</a>;</li>
+<li><a href="https://dev.to/pixelgoo/how-to-configure-webpack-from-scratch-for-a-basic-website-46a5">Ещё одна простая сборка на Webpack 4</a>;</li>
+<li><a href="https://webpack.js.org/guides/production/">Webpack про production сборку</a>;</li>
+<li><a href="https://medium.com/ag-grid/webpack-tutorial-understanding-how-it-works-f73dfa164f01">Понять, как это всё работает</a>.</li>
+</ul>
+
+</body>
+</html>

@@ -1,0 +1,317 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Темизация</title>
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+  <meta charset="utf-8">
+<style>body{font-family:Helvetica,arial,sans-serif;font-size:14px;line-height:1.6;background-color:#fff;padding:30px;color:#333;max-width:1140px;margin:0 auto}body > :first-child{margin-top:0!important}body > :last-child{margin-bottom:0!important}a{color:#4183C4;text-decoration:none}a.absent{color:#c00}a.anchor{display:block;padding-left:30px;margin-left:-30px;cursor:pointer;position:absolute;top:0;left:0;bottom:0}h1,h2,h3,h4,h5,h6{margin:20px 0 10px;padding:0;font-weight:700;-webkit-font-smoothing:antialiased;cursor:text;position:relative}h2:first-child,h1:first-child,h1:first-child + h2,h3:first-child,h4:first-child,h5:first-child,h6:first-child{margin-top:0;padding-top:0}h1:hover a.anchor,h2:hover a.anchor,h3:hover a.anchor,h4:hover a.anchor,h5:hover a.anchor,h6:hover a.anchor{text-decoration:none}h1 tt,h1 code{font-size:inherit}h2 tt,h2 code{font-size:inherit}h3 tt,h3 code{font-size:inherit}h4 tt,h4 code{font-size:inherit}h5 tt,h5 code{font-size:inherit}h6 tt,h6 code{font-size:inherit}h1{font-size:28px;color:#000}h2{font-size:24px;border-bottom:1px solid #ccc;color:#000}h3{font-size:18px}h4{font-size:16px}h5{font-size:14px}h6{color:#777;font-size:14px}p,blockquote,ul,ol,dl,li,table,pre{margin:15px 0}hr {padding:0;margin-bottom:-8px;height:1px;border:none;background:black}body > h2:first-child{margin-top:0;padding-top:0}body > h1:first-child{margin-top:0;padding-top:0}body > h1:first-child + h2{margin-top:0;padding-top:0}body > h3:first-child,body > h4:first-child,body > h5:first-child,body > h6:first-child{margin-top:0;padding-top:0}a:first-child h1,a:first-child h2,a:first-child h3,a:first-child h4,a:first-child h5,a:first-child h6{margin-top:0;padding-top:0}h1 p,h2 p,h3 p,h4 p,h5 p,h6 p{margin-top:0}li p.first{display:inline-block}ul,ol{padding-left:30px}ul :first-child,ol :first-child{margin-top:0}ul :last-child,ol :last-child{margin-bottom:0}dl{padding:0}dl dt{font-size:14px;font-weight:700;font-style:italic;padding:0;margin:15px 0 5px}dl dt:first-child{padding:0}dl dt > :first-child{margin-top:0}dl dt > :last-child{margin-bottom:0}dl dd{margin:0 0 15px;padding:0 15px}dl dd > :first-child{margin-top:0}dl dd > :last-child{margin-bottom:0}blockquote{border-left:4px solid #ddd;padding:0 15px;color:#777}blockquote > :first-child{margin-top:0}blockquote > :last-child{margin-bottom:0}table{padding:0}table tr{border-top:1px solid #ccc;background-color:#fff;margin:0;padding:0}table tr:nth-child(2n){background-color:#f8f8f8}table tr th{font-weight:700;border:1px solid #ccc;text-align:left;margin:0;padding:6px 13px}table tr td{border:1px solid #ccc;text-align:left;margin:0;padding:6px 13px}table tr th :first-child,table tr td :first-child{margin-top:0}table tr th :last-child,table tr td :last-child{margin-bottom:0}img{max-width:100%}span.frame{display:block;overflow:hidden}span.frame > span{border:1px solid #ddd;display:block;float:left;overflow:hidden;margin:13px 0 0;padding:7px;width:auto}span.frame span img{display:block;float:left}span.frame span span{clear:both;color:#333;display:block;padding:5px 0 0}span.align-center{display:block;overflow:hidden;clear:both}span.align-center > span{display:block;overflow:hidden;margin:13px auto 0;text-align:center}span.align-center span img{margin:0 auto;text-align:center}span.align-right{display:block;overflow:hidden;clear:both}span.align-right > span{display:block;overflow:hidden;margin:13px 0 0;text-align:right}span.align-right span img{margin:0;text-align:right}span.float-left{display:block;margin-right:13px;overflow:hidden;float:left}span.float-left span{margin:13px 0 0}span.float-right{display:block;margin-left:13px;overflow:hidden;float:right}span.float-right > span{display:block;overflow:hidden;margin:13px auto 0;text-align:right}code,tt{margin:0 2px;padding:0 5px;white-space:nowrap;border:1px solid #eaeaea;background-color:#f8f8f8;border-radius:3px}pre code{margin:0;padding:0;white-space:pre;border:none;background:transparent}.highlight pre{background-color:#f8f8f8;border:1px solid #ccc;font-size:13px;line-height:19px;overflow:auto;padding:6px 10px;border-radius:3px}pre{background-color:#f8f8f8;border:1px solid #ccc;font-size:13px;line-height:19px;overflow:auto;padding:6px 10px;border-radius:3px}pre code,pre tt{background-color:transparent;border:none}.slasher{color:#000000}</style></head>
+<body>
+
+<h1>Темизация</h1>
+
+<p>Многие сервисы предоставляют возможность поменять тему оформления, например со светлой на тёмную. Некоторые идут дальше и добавляют разные цветовые схемы на любой вкус. Иногда можно встретить темы, созданные специально под какие-то события, праздники или время года. Пространство для фантазии безгранично. Например, в мессенджере Slack предусмотрены светлая и тёмная основы и восемнадцать палитр для них. Плюс возможность создать свою палитру, что делает количество вариантов почти бесконечным.</p>
+
+<p>В проекте вам предстоит добавить минимум одну дополнительную тему. Если есть желание сделать больше — границ нет! Творите!</p>
+
+<p>В этом уроке покажем, как добавить темизацию на сервере и на клиенте.</p>
+
+<h2>Серверная часть</h2>
+
+<p>В прошлых темах уже рассказывали, как настроить базу данных, поэтому пропустим эту часть и перейдём сразу к «экшену».</p>
+
+<p>Сперва настроим нужные таблицы. При работе с темизацией нужна как минимум одна — таблица с темой пользователя. Почему мы просто не добавим дополнительное поле в таблицу самого пользователя? У такого подхода есть несколько недостатков:</p>
+
+<ol>
+<li>При большом количестве пользователей и данных, таблица будет крайне большая и тяжёлая. Её будет сложно разносить со всеми данными пользователя на разные сервера. Гораздо проще разносить разные таблицы, в которых лежат <a href="https://habr.com/ru/post/193756/">нормализованные</a> данные.</li>
+<li>Архитектурно неправильно хранить «все яйца в одной корзине». У пользователя есть основная персональная информация. Всё дополнительное должно регулироваться отдельными сущностями и таблицами. Так проще манипулировать данными.</li>
+</ol>
+
+<p>Почему «как минимум»? Потому что темы могут быть динамическими в ходе жизненного цикла сервиса. Например, не хочется в список выбора текущей темы каждый раз добавлять (или удалять) строчку, чтобы пользователь видел, что на клиент приходят новые темы. Хочется поправить в базе данных активные темы и получить их через «ручку» на клиенте.</p>
+
+<p>Для этого нужно завести ещё одну таблицу для хранения всех тем сервиса, чтобы ими можно было регулировать темы, например, через «админку» (какие-нибудь CMS, даже самописные).</p>
+
+<p>Итого остановимся на двух таблицах:</p>
+
+<ol>
+<li>Таблица с темой, которая сейчас выбрана у пользователя на устройстве.</li>
+<li>Таблица со всеми существующими темами в проекте.</li>
+</ol>
+
+<p>Создадим таблицу, которая будет использоваться для хранения текущей темы пользователя:</p>
+
+<pre><code class="language-tsx">@Table({
+  timestamps: false,
+  paranoid: true,
+  tableName: 'user_theme'
+})
+class UserTheme extends Model&lt;UserTheme&gt; {
+  @AutoIncrement
+  @PrimaryKey
+  @Column(DataType.INTEGER)
+  id: number;
+
+  @AllowNull(false)
+  @Column(DataType.STRING)
+  theme: string;
+
+  @Column(DataType.STRING)
+  device: string;
+
+	@ForeignKey(() =&gt; User)
+  @AllowNull(false)
+  @Column({
+    type: DataType.INTEGER,
+    field: 'owner_id'
+  })
+  ownerId: string;
+}
+</code></pre>
+
+<p>В результате мы создали таблицу с четырьмя полями:</p>
+
+<ul>
+<li><code>id</code> — primary key строки;</li>
+<li><code>theme</code> — значение темы пользователя в сервисе;</li>
+<li><code>device</code> — опциональное поле на случай, если хотите запоминать с какого устройства у пользователя какая тема;</li>
+<li><code>ownerId</code> — foreign key на пользователя, у которого сохраняем тему.</li>
+</ul>
+
+<p>Заметьте, мы не создаём поле <code>theme</code> как enum, потому что там могут быть произвольные строки (значения тем). Динамически изменять enum нельзя без обновления схемы данных.</p>
+
+<p>Создадим таблицу всех тем:</p>
+
+<pre><code class="language-tsx">@Table({
+  timestamps: false,
+  paranoid: true,
+  tableName: 'site_theme'
+})
+class SiteTheme extends Model&lt;SiteTheme&gt; {
+  @AutoIncrement
+  @PrimaryKey
+  @Column(DataType.INTEGER)
+  id: number;
+
+  @AllowNull(false)
+	@Unique
+  @Column(DataType.STRING)
+  theme: string;
+
+  @AllowNull(false)
+  @Column(DataType.STRING)
+  description: string;
+}
+</code></pre>
+
+<p>Мы добавили ещё одну таблицу для хранения всех тем в базе. В таблицу можно добавить даже JSON(B) для хранения цветовой гаммы (переменных) и возвращать его сразу клиенту.</p>
+
+<p>Теперь, когда у нас есть таблица тем, можем вернуться к таблице, в которой хранятся темы пользователя. Если вы сделали эти две сущности, то нужно будет добавить волшебное ForeignKey и поменять тип у поля <code>theme</code> таблицы <code>user_theme</code>.</p>
+
+<pre><code class="language-tsx">@ForeignKey(() =&gt; SiteTheme)
+@AllowNull(false)
+@Column(DataType.INTEGER)
+themeId: string;
+</code></pre>
+
+<p>Теперь это поле существует как надо.</p>
+
+<p>Добавим индексы на некоторые поля. Например, добавим индекс на поле <code>theme</code> таблицы <code>site_theme</code>, поскольку будем часто делать поиск по тексту самой темы:</p>
+
+<pre><code class="language-tsx">@Table({...})
+	class SiteTheme extends Model&lt;SiteTheme&gt; {
+	...
+	
+	@Index
+	@AllowNull(false)
+	@Unique
+	@Column(DataType.STRING)
+	theme: string;
+	
+	...
+}
+</code></pre>
+
+<p>Декоратор также обладает возможностью задать параметры, которые можно почитать в <a href="https://sequelize.org/v5/class/lib/query-interface.js~QueryInterface.html#instance-method-addIndex">документации</a>. Все они соотносятся с параметрами индексов самой базы PostgreSQL.</p>
+
+<p>Помните, не переусердствуйте с декораторами, вы можете сделать сервис намного медленнее.</p>
+
+<p>Теперь, когда у нас есть таблицы, можем написать несколько «ручек» по работе с темами.</p>
+
+<p>Если вы пишете свою CMS, можно сделать отдельную авторизацию и отдельные «ручки» по работе с темами. Вы можете также управлять данными напрямую через <code>psql</code>, DataGrip или любой другой подобный инструмент.</p>
+
+<p>Начнём с роутера:</p>
+
+<pre><code class="language-tsx">const server: Express = express();
+
+server
+	.disable('x-powered-by')
+	.enable('trust proxy')
+	.set('query parser', queryParser)
+	.use(cookieParser())
+	.use(logger)
+	.use(router)
+	.use(notFound);
+</code></pre>
+
+<p>Перед запуском сервера нужно будет явно запустить Sequelize. Например, так:</p>
+
+<pre><code class="language-tsx">(async function() {
+	await sequelize.sync({force: true});
+	server.listen(...);
+})();
+</code></pre>
+
+<p>В роутере будет храниться весь набор ручек различных сущностей:</p>
+
+<pre><code class="language-tsx">const router: Router = Router();
+
+appRoutes(router);
+staticRoutes(router);
+userThemeRoutes(router);
+themesRoutes(router);
+healthRoutes(router);
+dadataRoutes(router);
+
+export default router;
+</code></pre>
+
+<p>Далее создадим контроллер по работе с темами, после чего покажем, как их зарегистрировали в отдельный роутер. Создадим абстрактный базовый класс по работе с сервисом:</p>
+
+<pre><code class="language-tsx">abstract class BaseRESTService {
+  abstract request?: (...args: any[]) =&gt; Promise&lt;any&gt;;
+  abstract create?: (...args: any[]) =&gt; Promise&lt;any&gt;;
+  abstract update?: (...args: any[]) =&gt; Promise&lt;any&gt;;
+  abstract delete?: (...args: any[]) =&gt; Promise&lt;any&gt;;
+  abstract find?: (...args: any[]) =&gt; Promise&lt;any&gt;;
+}
+</code></pre>
+
+<p>Создадим сервис для работы с темами:</p>
+
+<pre><code class="language-tsx">interface FindRequest {
+	id?: number; // ID темы в таблице
+	title?: string; // Поиск по частичному совпадению в таблице
+}
+
+interface CreateRequest {
+  title: string;
+  description: string;
+}
+
+class ThemeService implements BaseRESTService {
+  public find = ({id, title}: FindRequest) =&gt; {
+    if (id) {
+	    return siteThemeRepository.findByPk(id);
+    }
+
+    return siteThemeRepository.findOne({
+      where: {
+        theme: `%${title}%`, // Защита от SQL Injection присутствует
+      },
+  });
+  };
+
+  public create = (data: CreateRequest) =&gt; {
+    return siteThemeRepository.create(data);
+  }
+}
+</code></pre>
+
+<p>Сервис состоит из двух методов: найти и создать. Если вам нужны дополнительные методы по работе с сущностью (обновление данных, удаление) — можете добавить. Сервис отвечает за работу с самой сущностью.</p>
+
+<p>Не стоит делать из метода сервиса универсальный метод, который умеет всё. Старайтесь выделять и разделять логику.</p>
+
+<p>Теперь создадим контроллер для обработки запроса. Например, мы хотим по роуту GET <code>/my-api/v1/theme/</code> сделать получение информации по теме. И по методу POST <code>/my-api/v1/theme</code> создавать тему. Контроллеры обрабатывают такие роуты:</p>
+
+<pre><code class="language-tsx">class ThemeAPI {
+	@validation({/* rules */}) // Можно использовать декораторы, можно передавать в middlewares
+  public static create = async (request: ExpressRequestModeledType, response: ExpressRespinseModeledType) =&gt; {
+		const {body} = request;
+		/* Делаем что-то с данными */
+		await themeService.create(body); // Можно обернуть в try..catch
+  }
+}
+</code></pre>
+
+<p>Теперь осталось зарегистрировать роут:</p>
+
+<pre><code class="language-tsx">export const themesRoutes = (router: Router) =&gt; {
+  const themesRouter: Router = Router();
+
+  themesRouter
+	  .post('/', [logger], ThemeAPI.create)
+	  .get('/', [logger], ThemeAPI.find);
+
+  router.use('/theme', themesRouter);
+};
+</code></pre>
+
+<p>В мидлвари можно помимо <code>logger</code> передавать также валидаторы. Если вам удобнее декораторы, можно написать свои и использовать их целиком для контроллера без описания отдельного файла с «подроутером».</p>
+
+<p>Вы можете задаться вопросом, зачем создавать почти одинаковые классы <code>Service</code> и <code>Controller</code> для одной сущности? Это делается для абстракции логики работы над сущностью и логики обработки ручки. Совсем не всегда эти вещи совпадают.</p>
+
+<p>Например, у вас кейс — не просто создать данные из body, а перед этим:</p>
+
+<ul>
+<li>применить к ним валидацию;</li>
+<li>сходить в другую «ручку» и получить какие-то данные;</li>
+<li>взять данные из другого сервиса;</li>
+<li>соединить в новый объект;</li>
+<li>наконец создать вашу сущность.</li>
+</ul>
+
+<p>В коде это выглядело бы примерно так:</p>
+
+<pre><code class="language-tsx">class ThemeAPI {
+	@validation({/* rules */}) // Можно использовать декораторы, можно передавать в middlewares
+  public static create = async (request: ExpressRequestModeledType, response: ExpressRespinseModeledType) =&gt; {
+		const {body} = request;
+
+		const data1 = await someService.find(body.someId);
+		const data2 = await someOtherService.find(body.otherId); // Или что-то ещё
+		const data3 = prepareBody(body, data1, data2);
+
+		/* Делаем что-то с данными */
+		themeService.create(data3);
+  }
+}
+</code></pre>
+
+<p>В этом случае не нужно тащить в контроллер инстанс базы данных. Должна быть изолированная абстракция для работы с той или иной сущностью проекта.</p>
+
+<h2>Клиентская часть</h2>
+
+<p>Описывать часть по работе с «ручками» из «соседнего» API и хранением данных не будем. Здесь всё ровно то же самое. Единственное, у вас запросы в это новое API будут отправляться по немного другим роутам.</p>
+
+<p>Расскажем, как реализовать переключение тем.</p>
+
+<h3>Контекст</h3>
+
+<p>В ReactJS это можно сделать через <a href="https://ru.reactjs.org/docs/context.html">контекст</a>. При создании главного компонента, который будет добавлен в DOM, можно добавить также провайдера (как и с Redux&rsquo;ом или Router&rsquo;ом).</p>
+
+<pre><code class="language-tsx">const ThemeContext = React.createContext('light'); // По умолчанию будет тема `light`
+</code></pre>
+
+<p>Далее используем этот контекст при работе с компонентами, которые зависят от тем.</p>
+
+<pre><code class="language-tsx">hydrate(
+	&lt;ThemeContext.Provider value=&quot;light&quot;&gt;
+    &lt;Provider store={store}&gt;
+      &lt;ConnectedRouter history={history}&gt;
+        &lt;DesktopBundle data={data}/&gt;
+      &lt;/ConnectedRouter&gt;
+    &lt;/Provider&gt;
+	&lt;/ThemeContext.Provider&gt;,
+  document.getElementById('root'),
+);
+</code></pre>
+
+<p>Такой способ позволяет прокидывать контекст в различные компоненты. После чего вы можете динамически менять необходимые классы стилей, цвета в CSS-in-JS.</p>
+
+<h3>Redux</h3>
+
+<p>Вы также можете хранить тему в хранилище и даже совмещать это с LocalStorage.</p>
+
+<p>Далее уже можно применять различные способы обновления темы, например, через переменные в вашем препроцессоре или CSS-in-JS.</p>
+
+</body>
+</html>

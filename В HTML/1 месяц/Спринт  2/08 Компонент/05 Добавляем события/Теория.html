@@ -1,0 +1,144 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Добавляем события</title>
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+  <meta charset="utf-8">
+<style>body{font-family:Helvetica,arial,sans-serif;font-size:14px;line-height:1.6;background-color:#fff;padding:30px;color:#333;max-width:1140px;margin:0 auto}body > :first-child{margin-top:0!important}body > :last-child{margin-bottom:0!important}a{color:#4183C4;text-decoration:none}a.absent{color:#c00}a.anchor{display:block;padding-left:30px;margin-left:-30px;cursor:pointer;position:absolute;top:0;left:0;bottom:0}h1,h2,h3,h4,h5,h6{margin:20px 0 10px;padding:0;font-weight:700;-webkit-font-smoothing:antialiased;cursor:text;position:relative}h2:first-child,h1:first-child,h1:first-child + h2,h3:first-child,h4:first-child,h5:first-child,h6:first-child{margin-top:0;padding-top:0}h1:hover a.anchor,h2:hover a.anchor,h3:hover a.anchor,h4:hover a.anchor,h5:hover a.anchor,h6:hover a.anchor{text-decoration:none}h1 tt,h1 code{font-size:inherit}h2 tt,h2 code{font-size:inherit}h3 tt,h3 code{font-size:inherit}h4 tt,h4 code{font-size:inherit}h5 tt,h5 code{font-size:inherit}h6 tt,h6 code{font-size:inherit}h1{font-size:28px;color:#000}h2{font-size:24px;border-bottom:1px solid #ccc;color:#000}h3{font-size:18px}h4{font-size:16px}h5{font-size:14px}h6{color:#777;font-size:14px}p,blockquote,ul,ol,dl,li,table,pre{margin:15px 0}hr {padding:0;margin-bottom:-8px;height:1px;border:none;background:black}body > h2:first-child{margin-top:0;padding-top:0}body > h1:first-child{margin-top:0;padding-top:0}body > h1:first-child + h2{margin-top:0;padding-top:0}body > h3:first-child,body > h4:first-child,body > h5:first-child,body > h6:first-child{margin-top:0;padding-top:0}a:first-child h1,a:first-child h2,a:first-child h3,a:first-child h4,a:first-child h5,a:first-child h6{margin-top:0;padding-top:0}h1 p,h2 p,h3 p,h4 p,h5 p,h6 p{margin-top:0}li p.first{display:inline-block}ul,ol{padding-left:30px}ul :first-child,ol :first-child{margin-top:0}ul :last-child,ol :last-child{margin-bottom:0}dl{padding:0}dl dt{font-size:14px;font-weight:700;font-style:italic;padding:0;margin:15px 0 5px}dl dt:first-child{padding:0}dl dt > :first-child{margin-top:0}dl dt > :last-child{margin-bottom:0}dl dd{margin:0 0 15px;padding:0 15px}dl dd > :first-child{margin-top:0}dl dd > :last-child{margin-bottom:0}blockquote{border-left:4px solid #ddd;padding:0 15px;color:#777}blockquote > :first-child{margin-top:0}blockquote > :last-child{margin-bottom:0}table{padding:0}table tr{border-top:1px solid #ccc;background-color:#fff;margin:0;padding:0}table tr:nth-child(2n){background-color:#f8f8f8}table tr th{font-weight:700;border:1px solid #ccc;text-align:left;margin:0;padding:6px 13px}table tr td{border:1px solid #ccc;text-align:left;margin:0;padding:6px 13px}table tr th :first-child,table tr td :first-child{margin-top:0}table tr th :last-child,table tr td :last-child{margin-bottom:0}img{max-width:100%}span.frame{display:block;overflow:hidden}span.frame > span{border:1px solid #ddd;display:block;float:left;overflow:hidden;margin:13px 0 0;padding:7px;width:auto}span.frame span img{display:block;float:left}span.frame span span{clear:both;color:#333;display:block;padding:5px 0 0}span.align-center{display:block;overflow:hidden;clear:both}span.align-center > span{display:block;overflow:hidden;margin:13px auto 0;text-align:center}span.align-center span img{margin:0 auto;text-align:center}span.align-right{display:block;overflow:hidden;clear:both}span.align-right > span{display:block;overflow:hidden;margin:13px 0 0;text-align:right}span.align-right span img{margin:0;text-align:right}span.float-left{display:block;margin-right:13px;overflow:hidden;float:left}span.float-left span{margin:13px 0 0}span.float-right{display:block;margin-left:13px;overflow:hidden;float:right}span.float-right > span{display:block;overflow:hidden;margin:13px auto 0;text-align:right}code,tt{margin:0 2px;padding:0 5px;white-space:nowrap;border:1px solid #eaeaea;background-color:#f8f8f8;border-radius:3px}pre code{margin:0;padding:0;white-space:pre;border:none;background:transparent}.highlight pre{background-color:#f8f8f8;border:1px solid #ccc;font-size:13px;line-height:19px;overflow:auto;padding:6px 10px;border-radius:3px}pre{background-color:#f8f8f8;border:1px solid #ccc;font-size:13px;line-height:19px;overflow:auto;padding:6px 10px;border-radius:3px}pre code,pre tt{background-color:transparent;border:none}.slasher{color:#000000}</style></head>
+<body>
+
+<h1>Добавляем события</h1>
+
+<p>Теперь компонент может быть динамическим в плане контента, но не хватает экшена нашему «кино». Давайте добавим возможность работать с событиями.</p>
+
+<p>Есть одно «но», о котором стоит сказать заранее. Мы не можем добавить хороший обработчик событий в самом шаблоне (например в <code>const tmpl = &lt;div onclick=func&gt;</code>). Не получится добавить обработчик (и тем более несколько) до вставки элемента в DOM. Максимум, что можно сделать:</p>
+
+<pre><code class="language-tsx">const handler = () =&gt; {};
+
+const templateStr = '&lt;button onclick=&quot;{{handleClick}}&quot;&gt;text&lt;/button&gt;';
+MyTemplateClass(templateStr).compile({handleClick: handler})
+</code></pre>
+
+<p>В DOM это будет выглядеть так:</p>
+
+<pre><code class="language-html">&lt;button onclick=&quot;handler()&quot;&gt;text&lt;/button&gt;
+</code></pre>
+
+<p>Такой способ нам не подходит. Ведь хочется уметь работать с объектом события и иметь более «тесный контакт» с событиями (то есть объект <code>event</code>,  <code>this</code> и прочие радости JS).</p>
+
+<p>Сделать это можно так: просто добавив обработчик блоку, который уже существует в DOM. То есть алгоритм будет таким:</p>
+
+<ol>
+<li>Блок создаётся в первый раз;</li>
+<li>Отрисовываем в DOM&rsquo;е блок;</li>
+<li>Навешиваем событие через <code>addEventListener</code>;</li>
+<li>Пропсы изменились;</li>
+<li>Перерисовываем блок с новыми значениями;</li>
+<li>Навесим событие через <code>addEventListener</code>;</li>
+<li><strong>&hellip; (по кругу, начиная с п. 4).</strong></li>
+</ol>
+
+<p>Что-то забыли? Да, утечки памяти. Что делать с перерисовкой блока — просто заново вешать обработчик? Нельзя, поскольку старые обработчики мы не убрали, и они остались «жить».</p>
+
+<p>Потому нужно не забыть сделать <code>removeEventListener</code>. То есть алгоритм выглядит вот так:</p>
+
+<ol>
+<li>Блок создаётся в первый раз;</li>
+<li>Отрисовываем в DOM&rsquo;е блок;</li>
+<li>Навешиваем событие через <code>addEventListener</code>;</li>
+<li>Пропсы изменились;</li>
+<li><strong>Удаляем все обработчики из текущего элемента;</strong></li>
+<li>Перерисовываем блок с новыми значениями;</li>
+<li>Навешиваем событие через <code>addEventListener</code>;</li>
+<li><strong>&hellip; (по кругу, начиная с п. 4).</strong></li>
+</ol>
+
+<p>С алгоритмом разобрались, займёмся его реализацией.</p>
+
+<p>В прошлом уроке мы разобрали, как создать базовый класс блока (<code>Block</code>), в котором реализовали метод <code>_render()</code>:</p>
+
+<pre><code class="language-tsx">_render() {
+  const block = this.render();
+  // Это небезопасный метод для упрощения логики
+  // Используйте шаблонизатор из npm или напишите свой безопасный
+  // Нужно компилировать не в строку (или делать это правильно),
+  // либо сразу в превращать DOM-элементы и возвращать из compile DOM-ноду
+  this._element.innerHTML = block;
+}
+</code></pre>
+
+<p>Это место, где обновляется компонент в DOM&rsquo;е. То есть здесь нужно добавить логику работы с событиями. Выглядеть это будет так:</p>
+
+<pre><code class="language-tsx">_render() {
+	const block = this.render();
+
+	// Удалить старые события через removeEventListener
+
+	this._element.innerHTML = block;
+
+	// Навесить новые события через addEventListener
+}
+</code></pre>
+
+<p>Чтобы было удобнее работать с событиями, будем брать их из отдельного объекта <code>events</code>, в котором будут как раз названия событий:</p>
+
+<pre><code class="language-tsx">// Для простоты примера воспользуемся готовым шаблонизатором
+import Handlebars from 'handlebars';
+
+class Button extends Block {
+  constructor(props) {
+    super(&quot;button&quot;, props);
+  }
+
+  render() {
+    const { text } = this.props;
+    return template({ text });
+  }
+}
+
+const button = new Button({
+  text: &quot;Click me&quot;,
+  events: {
+    // Названия события точно такие же, как и у первого аргумента addEventListener: 
+    // click, mouseEnter, ...
+    click: event =&gt; {
+      console.log(event);
+    },
+  },
+});
+
+render(&quot;.app&quot;, button);
+</code></pre>
+
+<p>Таким образом, внутри класса <code>Block</code> в свойствах <code>this.props</code> появится объект <code>events</code>, по которому будет легко итерироваться. Осталось дело за малым: навесить события. Для этого создадим в классе <code>Block</code> дополнительный внутренний метод <code>_addEvents</code>:</p>
+
+<pre><code class="language-tsx">class Block {
+	// ...
+
+  _addEvents() {
+    const {events = {}} = this.props;
+
+    Object.keys(events).forEach(eventName =&gt; {
+      this._element.addEventListener(eventName, events[eventName]);
+    });
+  }
+}
+</code></pre>
+
+<p>Добавим выполнение метода после изменения DOM-дерева:</p>
+
+<pre><code class="language-tsx">_render() {
+  const block = this.render();
+
+  this._element.innerHTML = block;
+
+  this._addEvents();
+}
+</code></pre>
+
+<p>Теперь как бы вы не меняли пропсы класса <code>Button</code>, события всегда будут в вашем компоненте. Вы можете даже динамически менять сами обработчики.</p>
+
+<p>Всё ещё осталась одна задача: удалять обработчики перед добавлением обновлённого элемента. Предлагаем попробовать это сделать самостоятельно.</p>
+
+</body>
+</html>

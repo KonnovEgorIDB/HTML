@@ -1,0 +1,187 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Классические компоненты</title>
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+  <meta charset="utf-8">
+<style>body{font-family:Helvetica,arial,sans-serif;font-size:14px;line-height:1.6;background-color:#fff;padding:30px;color:#333;max-width:1140px;margin:0 auto}body > :first-child{margin-top:0!important}body > :last-child{margin-bottom:0!important}a{color:#4183C4;text-decoration:none}a.absent{color:#c00}a.anchor{display:block;padding-left:30px;margin-left:-30px;cursor:pointer;position:absolute;top:0;left:0;bottom:0}h1,h2,h3,h4,h5,h6{margin:20px 0 10px;padding:0;font-weight:700;-webkit-font-smoothing:antialiased;cursor:text;position:relative}h2:first-child,h1:first-child,h1:first-child + h2,h3:first-child,h4:first-child,h5:first-child,h6:first-child{margin-top:0;padding-top:0}h1:hover a.anchor,h2:hover a.anchor,h3:hover a.anchor,h4:hover a.anchor,h5:hover a.anchor,h6:hover a.anchor{text-decoration:none}h1 tt,h1 code{font-size:inherit}h2 tt,h2 code{font-size:inherit}h3 tt,h3 code{font-size:inherit}h4 tt,h4 code{font-size:inherit}h5 tt,h5 code{font-size:inherit}h6 tt,h6 code{font-size:inherit}h1{font-size:28px;color:#000}h2{font-size:24px;border-bottom:1px solid #ccc;color:#000}h3{font-size:18px}h4{font-size:16px}h5{font-size:14px}h6{color:#777;font-size:14px}p,blockquote,ul,ol,dl,li,table,pre{margin:15px 0}hr {padding:0;margin-bottom:-8px;height:1px;border:none;background:black}body > h2:first-child{margin-top:0;padding-top:0}body > h1:first-child{margin-top:0;padding-top:0}body > h1:first-child + h2{margin-top:0;padding-top:0}body > h3:first-child,body > h4:first-child,body > h5:first-child,body > h6:first-child{margin-top:0;padding-top:0}a:first-child h1,a:first-child h2,a:first-child h3,a:first-child h4,a:first-child h5,a:first-child h6{margin-top:0;padding-top:0}h1 p,h2 p,h3 p,h4 p,h5 p,h6 p{margin-top:0}li p.first{display:inline-block}ul,ol{padding-left:30px}ul :first-child,ol :first-child{margin-top:0}ul :last-child,ol :last-child{margin-bottom:0}dl{padding:0}dl dt{font-size:14px;font-weight:700;font-style:italic;padding:0;margin:15px 0 5px}dl dt:first-child{padding:0}dl dt > :first-child{margin-top:0}dl dt > :last-child{margin-bottom:0}dl dd{margin:0 0 15px;padding:0 15px}dl dd > :first-child{margin-top:0}dl dd > :last-child{margin-bottom:0}blockquote{border-left:4px solid #ddd;padding:0 15px;color:#777}blockquote > :first-child{margin-top:0}blockquote > :last-child{margin-bottom:0}table{padding:0}table tr{border-top:1px solid #ccc;background-color:#fff;margin:0;padding:0}table tr:nth-child(2n){background-color:#f8f8f8}table tr th{font-weight:700;border:1px solid #ccc;text-align:left;margin:0;padding:6px 13px}table tr td{border:1px solid #ccc;text-align:left;margin:0;padding:6px 13px}table tr th :first-child,table tr td :first-child{margin-top:0}table tr th :last-child,table tr td :last-child{margin-bottom:0}img{max-width:100%}span.frame{display:block;overflow:hidden}span.frame > span{border:1px solid #ddd;display:block;float:left;overflow:hidden;margin:13px 0 0;padding:7px;width:auto}span.frame span img{display:block;float:left}span.frame span span{clear:both;color:#333;display:block;padding:5px 0 0}span.align-center{display:block;overflow:hidden;clear:both}span.align-center > span{display:block;overflow:hidden;margin:13px auto 0;text-align:center}span.align-center span img{margin:0 auto;text-align:center}span.align-right{display:block;overflow:hidden;clear:both}span.align-right > span{display:block;overflow:hidden;margin:13px 0 0;text-align:right}span.align-right span img{margin:0;text-align:right}span.float-left{display:block;margin-right:13px;overflow:hidden;float:left}span.float-left span{margin:13px 0 0}span.float-right{display:block;margin-left:13px;overflow:hidden;float:right}span.float-right > span{display:block;overflow:hidden;margin:13px auto 0;text-align:right}code,tt{margin:0 2px;padding:0 5px;white-space:nowrap;border:1px solid #eaeaea;background-color:#f8f8f8;border-radius:3px}pre code{margin:0;padding:0;white-space:pre;border:none;background:transparent}.highlight pre{background-color:#f8f8f8;border:1px solid #ccc;font-size:13px;line-height:19px;overflow:auto;padding:6px 10px;border-radius:3px}pre{background-color:#f8f8f8;border:1px solid #ccc;font-size:13px;line-height:19px;overflow:auto;padding:6px 10px;border-radius:3px}pre code,pre tt{background-color:transparent;border:none}.slasher{color:#000000}</style></head>
+<body>
+
+<h1>Классические компоненты</h1>
+
+<p>В React нет собственных компонентов — их нужно создавать самостоятельно. Есть два типа компонентов:</p>
+
+<ul>
+<li>Примитивные — это кнопки, поля ввода, ссылки, иконки, изображения, радиокнопки, чекбоксы.</li>
+<li>Сложные — сообщение об ошибке с текстом и кнопками или форма с несколькими полями.</li>
+</ul>
+
+<p>И примитивные, и сложные компоненты переиспользуются. Поэтому к их созданию следует подходить серьёзно. Важно знать, как они устроены и как их правильно создавать.</p>
+
+<p>Создать переиспользуемый компонент можно двумя способами: в виде функции и как класс. Подробно это описано в <a href="https://ru.reactjs.org/docs/components-and-props.html">документации</a>, но не спешите открывать ссылку. Ниже разберём примеры.</p>
+
+<p>Самый простой способ — это создание компонента в виде функции. Про него расскажем в следующем уроке, так как пусть он и простой, но имеет некоторые тонкости:</p>
+
+<pre><code class="language-jsx">function Welcome(props) {
+  return &lt;h1&gt;Hello, {props.name}&lt;/h1&gt;;
+}
+</code></pre>
+
+<p>Здесь же обсудим классические компоненты, которые создаются с помощью ES6-классов через наследование:</p>
+
+<pre><code class="language-jsx">class Welcome extends React.Component {
+  render() {
+    return &lt;h1&gt;Hello, {this.props.name}&lt;/h1&gt;;
+  }
+}
+</code></pre>
+
+<p>Добавляем компонент на страницу:</p>
+
+<pre><code class="language-jsx">const element = &lt;Welcome name=&quot;Алиса&quot;/&gt;;
+
+ReactDOM.render(
+  element,
+  document.getElementById('root')
+);
+</code></pre>
+
+<p>Заметим, что первым аргументом функции <code>render</code> можно отправлять как константу, так и JSX-код.</p>
+
+<p>Для компонентов в React свойственна композиция, то есть внутри одного компонента можно комбинировать другие компоненты. И так рекурсивно.</p>
+
+<p>Компоненты стараются переиспользовать. Пример:</p>
+
+<pre><code class="language-jsx">function App() {
+  return (
+    &lt;div&gt;
+      &lt;Welcome name=&quot;Алиса&quot;/&gt;
+      &lt;Welcome name=&quot;Базилио&quot;/&gt;
+      &lt;Welcome name=&quot;Буратино&quot;/&gt;
+    &lt;/div&gt;
+  );
+}
+
+ReactDOM.render(
+  &lt;App/&gt;,
+  document.getElementById('root')
+);
+</code></pre>
+
+<p>Избегайте наследования компонентов. Этот паттерн плох, так как не ложится на схему компонентного подхода. Компонент должен быть уникальным и унифицированным. Всё остальное — это композиция других компонентов. Подробнее про это можно почитать в <a href="https://ru.reactjs.org/docs/composition-vs-inheritance.html">документации</a>.</p>
+
+<p>Если хотите, чтобы дочерние компоненты попали на страницу на том же уровне в DOM, используйте <a href="https://ru.reactjs.org/docs/fragments.html">фрагменты</a> — <code>&lt;React.Fragment&gt;</code> или просто <code>&lt;&gt;</code>:</p>
+
+<pre><code class="language-jsx">function App() {
+	// Можно и так: &lt;React.Fragment&gt;...&lt;/React.Fragment&gt;
+
+  return (
+    &lt;&gt;
+      &lt;Welcome name=&quot;Алиса&quot;/&gt;
+      &lt;Welcome name=&quot;Базилио&quot;/&gt;
+      &lt;Welcome name=&quot;Буратино&quot;/&gt;
+    &lt;/&gt;
+  );
+}
+
+ReactDOM.render(
+  &lt;App/&gt;,
+  document.getElementById('root')
+);
+</code></pre>
+
+<p>Такой подход позволяет не оборачивать в лишние <code>div</code> или другие теги и не «раздувать» DOM-дерево.</p>
+
+<p>Не бойтесь декомпозировать компоненты на более мелкие. Особенно те части, которые собираетесь переиспользовать. Более детально об этом в <a href="https://ru.reactjs.org/docs/components-and-props.html#extracting-components">документации</a>.</p>
+
+<p>Про жизненный цикл вам предстоит прочитать самим <a href="https://ru.reactjs.org/docs/react-component.html">вот здесь</a>. Но мы не просто отпускаем вас на сторонний источник. Уроки будут рассказывать не самые очевидные вещи, которых может и не быть в документации.</p>
+
+<p>Например, рассмотрим отличие <code>PureComponent</code> от <code>Component</code>.</p>
+
+<p>Для этого вспомним какой жизненный цикл у компонента (подробнее, как его реализовать, посмотрите по ссылке выше). Основные методы такие:</p>
+
+<ul>
+<li><code>constructor</code>  — не стесняйтесь инициализировать необходимые данные в конструкторе или при создании класса;</li>
+<li><code>componentDidMount</code>  — запускается после того, как компонент отрендерился в DOM;</li>
+<li><code>componentWillUnmount</code> — запустится перед тем, как компонент будет удалён из DOM-дерева;</li>
+<li><code>componentDidUpdate</code>  — будет вызван сразу после обновления компонента (изменились пропсы). Важно: не будет вызван при первом рендере, используйте <code>componentDidMount</code>;</li>
+<li><code>shouldComponentUpdate</code>  — будет вызван перед рендером, когда получит новые пропсы и состояние. По умолчанию в Component-классах стоит <code>true</code>;</li>
+<li><code>componentDidCatch</code>  — будет вызван после возникновения ошибки у компонента-потомка.</li>
+</ul>
+
+<p>Диаграмму жизненного цикла компонента можно увидеть <a href="https://projects.wojtekmaj.pl/react-lifecycle-methods-diagram/">здесь</a>.</p>
+
+<p>Вернёмся к сравнению <code>Component</code> и <code>PureComponent</code>.</p>
+
+<p>При использовании <code>Component</code> по умолчанию происходит повторный рендер при любом изменении состояния.</p>
+
+<p>Запустите у себя вот такие компоненты и попробуйте понажимать на кнопки (не бойтесь <code>state</code>, про него поговорим дальше):</p>
+
+<pre><code class="language-jsx">import React, { Component } from &quot;react&quot;;
+import { render } from &quot;react-dom&quot;;
+
+class MySuperComponent extends Component {
+  render() {
+    const { name } = this.props;
+    console.log(`Имя: ${name}`);
+
+    return &lt;h1&gt;{message}&lt;/h1&gt;;
+  }
+}
+
+export default class App extends Component {
+  state = {
+    name: &quot;Пупа&quot;,
+    dummy: false
+  };
+
+  toggleMessage = () =&gt; {
+    const { name } = this.state;
+
+    this.setState({ name: name === &quot;Пупа&quot; ? &quot;Лупа&quot; : &quot;Пупа&quot; });
+  };
+
+  toggleDummy = () =&gt; {
+    this.setState({ dummy: !this.state.dummy });
+  };
+
+  render() {
+    const { name } = this.state;
+
+    console.log(&quot;Рендер App&quot;);
+
+    return (
+      &lt;React.Fragment&gt;
+        &lt;MySuperComponent name={name}/&gt;
+
+        &lt;button onClick={this.toggleMessage}&gt;Изменить сообщение&lt;/button&gt;
+        &lt;button onClick={this.toggleDummy}&gt;Сделать пустое изменение&lt;/button&gt;
+      &lt;/React.Fragment&gt;
+    );
+  }
+}
+
+const rootElement = document.getElementById(&quot;root&quot;);
+render(&lt;App/&gt;, rootElement);
+</code></pre>
+
+<p>Суть примера в том, что компонент не зависит от dummy-свойства, но даже при изменении этого свойства мы получаем лишний перерендер компонента <code>MySuperComponent</code>.</p>
+
+<p>Это происходит потому, что <code>shouldComponentUpdate</code> всегда возвращает <code>true</code> у компонента, который наследуется от <code>Component</code>.</p>
+
+<p>Данный метод нужен для повышения производительности, однако не старайтесь сами его использовать просто так. «Поиграться» и попробовать — однозначно да, но не нужно делать жизнь сложнее, к тому же с потенциальными ошибками. <a href="https://ru.reactjs.org/docs/react-component.html#shouldcomponentupdate">Процитируем</a> авторов ReactJS:</p>
+
+<blockquote>
+<p>Вместо этого используйте <code>PureComponent</code>, который позволяет не описывать поведение <code>shouldComponentUpdate()</code> вручную. <code>PureComponent</code> поверхностно сравнивает пропсы и состояние и позволяет не пропустить необходимое обновление.</p>
+</blockquote>
+
+<p>Именно по этой причине, если вы хотите сделать лишние перерендеры или нужно из <code>shouldComponentUpdate</code> возвращать <code>true</code>, — используйте наследование от <code>Component</code>. В остальных случаях — <code>PureComponent</code> к вашим услугам. Он позволит уменьшить число ненужных переотрисовок.</p>
+
+<p>Небольшой оффтоп. Зачем и кому сдались эти переотрисовки? Ну отрисуется большее число раз и что в этом такого?</p>
+
+<p>Да, когда на странице одна кнопка и текст “Hello, World” — это одно.</p>
+
+<p>Другое дело, когда ваше приложение — это рекурсивная композиция сложных компонентов, которые производят местами простую, местами нетривиальную логику. В таком случае незачем лишний раз заставлять компьютер пользователя «свистеть» и «кряхтеть». Это ещё не самое худшее. Проблемы начнутся, когда у пользователя интерфейс будет ещё и медленно работать. А количество бесполезных переотрисовок со сложными анимациями и утилитами в этом только помогут.</p>
+
+</body>
+</html>

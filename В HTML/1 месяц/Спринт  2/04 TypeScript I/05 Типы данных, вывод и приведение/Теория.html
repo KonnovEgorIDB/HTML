@@ -1,0 +1,469 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Типы данных, вывод и приведение</title>
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+  <meta charset="utf-8">
+<style>body{font-family:Helvetica,arial,sans-serif;font-size:14px;line-height:1.6;background-color:#fff;padding:30px;color:#333;max-width:1140px;margin:0 auto}body > :first-child{margin-top:0!important}body > :last-child{margin-bottom:0!important}a{color:#4183C4;text-decoration:none}a.absent{color:#c00}a.anchor{display:block;padding-left:30px;margin-left:-30px;cursor:pointer;position:absolute;top:0;left:0;bottom:0}h1,h2,h3,h4,h5,h6{margin:20px 0 10px;padding:0;font-weight:700;-webkit-font-smoothing:antialiased;cursor:text;position:relative}h2:first-child,h1:first-child,h1:first-child + h2,h3:first-child,h4:first-child,h5:first-child,h6:first-child{margin-top:0;padding-top:0}h1:hover a.anchor,h2:hover a.anchor,h3:hover a.anchor,h4:hover a.anchor,h5:hover a.anchor,h6:hover a.anchor{text-decoration:none}h1 tt,h1 code{font-size:inherit}h2 tt,h2 code{font-size:inherit}h3 tt,h3 code{font-size:inherit}h4 tt,h4 code{font-size:inherit}h5 tt,h5 code{font-size:inherit}h6 tt,h6 code{font-size:inherit}h1{font-size:28px;color:#000}h2{font-size:24px;border-bottom:1px solid #ccc;color:#000}h3{font-size:18px}h4{font-size:16px}h5{font-size:14px}h6{color:#777;font-size:14px}p,blockquote,ul,ol,dl,li,table,pre{margin:15px 0}hr {padding:0;margin-bottom:-8px;height:1px;border:none;background:black}body > h2:first-child{margin-top:0;padding-top:0}body > h1:first-child{margin-top:0;padding-top:0}body > h1:first-child + h2{margin-top:0;padding-top:0}body > h3:first-child,body > h4:first-child,body > h5:first-child,body > h6:first-child{margin-top:0;padding-top:0}a:first-child h1,a:first-child h2,a:first-child h3,a:first-child h4,a:first-child h5,a:first-child h6{margin-top:0;padding-top:0}h1 p,h2 p,h3 p,h4 p,h5 p,h6 p{margin-top:0}li p.first{display:inline-block}ul,ol{padding-left:30px}ul :first-child,ol :first-child{margin-top:0}ul :last-child,ol :last-child{margin-bottom:0}dl{padding:0}dl dt{font-size:14px;font-weight:700;font-style:italic;padding:0;margin:15px 0 5px}dl dt:first-child{padding:0}dl dt > :first-child{margin-top:0}dl dt > :last-child{margin-bottom:0}dl dd{margin:0 0 15px;padding:0 15px}dl dd > :first-child{margin-top:0}dl dd > :last-child{margin-bottom:0}blockquote{border-left:4px solid #ddd;padding:0 15px;color:#777}blockquote > :first-child{margin-top:0}blockquote > :last-child{margin-bottom:0}table{padding:0}table tr{border-top:1px solid #ccc;background-color:#fff;margin:0;padding:0}table tr:nth-child(2n){background-color:#f8f8f8}table tr th{font-weight:700;border:1px solid #ccc;text-align:left;margin:0;padding:6px 13px}table tr td{border:1px solid #ccc;text-align:left;margin:0;padding:6px 13px}table tr th :first-child,table tr td :first-child{margin-top:0}table tr th :last-child,table tr td :last-child{margin-bottom:0}img{max-width:100%}span.frame{display:block;overflow:hidden}span.frame > span{border:1px solid #ddd;display:block;float:left;overflow:hidden;margin:13px 0 0;padding:7px;width:auto}span.frame span img{display:block;float:left}span.frame span span{clear:both;color:#333;display:block;padding:5px 0 0}span.align-center{display:block;overflow:hidden;clear:both}span.align-center > span{display:block;overflow:hidden;margin:13px auto 0;text-align:center}span.align-center span img{margin:0 auto;text-align:center}span.align-right{display:block;overflow:hidden;clear:both}span.align-right > span{display:block;overflow:hidden;margin:13px 0 0;text-align:right}span.align-right span img{margin:0;text-align:right}span.float-left{display:block;margin-right:13px;overflow:hidden;float:left}span.float-left span{margin:13px 0 0}span.float-right{display:block;margin-left:13px;overflow:hidden;float:right}span.float-right > span{display:block;overflow:hidden;margin:13px auto 0;text-align:right}code,tt{margin:0 2px;padding:0 5px;white-space:nowrap;border:1px solid #eaeaea;background-color:#f8f8f8;border-radius:3px}pre code{margin:0;padding:0;white-space:pre;border:none;background:transparent}.highlight pre{background-color:#f8f8f8;border:1px solid #ccc;font-size:13px;line-height:19px;overflow:auto;padding:6px 10px;border-radius:3px}pre{background-color:#f8f8f8;border:1px solid #ccc;font-size:13px;line-height:19px;overflow:auto;padding:6px 10px;border-radius:3px}pre code,pre tt{background-color:transparent;border:none}.slasher{color:#000000}</style></head>
+<body>
+
+<h1>Описание типов данных</h1>
+
+<p>Чтобы указать TypeScript, чем является переменная, аргумент функции или возвращаемое функцией значение — достаточно прописать это через двоеточие.</p>
+
+<pre><code class="language-tsx">// Была просто константа
+let a = 1;
+
+// Стала константа с типом number
+let a: number = 1;
+
+// Была функция, которая принимает просто value
+function makeJob(value) { /**/ }
+
+// Стала функция, которая принимает value типа number
+function makeJob(value: number) { /**/ }
+
+// Была функция, которая непонятно что возвращает
+function calcSum(a, b) { /**/ }
+
+// Стала функция, которая принимает числа и возвращает число
+function calcSum(a: number, b: number): number { /**/ }
+
+// Раньше мы могли написать так:
+a = 'hello';
+// Однако выше эта переменная объявлена с типом number, и TypeScript начнёт ругаться:
+// Type 'string' is not assignable to type 'number'.
+
+// Раньше мы могли написать так:
+makeJob('hello');
+// Однако выше мы явно объявили, что функция makeJob принимает число, и будет ошибка:
+// Argument of type 'string' is not assignable to parameter of type 'number'
+</code></pre>
+
+<p>В этом одна из основных прелестей TypeScript — если во всей программе объявлены типы, то сделав небольшое изменение типа какой-нибудь переменной, независимо от размера программы, TypeScript найдёт возможные несостыковки типов в местах, где переменная использовалась, и укажет на это разработчику.</p>
+
+<h2>Типы данных, вывод и приведение</h2>
+
+<p>В TypeScript присутствуют всё те же типы данных, что и в JavaScript. Это связано с тем, что это тот же язык, но с надстройкой в виде типов и множества полезного «из коробки», например ES6.</p>
+
+<h2>Базовые типы</h2>
+
+<h3>Примитивы</h3>
+
+<p>С примитивными типами можно работать так:</p>
+
+<pre><code class="language-tsx">const isDone: boolean = false;
+const decimal: number = 6 + 0xf00d + 0b1010;
+const sentence: string = 'Hello, my name is Alice.';
+const u: undefined = undefined;
+const n: null = null;
+const valid: boolean = true;
+const count: number = 42;
+const man: string = 'John Snow';
+ 
+console.log(man * 2);
+// Error: The left-hand side of an arithmetic
+// operation must be of type 'any', 'number' or an enum type
+</code></pre>
+
+<p>Компилятор умеет делать вывод типов — самостоятельно вычислять тип значения у выражения:</p>
+
+<pre><code class="language-tsx">const valid = true; // Автоматически выведется тип boolean
+const count = 42; // Автоматически выведется тип number
+const man = 'John Snow';
+ 
+console.log(man * 2);
+// Error: The left-hand side of an arithmetic
+// operation must be of type 'any', 'number' or an enum type
+</code></pre>
+
+<h3>Массивы и кортежи</h3>
+
+<p>Массивы можно объявлять двумя равнозначными способами:</p>
+
+<pre><code class="language-tsx">const list1: number[] = [1, 2, 3];
+const list2: Array&lt;number&gt; = [1, 2, 3];
+</code></pre>
+
+<p>Обе записи допустимы, но <code>number[]</code> встречается чаще. Документация не советует  использовать последнюю запись, но и не запрещает — запись Array&lt;&hellip;&gt; иногда удобнее, когда пишется длинный и сложный тип, но об этом позже. Либо в команде люди договариваются, какую запись массивов будут использовать.</p>
+
+<p>TypeScript предоставляет работу с кортежами — <code>tuple</code>. <a href="https://www.typescriptlang.org/docs/handbook/2/objects.html#tuple-types">Кортеж</a> — набор элементов с заранее известными типами.</p>
+
+<pre><code class="language-tsx">// Объявление кортежа
+let point: [number, number];
+
+// Некорректная инициализация
+// Type 'string' is not assignable to type 'number'.
+point = [10, 'hello'];
+
+// Инициализация
+point = [20, 10]; // OK
+</code></pre>
+
+<p>Метод <code>Object.entries</code> возвращает массив кортежей: <code>Array&lt;[string, unknown]&gt;</code> или <code>[string, unknown][]</code> — записи равнозначны.</p>
+
+<h3>Перечисления</h3>
+
+<p>TypeScript предоставляет возможность работать с перечислениями (<code>enum</code>):</p>
+
+<pre><code class="language-tsx">enum Color { 
+  Red = 1, 
+  Green, 
+  Blue,
+}
+
+let colorName: string = Color[2];
+console.log(colorName); // 'Green'
+
+const enum Modes { 
+  Show = 'show', 
+  Edit = 'edit',
+}
+
+let modeName: string = Modes.Show;
+console.log(modeName) // 'show'
+
+Object.keys(Color); // Ok
+Object.keys(Modes); // Error
+
+</code></pre>
+
+<p>Обратите внимание, что перечисления можно создавать двумя способами — <code>enum</code> и <code>const enum</code>.</p>
+
+<p>В скомпилированном коде <code>enum</code> превратится в объект. А вот <code>const enum</code> не сгенерирует новый код, но полностью удалится во время компиляции, и в местах использования значений из такого «енума» будут подставлены соответствующие значения. Больше примеров с константными перечислениями найдёте <a href="https://www.typescriptlang.org/docs/handbook/enums.html#const-enums">в документации</a>.</p>
+
+<h3>Объекты</h3>
+
+<p>Объекты в TypeScript можно описывать с помощью ключевого слова <code>object</code>. Про это ключевое слово нужно знать, но не стоит использовать. Этот тип не говорит почти ни о чём ни компилятору, ни человеку. И последнее — даже важнее.</p>
+
+<pre><code class="language-tsx">// Плохо — ничего не знаем про содержимое объекта
+const colors: object = {
+  red: '#F00',
+  green: '#0F0',
+  blue: '#00F'
+};
+</code></pre>
+
+<p>Намного лучше описывать объекты так, как они есть — со всеми полями и типами данных в них. Для этого используется такая запись:</p>
+
+<pre><code class="language-tsx">const settings: {
+  color: string;
+  delay: number;
+  retry: boolean;
+} = {
+  color: '#F00',
+  delay: 2000,
+  retry: false
+};
+
+// Теперь TypeScript знает о внутренней структуре объекта и не позволит сделать так:
+settings.retry = 'yes';
+// Type 'string' is not assignable to type 'boolean'.
+</code></pre>
+
+<p>Иногда бывают задачи, где не важно знать о ключах объекта (например, они динамически добавляются и удаляются), но важно знать, что в значениях лежат только числа (например делаем счётчик чего-то). В таких случаях поможет тип <code>Record</code>:</p>
+
+<pre><code class="language-tsx">// Record&lt;тип_ключа, тип_значения&gt;
+const counter: Record&lt;string, number&gt; = {
+	apple: 1,
+	orange: 8,
+	banana: 6,
+	grape: 5
+};
+
+// В данном случае TypeScript разрешит добавлять новые ключи, но будет следить за значением:
+counter.kiwi = 'bird';
+// Type 'string' is not assignable to type 'number'.
+</code></pre>
+
+<p>Альтернативой <code>Record</code> может быть вот такая запись:</p>
+
+<pre><code class="language-tsx">
+const counter: { [key: string]: number } = {
+	apple: 1,
+	orange: 8,
+	banana: 6,
+	grape: 5
+};
+
+// В данном случае TypeScript разрешит добавлять новые ключи, но будет следить за значением:
+counter.kiwi = 'bird';
+// Type 'string' is not assignable to type 'number'.
+</code></pre>
+
+<p>Этот синтаксис стоит иметь в виду при работе с типами, но для продуктовых задач чаще хватает <code>Record</code> или явного описания объекта.</p>
+
+<p>В объектах также можно описать опциональные ключи — они могут быть, а могут не быть. Для этого используется символ <code>?</code> после ключа:</p>
+
+<pre><code class="language-tsx">// Это ок, поля price нет в объекте
+const price: { name: string; price?: number } = {
+	name: 'Товар1'
+};
+
+// Это ок, поле price есть и имеет тип number
+const price2: { name: string; price?: number } = {
+	name: 'Товар1',
+	price: 5
+};
+
+// Не ок, тип price не попадает в number
+const price3: { name: string; price?: number } = {
+	name: 'Товар1',
+	price: '5'
+};
+</code></pre>
+
+<h3>Функции</h3>
+
+<p>Мы часто передаём функции как аргументы в другие функции или присваиваем переменным функции, возвращаемые другими функциями. TypeScript позволяет типизировать и это с помощью конструкции <code>(аргументы) =&gt; возвращаемый_тип</code>:</p>
+
+<pre><code class="language-tsx">// Переменная имеет тип «Функция, не принимает аргументов, ничего не возвращает»
+let cancelTimeoutCb: () =&gt; void;
+
+// Функция принимает задержку и коллбэк, возвращет функцию
+function makeTimeout(delay: number, cb: Function): () =&gt; void {
+	const timeoutId = setTimeout(() =&gt; {
+      cb();
+	  }, delay);
+	
+	  return function(): void {
+      clearTimeout(timeoutId);
+	  }
+}
+
+// Функции могут лежать в ключах объектов
+
+const calculator: {
+	value: number;
+	// Тип поля plus - функция, принимающая и возвращающая число
+	plus: (v: number) =&gt; number;
+} = {
+	value: 0,
+	plus: function(v: number): number {
+		this.value += v;
+		return this.value;
+	}
+};
+</code></pre>
+
+<h3>Объединение типов</h3>
+
+<p>Бывает так, что, например, переменная, поле или функция имеют больше одного типа. Как так? Например, бэкенд может вернуть объект, у которого поле <code>price</code> будет <code>number</code> или <code>null</code>, и надо быть готовым к любому из них. TypeScript позволяет это корректно описать и будет следить за использованием этого поля в дальнейшем.</p>
+
+<p>Описывается тип ИЛИ с помощью оператора <code>|</code>:</p>
+
+<pre><code class="language-tsx">// Константа price содержит число или null
+const price: number | null = null;
+
+// Функция получения продукта возвращает объект, у которого price это number или null
+function getProduct(): { name: string; price: number | null } {
+	return ...;
+}
+
+function discountPrice(product: { name: string; price: number | null }): number {
+	// Здесь TypeScript даст ошибку, потому что в price может быть null, и этот случай надо обработать
+	return price * 0.13;
+}
+</code></pre>
+
+<p>Более подробно об объединении типов будем говорить позже.</p>
+
+<h3>any, unknown и защитник типов</h3>
+
+<p>В TypeScript живёт абсолютное, но иногда необходимое зло — тип <code>any</code>. Компилятор можно настроить так, чтобы он ругался на любое <code>any</code> в проекте. <code>any</code> говорит компилятору «забить на тип и поверить разработчику». Нельзя доверять людям или настраивать проект в полумере. Либо всё корректно, либо разработчики начинают оставлять «дырки» в виде <code>any</code>, которые потом будут «стрелять» и, что важнее, будут прецедентами для использования <code>any</code> в дальнейшем.</p>
+
+<p>Частая фраза среди разных разработчиков: «но ведь в файле X это уже используется». Нельзя применять эту фразу как аргумент в пользу решения. Проект пишут разные люди при разных обстоятельствах. Если нет понимания, зачем существует тот или иной код, или почему он написан именно так, — лучше узнать отдельно, но самому написать правильно и как считаете корректным.</p>
+
+<p>Вернёмся к типу <code>any</code>:</p>
+
+<pre><code class="language-tsx">let notSure: any = 4;
+notSure = &quot;maybe a string instead&quot;;
+notSure = false;
+
+let notSure: any = 4;
+notSure.foo(); // TypeError: notSure.foo is not a function
+notSure.toFixed(); // OK
+
+let prettySure: object = new Number(4);
+// Property 'toFixed' does not exist on type 'object'.
+prettySure.toFixed();
+</code></pre>
+
+<p>Вместо <code>any</code> по умолчанию старайтесь использовать тип <code>unknown</code>, потому что язык будет ругаться на него, если «почувствует» что-то некорректное. Например, непонятно — есть ли у переменной свойство <code>length</code> или нет:</p>
+
+<pre><code class="language-tsx">let value: any;
+
+value.foo.bar; // OK
+value.trim(); // OK
+value(); // OK
+new value(); // OK
+value[0][1]; // OK
+</code></pre>
+
+<hr>
+
+<pre><code class="language-tsx">let value: unknown;
+
+value.foo.bar; // Error
+value.trim(); // Error
+value(); // Error
+new value(); // Error
+value[0][1]; // Error
+</code></pre>
+
+<p>Применять тип <code>unknown</code> можно следующим образом:</p>
+
+<pre><code class="language-tsx">function isNumberArray(value: unknown): value is number[] {
+	return (
+		Array.isArray(value) &amp;&amp;
+		value.every(element =&gt; typeof element === &quot;number&quot;)
+	);
+}
+</code></pre>
+
+<p>Конструкция <code>value is number[]</code> является защитником типа (Type Guard) и в данном случае говорит тайпскрипту, что если функция вернёт <code>true</code>, то переданная переменная является массивом чисел, и после этого с переменной можно работать как с известным типом:</p>
+
+<pre><code class="language-tsx">function processNumbers(value: unknown) {
+	// Здесь TypeScript не позволит вызвать метод map, так как не знает, есть ли он у unknown
+  value.map(e =&gt; e * 2);
+	// Object is of type 'unknown'
+	
+	// Если type guard вернёт false — прекратим выполнение функции
+  if (!isNumberArray(value)) {
+      return;
+  }
+	
+	// Здесь TypeScript понимает, что если сюда добрались — значит, в value лежит массив чисел
+	// и всё будет работать
+  value.map(e =&gt; e * 2);
+}
+</code></pre>
+
+<p>Если всё же не удаётся избежать использования <code>any</code> — старайтесь передвинуть его использование как можно ближе к источнику данных, инкапсулировать там, и дальше отдавать честные типы. Например, от бэкенда приходит какое-то значение, которое может быть чем угодно, но вы знаете, что в вашем приложении будете приводить это значение к числу или <code>null</code>. В этом случае тип <code>any</code> должен использоваться как можно ближе к обработке ответа бэкенда и не пускать свои корни в дальнейшую работу приложения:</p>
+
+<pre><code class="language-tsx">// Тип any будет только тут, а на выходе из функции будет нормальный тип
+function processResponse(response: any): number | null {
+	if (...) {
+		return null;
+	}
+	
+	return parseInt(response);
+}
+</code></pre>
+
+<h3>void и never</h3>
+
+<p>Типы <code>void</code> и <code>never</code> отличаются следующим:</p>
+
+<ul>
+<li><code>void</code> говорит, что функция не возвращает никакого значения,</li>
+<li><code>never</code> говорит, что функция в каком-то случае может никогда не закончиться и никогда не вернуть результат. Например, <code>while (true)</code>:</li>
+</ul>
+
+<pre><code class="language-tsx">function warnUser(): void {
+  console.log(&quot;This is my warning message&quot;);
+}
+
+function error(message: string): never {
+  throw new Error(message);
+}
+
+function infiniteLoop(): never {
+  while (true) {}
+}
+</code></pre>
+
+<h2>Приведение типов</h2>
+
+<p>Типы можно «кастить», или приводить к другим типам:</p>
+
+<pre><code class="language-tsx">const someValue: any = 'this is a string';
+
+const strLength2: number = (someValue as string).length;
+</code></pre>
+
+<p>Будьте осторожны с «кастингом» типов. Так вы говорите компилятору: «Здесь точно будет такой тип, доверься мне», а значит есть риск пропустить ошибку. И всё потому, что компилятор будет верить слову разработчика, а значит проверять это место менее тщательно.</p>
+
+<p>В TypeScript всё так же работает деструктуризация, как и в JavaScript:</p>
+
+<pre><code class="language-tsx">let [first, ...rest] = [1, 2, 3, 4];
+console.log(first); // outputs 1
+console.log(rest); // outputs [ 2, 3, 4 ]
+</code></pre>
+
+<p>Язык позволяет использовать ключевое слово <code>const</code>, введённое в ES6.</p>
+
+<pre><code class="language-tsx">const arr = [1, 2];
+arr.push(3); // Ok
+const constArr = [1, 2] as const;
+constArr.push(3); // Error
+</code></pre>
+
+<p>Описание функций становится более читабельным. Опишем снова функцию <code>sum</code>, на которую теперь не надо писать проверки типов аргументов:</p>
+
+<pre><code class="language-tsx">function sum(x: number, y?: number): number {
+  if (y) {
+    return x + y;
+  } else {
+    return x;
+  }
+}
+ 
+console.log(sum(10, 8));  // 18
+console.log(sum(42));     // OK! — 42
+
+/////////////////////
+
+function sum(x: number, y: number = 42): number {
+  return x + y;
+}
+ 
+console.log(sum(10, 8));  // 18
+console.log(sum(42));     // OK! — 84
+</code></pre>
+
+<p>У функции можно описать неопределённое число аргументов:</p>
+
+<pre><code class="language-tsx">function sum(...numbers: number[]): number {
+  return numbers.reduce((sum: number, current: number): number =&gt; {
+    sum += current; return sum;
+  }, 0);
+}
+ 
+console.log(sum(1, 2, 3, 4, 5));     // 15
+console.log(sum(42, 0, -10, 5, 5));  // 42
+</code></pre>
+
+<p>TypeScript позволяет корректно реализовать перегрузку функций и методов:</p>
+
+<pre><code class="language-tsx">function square(num: number): number;
+function square(num: string): number;
+function square(num: any): number {
+  if (typeof num === 'string') {
+    return parseInt(num, 10) * parseInt(num, 10);
+  } else {
+    return num * num;
+  }
+}
+</code></pre>
+
+<p>Но можно написать и проще, используя объединение типов:</p>
+
+<pre><code class="language-tsx">function square(num: string | number): number {
+  if (typeof num === 'string') {
+    return parseInt(num, 10) * parseInt(num, 10);
+  } else {
+    return num * num;
+  }
+}
+</code></pre>
+
+<p>Полезные утилиты типов:</p>
+
+<ul>
+<li><a href="https://www.typescriptlang.org/docs/handbook/advanced-types.html">advanced types</a>,</li>
+<li><a href="https://www.typescriptlang.org/docs/handbook/utility-types.html">utility types</a>.</li>
+</ul>
+
+</body>
+</html>

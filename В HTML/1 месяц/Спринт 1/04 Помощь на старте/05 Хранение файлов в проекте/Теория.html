@@ -1,0 +1,154 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Хранение файлов в проекте</title>
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+  <meta charset="utf-8">
+<style>body{font-family:Helvetica,arial,sans-serif;font-size:14px;line-height:1.6;background-color:#fff;padding:30px;color:#333;max-width:1140px;margin:0 auto}body > :first-child{margin-top:0!important}body > :last-child{margin-bottom:0!important}a{color:#4183C4;text-decoration:none}a.absent{color:#c00}a.anchor{display:block;padding-left:30px;margin-left:-30px;cursor:pointer;position:absolute;top:0;left:0;bottom:0}h1,h2,h3,h4,h5,h6{margin:20px 0 10px;padding:0;font-weight:700;-webkit-font-smoothing:antialiased;cursor:text;position:relative}h2:first-child,h1:first-child,h1:first-child + h2,h3:first-child,h4:first-child,h5:first-child,h6:first-child{margin-top:0;padding-top:0}h1:hover a.anchor,h2:hover a.anchor,h3:hover a.anchor,h4:hover a.anchor,h5:hover a.anchor,h6:hover a.anchor{text-decoration:none}h1 tt,h1 code{font-size:inherit}h2 tt,h2 code{font-size:inherit}h3 tt,h3 code{font-size:inherit}h4 tt,h4 code{font-size:inherit}h5 tt,h5 code{font-size:inherit}h6 tt,h6 code{font-size:inherit}h1{font-size:28px;color:#000}h2{font-size:24px;border-bottom:1px solid #ccc;color:#000}h3{font-size:18px}h4{font-size:16px}h5{font-size:14px}h6{color:#777;font-size:14px}p,blockquote,ul,ol,dl,li,table,pre{margin:15px 0}hr {padding:0;margin-bottom:-8px;height:1px;border:none;background:black}body > h2:first-child{margin-top:0;padding-top:0}body > h1:first-child{margin-top:0;padding-top:0}body > h1:first-child + h2{margin-top:0;padding-top:0}body > h3:first-child,body > h4:first-child,body > h5:first-child,body > h6:first-child{margin-top:0;padding-top:0}a:first-child h1,a:first-child h2,a:first-child h3,a:first-child h4,a:first-child h5,a:first-child h6{margin-top:0;padding-top:0}h1 p,h2 p,h3 p,h4 p,h5 p,h6 p{margin-top:0}li p.first{display:inline-block}ul,ol{padding-left:30px}ul :first-child,ol :first-child{margin-top:0}ul :last-child,ol :last-child{margin-bottom:0}dl{padding:0}dl dt{font-size:14px;font-weight:700;font-style:italic;padding:0;margin:15px 0 5px}dl dt:first-child{padding:0}dl dt > :first-child{margin-top:0}dl dt > :last-child{margin-bottom:0}dl dd{margin:0 0 15px;padding:0 15px}dl dd > :first-child{margin-top:0}dl dd > :last-child{margin-bottom:0}blockquote{border-left:4px solid #ddd;padding:0 15px;color:#777}blockquote > :first-child{margin-top:0}blockquote > :last-child{margin-bottom:0}table{padding:0}table tr{border-top:1px solid #ccc;background-color:#fff;margin:0;padding:0}table tr:nth-child(2n){background-color:#f8f8f8}table tr th{font-weight:700;border:1px solid #ccc;text-align:left;margin:0;padding:6px 13px}table tr td{border:1px solid #ccc;text-align:left;margin:0;padding:6px 13px}table tr th :first-child,table tr td :first-child{margin-top:0}table tr th :last-child,table tr td :last-child{margin-bottom:0}img{max-width:100%}span.frame{display:block;overflow:hidden}span.frame > span{border:1px solid #ddd;display:block;float:left;overflow:hidden;margin:13px 0 0;padding:7px;width:auto}span.frame span img{display:block;float:left}span.frame span span{clear:both;color:#333;display:block;padding:5px 0 0}span.align-center{display:block;overflow:hidden;clear:both}span.align-center > span{display:block;overflow:hidden;margin:13px auto 0;text-align:center}span.align-center span img{margin:0 auto;text-align:center}span.align-right{display:block;overflow:hidden;clear:both}span.align-right > span{display:block;overflow:hidden;margin:13px 0 0;text-align:right}span.align-right span img{margin:0;text-align:right}span.float-left{display:block;margin-right:13px;overflow:hidden;float:left}span.float-left span{margin:13px 0 0}span.float-right{display:block;margin-left:13px;overflow:hidden;float:right}span.float-right > span{display:block;overflow:hidden;margin:13px auto 0;text-align:right}code,tt{margin:0 2px;padding:0 5px;white-space:nowrap;border:1px solid #eaeaea;background-color:#f8f8f8;border-radius:3px}pre code{margin:0;padding:0;white-space:pre;border:none;background:transparent}.highlight pre{background-color:#f8f8f8;border:1px solid #ccc;font-size:13px;line-height:19px;overflow:auto;padding:6px 10px;border-radius:3px}pre{background-color:#f8f8f8;border:1px solid #ccc;font-size:13px;line-height:19px;overflow:auto;padding:6px 10px;border-radius:3px}pre code,pre tt{background-color:transparent;border:none}.slasher{color:#000000}</style></head>
+<body>
+
+<h1>Хранение файлов в проекте</h1>
+
+<p>Чем лучше спланирована файловая структура проекта, тем удобнее им пользоваться и при необходимости масштабировать. Это сэкономит время при поиске нужного кода, упростит дебаг, и другим разработчикам будет проще разобраться, как именно ваш проект работает.</p>
+
+<p>Есть ли идеальная структура хранения файлов, которую можно применить ко всем проектам? Конечно нет. Подходов много, и они зависят как от самих проектов и устоявшихся правил в компаниях, так и от личных предпочтений разработчиков. Ниже опишем один из возможных вариантов, который можно встретить в продакшене.</p>
+
+<h2>Структура проекта</h2>
+
+<p>Кодовая база проекта включает в себя конфигурационные файлы утилит для процессинга и сборки исходного кода в итоговый бандл, документацию по запуску и некоторые другие сопутствующие разработке файлы.</p>
+
+<p>Корневая папка проекта может выглядеть следующим образом:</p>
+
+<pre><code class="language-bash">.
+├── build/
+├── static/
+├── src/
+├── README.md
+├── tsconfig.js
+└── webpack.config.js
+</code></pre>
+
+<p>В первом спринте важно, чтобы у вас были папки <code>src</code>, <code>static</code> и <code>build</code> (или <code>dist</code>, как вам удобнее). При этом их внутренняя структура может отличаться от предложенной ниже. В следующих спринтах вы ближе познакомитесь с компонентным подходом и ещё вернётесь к вопросу организации файлов. То есть начните с простого, а по мере роста проекта будете усложнять его структуру.</p>
+
+<h3>Папка <code>static</code></h3>
+
+<p>В <code>static</code> складывается весь статичный контент, который не требует постобработки бандлером, а только копируется в корневой уровень <code>build</code>. В основном это:</p>
+
+<ul>
+<li>иконки разного размера для браузеров,</li>
+<li>картинки, которые не импортируются в модулях и не требуют обработки,</li>
+<li>шрифты,</li>
+<li>HTML-файлы,</li>
+<li>файлы для поисковых роботов.</li>
+</ul>
+
+<h3>Папка <code>build</code></h3>
+
+<p>Бандлер обрабатывает файлы из <code>srс</code> и помещает их в папку <code>build</code>, затем копирует файлы из <code>static</code> в корневой уровень <code>build</code>. Файлы стилей рекомендуется импортировать из JavaScript, всё остальное стоит складывать в <code>static</code>. В библиотеках такая папка чаще всего называется <code>dist</code> (сокращённо от distributable — «подлежащий распределению»).</p>
+
+<h3>Папка <code>src</code></h3>
+
+<p>Есть несколько популярных принципов хранения файлов. Одни из них основаны на  группировке файлов по «фичам», другие на группировке по типам файлов, а некоторые даже имеют спецификацию. Один из таких принципов — <a href="https://bradfrost.com/blog/post/atomic-web-design/">атомарный дизайн</a>. Не стоит много времени уделять выбору системы, можно менять её по мере роста проекта.</p>
+
+<p>Дерево проекта может выглядеть так:</p>
+
+<pre><code class="language-bash">src/
+├── components/
+│   └── button/
+│       ├── button.*css
+│       ├── button.js
+│       ├── button.tmpl.js
+│       └── index.js
+├── layout/
+│   └── main/
+│       ├── main.*css
+│       ├── main.js
+│       ├── main.tmpl.js
+│       └── index.js
+├── modules/
+│   └── chats/
+│       ├── utils
+│       │   └── getFullname.js
+│       │   └── getIsOnline.js
+│       ├── components/
+│       │   └── message/
+│       │       ├── message.*css
+│       │       ├── message.js
+│       │       ├── message.tmpl.js
+│       │       └── index.js
+│       ├── chats.*css
+│       ├── chats.js
+│       ├── chats.tmpl.js
+│       └── index.js
+├── pages/
+│   ├── home/
+│   │   ├── modules/
+│   │   │   ├── login/
+│   │   │   │   ├── login.*css
+│   │   │   │   ├── login.js
+│   │   │   │   ├── login.tmpl.js
+│   │   │   │   └── index.js
+│   │   │   └── logout/
+│   │   │       ├── logout.*css
+│   │   │       ├── logout.js
+│   │   │       ├── logout.tmpl.js
+│   │   │       └── index.js
+│   │   ├── home.*css
+│   │   ├── home.js
+│   │   ├── home.tmpl.js
+│   │   └── index.js
+│   └── about/
+│       ├── about.*css
+│       ├── about.js
+│       ├── about.tmpl.js
+│       └── index.js
+└── utils/
+    ├── get.js
+    ├── http.js
+    ├── isEmpty.js
+    └── templator.js
+</code></pre>
+
+<h3>Папка <code>src/components</code></h3>
+
+<p>Компоненты, которые будут использованы в двух и более модулях стоит держать в папке <code>components</code>. Эти компоненты не должны зависеть от внешнего состояния или иметь сторонние эффекты. Если компонент будет использован только в одном модуле, стоит поместить его в локальную папку <code>./components</code> для индикации явной зависимости. Такой подход позволяет не засорять общую папку <code>components</code> и упрощает переход к дизайн-системе, если в ней возникла необходимость. Если провести аналогию с системой атомарного хранения, то компоненты — это атомы и молекулы, так как часто в компонентах будут и группы компонентов (например, <code>field</code>, который может содержать в себе <code>input</code> и <code>label</code>).</p>
+
+<h3>Папка <code>src/pages</code></h3>
+
+<p>Если в проекте есть роутинг, то удобно держать страницы в папке <code>pages</code>. Обычно страницы отображают контент, собранный из импортированных модулей и компонентов. В рамках аналогии с атомарным дизайном это страницы.</p>
+
+<h3>Папка <code>src/utils</code></h3>
+
+<p>Многие приложения имеют утилитарные функции, которые могут использоваться как в одном, так и в нескольких местах. Чтобы определить подходящее место в проекте для  утилитарной функции, стоит ответить на два вопроса:</p>
+
+<ol>
+<li>Функция может использоваться в одном файле или в его зависимых файлах? Тогда её лучше определить в локальной папке. Если таких функций несколько, можно поместить их в папку <code>utils</code> около файла.</li>
+<li>Функция может использоваться в нескольких модулях или компонентах внутри общих папок? Тогда её лучше поместить в общую папку <code>utils</code>.</li>
+</ol>
+
+<h3>Опционально</h3>
+
+<p>В больших проектах часто не хватает основной структуры, поэтому для удобства иногда используют дополнительные папки для семантического разделения по функциональности.</p>
+
+<p>В некоторых проектах можно встретить папку <code>src/modules</code>. В ней собираются модули (иногда их называют контейнерами), которые являются связующим звеном между состоянием приложения и компонентами для его отображения. Иногда они содержат функционал, бизнес-логику, которая используется в нескольких местах приложения. Если модуль используется только на одной странице, лучше помещать его в локальную папку страницы, чтобы не засорять общую папку модулей. В атомарном дизайне модули можно считать организмами.</p>
+
+<p>Страницы могут иметь несколько видов отображения (например, с хедером или без). Эти макеты можно держать в папке <code>src/layout</code>. Макеты содержат общие для определённого вида страниц стили и внутри себя отображают контент из <code>pages</code>. В системе атомарного дизайна это темплейты. Часто встречаются в проектах, использующих <a href="https://www.gatsbyjs.com/">Gatsby</a>.</p>
+
+<h2>Общие рекомендации</h2>
+
+<p>Старайтесь максимально декомпозировать компоненты. Если есть стили — выносите в отдельный файл рядом с самим компонентом. Незачем хранить все CSS-файлы в отдельной папке — так только сложнее найти описание стиля.</p>
+
+<p><code>index.js</code> каждого блока и компонента позволяют экспортировать только нужное. Например, вот так:</p>
+
+<pre><code class="language-jsx">export {default} from './button';
+export {template as buttonTemplate} from './button.tmpl';
+...
+
+</code></pre>
+
+<p>У компонента должна быть единая точка входа. В <code>index.js</code> можно делать все необходимые экспорты, но в рамках текущей папки и вложенных в неё (если такие есть).</p>
+
+<p>Старайтесь не мусорить в файлах компонентов и блоков. Например, для констант создайте файл <code>const.js</code> и перенесите их туда. Если же константа используется между разными компонентами, модулями или блоками — сделайте её общей.</p>
+
+</body>
+</html>

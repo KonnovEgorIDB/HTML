@@ -1,0 +1,239 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Скрипты</title>
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+  <meta charset="utf-8">
+<style>body{font-family:Helvetica,arial,sans-serif;font-size:14px;line-height:1.6;background-color:#fff;padding:30px;color:#333;max-width:1140px;margin:0 auto}body > :first-child{margin-top:0!important}body > :last-child{margin-bottom:0!important}a{color:#4183C4;text-decoration:none}a.absent{color:#c00}a.anchor{display:block;padding-left:30px;margin-left:-30px;cursor:pointer;position:absolute;top:0;left:0;bottom:0}h1,h2,h3,h4,h5,h6{margin:20px 0 10px;padding:0;font-weight:700;-webkit-font-smoothing:antialiased;cursor:text;position:relative}h2:first-child,h1:first-child,h1:first-child + h2,h3:first-child,h4:first-child,h5:first-child,h6:first-child{margin-top:0;padding-top:0}h1:hover a.anchor,h2:hover a.anchor,h3:hover a.anchor,h4:hover a.anchor,h5:hover a.anchor,h6:hover a.anchor{text-decoration:none}h1 tt,h1 code{font-size:inherit}h2 tt,h2 code{font-size:inherit}h3 tt,h3 code{font-size:inherit}h4 tt,h4 code{font-size:inherit}h5 tt,h5 code{font-size:inherit}h6 tt,h6 code{font-size:inherit}h1{font-size:28px;color:#000}h2{font-size:24px;border-bottom:1px solid #ccc;color:#000}h3{font-size:18px}h4{font-size:16px}h5{font-size:14px}h6{color:#777;font-size:14px}p,blockquote,ul,ol,dl,li,table,pre{margin:15px 0}hr {padding:0;margin-bottom:-8px;height:1px;border:none;background:black}body > h2:first-child{margin-top:0;padding-top:0}body > h1:first-child{margin-top:0;padding-top:0}body > h1:first-child + h2{margin-top:0;padding-top:0}body > h3:first-child,body > h4:first-child,body > h5:first-child,body > h6:first-child{margin-top:0;padding-top:0}a:first-child h1,a:first-child h2,a:first-child h3,a:first-child h4,a:first-child h5,a:first-child h6{margin-top:0;padding-top:0}h1 p,h2 p,h3 p,h4 p,h5 p,h6 p{margin-top:0}li p.first{display:inline-block}ul,ol{padding-left:30px}ul :first-child,ol :first-child{margin-top:0}ul :last-child,ol :last-child{margin-bottom:0}dl{padding:0}dl dt{font-size:14px;font-weight:700;font-style:italic;padding:0;margin:15px 0 5px}dl dt:first-child{padding:0}dl dt > :first-child{margin-top:0}dl dt > :last-child{margin-bottom:0}dl dd{margin:0 0 15px;padding:0 15px}dl dd > :first-child{margin-top:0}dl dd > :last-child{margin-bottom:0}blockquote{border-left:4px solid #ddd;padding:0 15px;color:#777}blockquote > :first-child{margin-top:0}blockquote > :last-child{margin-bottom:0}table{padding:0}table tr{border-top:1px solid #ccc;background-color:#fff;margin:0;padding:0}table tr:nth-child(2n){background-color:#f8f8f8}table tr th{font-weight:700;border:1px solid #ccc;text-align:left;margin:0;padding:6px 13px}table tr td{border:1px solid #ccc;text-align:left;margin:0;padding:6px 13px}table tr th :first-child,table tr td :first-child{margin-top:0}table tr th :last-child,table tr td :last-child{margin-bottom:0}img{max-width:100%}span.frame{display:block;overflow:hidden}span.frame > span{border:1px solid #ddd;display:block;float:left;overflow:hidden;margin:13px 0 0;padding:7px;width:auto}span.frame span img{display:block;float:left}span.frame span span{clear:both;color:#333;display:block;padding:5px 0 0}span.align-center{display:block;overflow:hidden;clear:both}span.align-center > span{display:block;overflow:hidden;margin:13px auto 0;text-align:center}span.align-center span img{margin:0 auto;text-align:center}span.align-right{display:block;overflow:hidden;clear:both}span.align-right > span{display:block;overflow:hidden;margin:13px 0 0;text-align:right}span.align-right span img{margin:0;text-align:right}span.float-left{display:block;margin-right:13px;overflow:hidden;float:left}span.float-left span{margin:13px 0 0}span.float-right{display:block;margin-left:13px;overflow:hidden;float:right}span.float-right > span{display:block;overflow:hidden;margin:13px auto 0;text-align:right}code,tt{margin:0 2px;padding:0 5px;white-space:nowrap;border:1px solid #eaeaea;background-color:#f8f8f8;border-radius:3px}pre code{margin:0;padding:0;white-space:pre;border:none;background:transparent}.highlight pre{background-color:#f8f8f8;border:1px solid #ccc;font-size:13px;line-height:19px;overflow:auto;padding:6px 10px;border-radius:3px}pre{background-color:#f8f8f8;border:1px solid #ccc;font-size:13px;line-height:19px;overflow:auto;padding:6px 10px;border-radius:3px}pre code,pre tt{background-color:transparent;border:none}.slasher{color:#000000}</style></head>
+<body>
+
+<h1>Скрипты</h1>
+
+<p>Проект состоит не только из кода с продуктовыми задачами, но также содержит инфраструктурные скрипты, которые облегчают процесс разработки, тестирования, выкладок в различные окружения и т. д. Это как дом, у которого есть не только фасад, но ещё и подъезд, множество других внутренних помещений и коммуникаций.</p>
+
+<p>Скрипты позволяют делать алиасы к командам запуска. Например, не особо удобно каждый раз перед началом разработки писать:</p>
+
+<pre><code class="language-bash">./node_modules/.bin/webpack --arg1 --arg2 --arg3 --arg4
+</code></pre>
+
+<p>Алиасы должны быть простыми и запоминающимися. Например, <code>some start</code>.</p>
+
+<p>Описывать команды в проекте можно разными способами.</p>
+
+<h3>Makefile</h3>
+
+<p>Make — это утилита для автоматизации сборок. Применять можно для любых проектов: фронтенд, бэкенд. Неважно, что будете собирать, — это всё можно описать через Makefile:</p>
+
+<pre><code class="language-makefile">start:
+    node index.js
+
+lint:
+    node_modules/.bin/stylelint public/*.css
+    node_modules/.bin/eslint *.js
+
+test:
+    node_modules/.bin/mocha test/
+</code></pre>
+
+<p>Чтобы запустить проект, достаточно написать:</p>
+
+<pre><code class="language-makefile">make start
+</code></pre>
+
+<p>Данная утилита отлично работает, например, с переменными, аргументами и общими скриптами. Подробнее про синтаксис написано на <a href="https://habr.com/ru/post/155201/">Хабре</a>. Есть также <a href="https://www.smashingmagazine.com/2015/10/building-web-applications-with-make/">интересная статья про построение веб-инфраструктуры на Makefile</a>.</p>
+
+<h3>Gulp</h3>
+
+<p><a href="https://gulpjs.com/">Gulp</a> помогает автоматизировать рутинные задачи веб-разработки. Здесь можно не только запускать Webpack, делать сборки, деплоить или прогонять тесты, но также собрать своё подобие Webpack. Можно автоматизировать компиляцию JS, TS, Sass или LESS файлов, отправлять уведомления в Slack или другой мессенджер сразу из Javascript.</p>
+
+<p>Большой плюс инструмента в том, что он на Javascript. Однако как сборщик Gulp уже давно не используется. Webpack включает в себя многие его подходы и лучше справляется с этой задачей.</p>
+
+<p>Gulp — несложный инструмент с большой возможностью кастомизации:</p>
+
+<pre><code class="language-jsx">const gulp = require('gulp');
+const eslint = require('gulp-eslint');
+
+gulp.task('lint', () =&gt; {
+  gulp
+    .src('*.js')
+    .pipe(eslint())
+});
+</code></pre>
+
+<p>Запускается так:</p>
+
+<pre><code class="language-bash">gulp lint
+</code></pre>
+
+<p>Материалы по работе с Gulp:</p>
+
+<ul>
+<li><a href="https://www.smashingmagazine.com/2014/06/building-with-gulp/">Как построить инфраструктуру на Gulp</a>;</li>
+<li><a href="https://webdesign-master.ru/blog/tools/2016-03-09-gulp-beginners.html">Gulp для самых маленьких</a>;</li>
+<li><a href="https://medium.com/@msukhareva/первое-знакомство-с-gulp-устанавливаем-и-пишем-задачу-b6cafc4601a9">Первое знакомство с Gulp</a>;</li>
+<li><a href="https://habr.com/ru/post/344626/">Понимаем и работаем с Gulp</a>.</li>
+</ul>
+
+<h3>npm scripts</h3>
+
+<p>Самый очевидный и простой способ автоматизировать команды внутри проекта — это <code>npm scripts</code>:</p>
+
+<pre><code class="language-makefile">{
+	&quot;name&quot;: &quot;awesome-notes&quot;,
+	&quot;dependencies&quot;: {
+	  &quot;mocha&quot;: &quot;4.0.0&quot;
+	},
+	&quot;scripts&quot;: {
+	  &quot;test&quot;: &quot;mocha test/&quot;,
+		&quot;start&quot;: &quot;./node_modules/.bin/webpack --arg1 --arg2&quot;
+	}
+}
+</code></pre>
+
+<p>С их помощью можно задать удобные и легко читаемые алиасы, которые ещё и просто запускать:</p>
+
+<pre><code class="language-bash">~$ npm run test
+~$ npm test
+~$ npm start
+</code></pre>
+
+<p>Также можно задавать и другие команды, например, для очистки node-модулей перед новой сборкой:</p>
+
+<pre><code class="language-json">{
+  &quot;scripts&quot;: {
+    &quot;clean&quot;: &quot;rm -rf node_modules/&quot;
+  }
+}
+</code></pre>
+
+<p>Однако такая команда не запустится у пользователей Windows, потому что <code>rm -rf</code> просто не отработает. Потому важно не забывать о кросс-платформенности:</p>
+
+<pre><code class="language-json">{
+  &quot;devDependencies&quot;: {
+    &quot;rimraf&quot;: &quot;2.5.2&quot;
+  },
+  &quot;scripts&quot;: {
+    &quot;clean&quot;: &quot;rimraf node_modules/&quot;
+  }
+}
+</code></pre>
+
+<p>Инструмент позволяет задавать последовательности команд:</p>
+
+<pre><code class="language-json">{
+  &quot;scripts&quot;: {
+    &quot;check:lint&quot;: &quot;eslint .&quot;,
+    &quot;check:test&quot;: &quot;mocha test/&quot;,
+    &quot;check&quot;: &quot;npm run check:lint &amp;&amp; npm run check:test&quot;
+  }
+}
+</code></pre>
+
+<p>Для упрощения описания последовательности существует отдельная утилита:</p>
+
+<pre><code class="language-json">{
+  &quot;devDependencies&quot;: {
+    &quot;npm-run-all&quot;: &quot;1.5.2&quot;
+  },
+  &quot;scripts&quot;: {
+    &quot;check:lint&quot;: &quot;eslint .&quot;,
+    &quot;check:test&quot;: &quot;mocha test/&quot;,
+    &quot;check&quot;: &quot;npm-run-all check:lint check:test&quot;
+  }
+}
+</code></pre>
+
+<p>Зная Bash, вы сможете написать в команде любой набор операторов и операнд. Даже запуск процесса в фоне — <code>&amp;</code>:</p>
+
+<pre><code class="language-json">{
+  &quot;scripts&quot;: {
+    &quot;lint:css&quot;: &quot;stylelint **/*.css&quot;,
+    &quot;lint:js&quot;: &quot;eslint .&quot;,
+    &quot;lint&quot;: &quot;npm run lint:css &amp; npm run lint:js&quot;
+  }
+}
+</code></pre>
+
+<p>По умолчанию это не лучший способ. Для этого также есть утилита <code>npm-run-all</code>, которая  позволяет запустить процессы параллельно и гарантировать их завершение в любом статусе:</p>
+
+<pre><code class="language-json">{
+  &quot;scripts&quot;: {
+    &quot;lint:css&quot;: &quot;stylelint **/*.css&quot;,
+    &quot;lint:js&quot;: &quot;eslint .&quot;,
+    &quot;lint&quot;: &quot;npm-run-all --parallel lint:css lint:js&quot;
+  }
+}
+</code></pre>
+
+<p>Её можно использовать даже для групп команд:</p>
+
+<pre><code class="language-json">{
+  &quot;scripts&quot;: {
+    &quot;lint:css&quot;: &quot;stylelint **/*.css&quot;,
+    &quot;lint:js&quot;: &quot;eslint .&quot;,
+    &quot;lint&quot;: &quot;npm-run-all --parallel lint:*&quot;
+  }
+}
+</code></pre>
+
+<p><code>package.json</code> умеет работать с аргументами и настройками:</p>
+
+<pre><code class="language-json">{
+  &quot;name&quot;: &quot;app&quot;,
+  &quot;scripts&quot;: {
+    &quot;test&quot;: &quot;mocha test/ -R $npm_package_config_report&quot;
+  }
+}
+</code></pre>
+
+<p>После запуска команды <code>npm test --app:report=Ellie</code>, в <code>package.json</code> будет вот такой объект, который подставится в тест:</p>
+
+<pre><code class="language-jsx">&quot;config&quot;: {
+    &quot;report&quot;: &quot;Ellie&quot;
+  },
+</code></pre>
+
+<p>Npm скрипты умеют принимать аргументы:</p>
+
+<pre><code class="language-json">{
+  &quot;scripts&quot;: {
+    &quot;dev&quot;: &quot;node app/index.js&quot;,
+  }
+}
+</code></pre>
+
+<pre><code class="language-bash">~$ npm run dev -- debug
+node app/index.js debug
+</code></pre>
+
+<h3>Внешние скрипты</h3>
+
+<p>Никто не мешает в рамках проекта описывать отдельные JS-скрипты для управления той или иной логикой сборки и автоматизации:</p>
+
+<pre><code class="language-jsx">// scripts/favicon.js
+const { readFileSync, writeFileSync } = require('fs');
+const toIco = require('to-ico');
+
+const logo = readFileSync('logo.png');
+
+toIco(logo).then(data =&gt; writeFileSync('favicon.ico', data));
+</code></pre>
+
+<p>И в <code>package.json</code> можно указать, например скрипт, который обновляет <code>favicon</code>:</p>
+
+<pre><code class="language-json">{
+  &quot;scripts&quot;: {
+    &quot;favicon:copy&quot;: &quot;node scripts/favicon.js&quot;
+  }
+}
+</code></pre>
+
+<p>Полезные материалы для работы с npm:</p>
+
+<ul>
+<li><a href="https://www.youtube.com/watch?v=0RYETb9YVrk">Автоматизация фронтенда при помощи npm скриптов</a>;</li>
+<li><a href="https://www.keithcirkel.co.uk/how-to-use-npm-as-a-build-tool/">Как использовать npm в качестве инструмента для сборки</a>.</li>
+</ul>
+
+</body>
+</html>

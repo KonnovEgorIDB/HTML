@@ -1,0 +1,226 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Рубрика «Решаем вместе»: queryString</title>
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+  <meta charset="utf-8">
+<style>body{font-family:Helvetica,arial,sans-serif;font-size:14px;line-height:1.6;background-color:#fff;padding:30px;color:#333;max-width:1140px;margin:0 auto}body > :first-child{margin-top:0!important}body > :last-child{margin-bottom:0!important}a{color:#4183C4;text-decoration:none}a.absent{color:#c00}a.anchor{display:block;padding-left:30px;margin-left:-30px;cursor:pointer;position:absolute;top:0;left:0;bottom:0}h1,h2,h3,h4,h5,h6{margin:20px 0 10px;padding:0;font-weight:700;-webkit-font-smoothing:antialiased;cursor:text;position:relative}h2:first-child,h1:first-child,h1:first-child + h2,h3:first-child,h4:first-child,h5:first-child,h6:first-child{margin-top:0;padding-top:0}h1:hover a.anchor,h2:hover a.anchor,h3:hover a.anchor,h4:hover a.anchor,h5:hover a.anchor,h6:hover a.anchor{text-decoration:none}h1 tt,h1 code{font-size:inherit}h2 tt,h2 code{font-size:inherit}h3 tt,h3 code{font-size:inherit}h4 tt,h4 code{font-size:inherit}h5 tt,h5 code{font-size:inherit}h6 tt,h6 code{font-size:inherit}h1{font-size:28px;color:#000}h2{font-size:24px;border-bottom:1px solid #ccc;color:#000}h3{font-size:18px}h4{font-size:16px}h5{font-size:14px}h6{color:#777;font-size:14px}p,blockquote,ul,ol,dl,li,table,pre{margin:15px 0}hr {padding:0;margin-bottom:-8px;height:1px;border:none;background:black}body > h2:first-child{margin-top:0;padding-top:0}body > h1:first-child{margin-top:0;padding-top:0}body > h1:first-child + h2{margin-top:0;padding-top:0}body > h3:first-child,body > h4:first-child,body > h5:first-child,body > h6:first-child{margin-top:0;padding-top:0}a:first-child h1,a:first-child h2,a:first-child h3,a:first-child h4,a:first-child h5,a:first-child h6{margin-top:0;padding-top:0}h1 p,h2 p,h3 p,h4 p,h5 p,h6 p{margin-top:0}li p.first{display:inline-block}ul,ol{padding-left:30px}ul :first-child,ol :first-child{margin-top:0}ul :last-child,ol :last-child{margin-bottom:0}dl{padding:0}dl dt{font-size:14px;font-weight:700;font-style:italic;padding:0;margin:15px 0 5px}dl dt:first-child{padding:0}dl dt > :first-child{margin-top:0}dl dt > :last-child{margin-bottom:0}dl dd{margin:0 0 15px;padding:0 15px}dl dd > :first-child{margin-top:0}dl dd > :last-child{margin-bottom:0}blockquote{border-left:4px solid #ddd;padding:0 15px;color:#777}blockquote > :first-child{margin-top:0}blockquote > :last-child{margin-bottom:0}table{padding:0}table tr{border-top:1px solid #ccc;background-color:#fff;margin:0;padding:0}table tr:nth-child(2n){background-color:#f8f8f8}table tr th{font-weight:700;border:1px solid #ccc;text-align:left;margin:0;padding:6px 13px}table tr td{border:1px solid #ccc;text-align:left;margin:0;padding:6px 13px}table tr th :first-child,table tr td :first-child{margin-top:0}table tr th :last-child,table tr td :last-child{margin-bottom:0}img{max-width:100%}span.frame{display:block;overflow:hidden}span.frame > span{border:1px solid #ddd;display:block;float:left;overflow:hidden;margin:13px 0 0;padding:7px;width:auto}span.frame span img{display:block;float:left}span.frame span span{clear:both;color:#333;display:block;padding:5px 0 0}span.align-center{display:block;overflow:hidden;clear:both}span.align-center > span{display:block;overflow:hidden;margin:13px auto 0;text-align:center}span.align-center span img{margin:0 auto;text-align:center}span.align-right{display:block;overflow:hidden;clear:both}span.align-right > span{display:block;overflow:hidden;margin:13px 0 0;text-align:right}span.align-right span img{margin:0;text-align:right}span.float-left{display:block;margin-right:13px;overflow:hidden;float:left}span.float-left span{margin:13px 0 0}span.float-right{display:block;margin-left:13px;overflow:hidden;float:right}span.float-right > span{display:block;overflow:hidden;margin:13px auto 0;text-align:right}code,tt{margin:0 2px;padding:0 5px;white-space:nowrap;border:1px solid #eaeaea;background-color:#f8f8f8;border-radius:3px}pre code{margin:0;padding:0;white-space:pre;border:none;background:transparent}.highlight pre{background-color:#f8f8f8;border:1px solid #ccc;font-size:13px;line-height:19px;overflow:auto;padding:6px 10px;border-radius:3px}pre{background-color:#f8f8f8;border:1px solid #ccc;font-size:13px;line-height:19px;overflow:auto;padding:6px 10px;border-radius:3px}pre code,pre tt{background-color:transparent;border:none}.slasher{color:#000000}</style></head>
+<body>
+
+<h1>Рубрика «Решаем вместе»: queryString</h1>
+
+<p>В веб-разработке указание query-параметров вместе с URL — это самый простой способ передать какую-либо информацию, поэтому преобразование объекта в query-строку довольно популярно.</p>
+
+<p>В NodeJS есть встроенная библиотека <a href="https://nodejs.org/api/querystring.html#querystring_querystring_stringify_obj_sep_eq_options">querystring</a>, а в браузере можно воспользоваться <a href="https://developer.mozilla.org/en-US/docs/Web/API/URLSearchParams">URLSearchParams</a>, который поддерживается всеми современными браузерами (кроме IE11, если его ещё можно называть современным).</p>
+
+<p>В этом уроке покажем, как реализовать такую функцию самостоятельно. Есть несколько условий: проверять, что на вход подали объект (иначе выкидывать ошибку <code>'input must be an object'</code>) и обрабатывать вложенные объекты и массивы.</p>
+
+<p>Для начала понадобятся вспомогательные функции, которые были написаны в авторском решении <code>isEqual</code>, а именно <code>isPlainObject</code>, <code>isArray</code>, <code>isArrayOrObject</code> и тип <code>PlainObject</code>.</p>
+
+<p>Первым делом реализуем версию, которая работает только с примитивами. Она довольно простая — нужно проитерироваться по всем ключам объекта и составить массив пар ключ- значение. После полученный массив массивов преобразовать в строку с помощью метода <code>join</code>. И да, не забудем проверить аргумент на объект:</p>
+
+<pre><code class="language-tsx">function queryString(data: PlainObject): string {
+  if (!isPlainObject(data)) {
+    throw new Error('input must be an object');
+  }
+
+  const result: [string, string][] = [];
+
+  for(const [key, value] of Object.entries(data)) {
+    result.push([key, String(value)]);
+  }
+
+  return result.map(arr =&gt; arr.join('=')).join('&amp;');
+}
+
+// result = [[foo, bar], [baz, 5], [xyz, false]]
+queryString({ foo: 'bar', baz: 5, xyz: false }); // foo=bar&amp;baz=5&amp;xyz=false
+</code></pre>
+
+<p>Если в <code>Object.entries</code> передать массив, то на выходе получится массив пар, где первым элементом будет индекс массива, а вторым — значение. Это удобно использовать, если для массивов и объектов одинаковая обработка. Но если попробуем передать вложенный объект, то в ответ получим <code>[object Object]</code>:</p>
+
+<pre><code class="language-tsx">queryString3({ foo: { baz: 5 } }); // foo=[object Object]
+</code></pre>
+
+<p>Объекты и массивы необходимо обрабатывать рекурсивно. Но есть сложность, что для вложенных значений нужно формировать также ключ. Например, выше ответ должен быть равен <code>foo[baz]=5</code><em>.</em> Для этого можно добавить второй параметр функции, в котором будет храниться родительский ключ.</p>
+
+<p>Создадим функцию <code>getKey</code>, которая будет формировать ключ:</p>
+
+<pre><code class="language-tsx">function getKey(key: string, parentKey?: string) {
+	return parentKey ? `${parentKey}[${key}]` : key;
+}
+</code></pre>
+
+<p>Если есть <code>parentKey</code>, то формируем ключ в указанном формате. Используем эту функцию вместо прямого обращения к ключу:</p>
+
+<pre><code class="language-diff">-function queryString(data: PlainObject): string {
++function queryString(data: PlainObject, parentKey?: string): string {
+	// ...
+
+  for(const [key, value] of Object.entries(data)) {
+-   result.push([key, String(value)]);
++   result.push([getKey(key, parentKey), String(value)]);
+  }
+
+  // ...
+}
+</code></pre>
+
+<p>Добавим условие для обработки массивов и объектов:</p>
+
+<pre><code class="language-diff"> function queryString(data: PlainObject, parentKey?: string): string {
+	// ...
+
+  for(const [key, value] of Object.entries(data)) {
++		if (isArrayOrObject(value)) {
++			result.push(...queryString(value, getKey(key, parentKey)));
++		} else {
+			result.push([getKey(key, parentKey), String(value)]);
++		}
+  }
+
+  // ...
+}
+</code></pre>
+
+<p>Здесь интересно то, что при вызове <code>queryString</code> на вложенных объектах передаётся второй аргумент в качестве <code>parentKey</code>. Для значения <code>baz</code> в объекте <code>{foo: {baz: {}}}</code> аргумент будет равен <code>foo</code>, а для значения <code>baz</code> в объекте <code>{foo: {bar: {baz: {}}}}</code> уже  <code>foo[bar]</code>.</p>
+
+<p>Но если попробовать запустить код, то TypeScript выдаст ошибку, что тип массива <code>result</code> (элементами которого должны быть массивы пар ключ-значение) не соответствует вложенному вызову <code>queryString</code>, который всегда возвращает строку:</p>
+
+<pre><code class="language-tsx">function queryString(data: PlainObject, parentKey?: string): string {
+
+	for(const [key, value] of Object.entries(data)) {
+		if (isArrayOrObject(value)) {
+			result.push(...queryString(value, getKey(key, parentKey)));
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+Argument of type 'string' is not assignable to parameter of type '[string, string]'.
+</code></pre>
+
+<p>Самый простой вариант — ввести ещё одну дополнительную функцию, которая будет возвращать только массив пар, чтобы была возможность агрегировать результат:</p>
+
+<pre><code class="language-tsx">function getParams(data: PlainObject | [], parentKey?: string) {
+  const result: [string, string][] = [];
+
+  for(const [key, value] of Object.entries(data)) {
+    if (isArrayOrObject(value)) {
+      result.push(...getParams(value, getKey(key, parentKey)));
+    } else {
+      result.push([getKey(key, parentKey), String(value)]);
+    }
+  }
+
+  return result;
+}
+
+const testObj = {
+  key: 1,
+  key2: &quot;test&quot;,
+  key3: false,
+  key4: true,
+  key5: [1, 2, 3],
+  key6: { a: 1 },
+  key7: { b: { d: 2 } }
+};
+
+// [[&quot;key&quot;, &quot;1&quot;], [&quot;key2&quot;, &quot;test&quot;], [&quot;key3&quot;, &quot;false&quot;], [&quot;key4&quot;, &quot;true&quot;], [&quot;key5[0]&quot;, &quot;1&quot;], [&quot;key5[1]&quot;, &quot;2&quot;], [&quot;key5[2]&quot;, &quot;3&quot;], [&quot;key6[a]&quot;, &quot;1&quot;], [&quot;key7[b][d]&quot;, &quot;2&quot;]]
+getParams(testObj);
+</code></pre>
+
+<p>Функция <code>queryString</code> теперь будет только валидировать входные данные и из массива выше формировать их в query-строку:</p>
+
+<pre><code class="language-tsx">function queryString(data: PlainObject) {
+  if (!isPlainObject(data)) {
+    throw new Error('input must be an object');
+  }
+
+  return getParams(data).map(arr =&gt; arr.join('=')).join('&amp;');
+}
+
+const testObj = {
+  key: 1,
+  key2: &quot;test&quot;,
+  key3: false,
+  key4: true,
+  key5: [1, 2, 3],
+  key6: { a: 1 },
+  key7: { b: { d: 2 } }
+};
+
+// &quot;key=1&amp;key2=test&amp;key3=false&amp;key4=true&amp;key5[0]=1&amp;key5[1]=2&amp;key5[2]=3&amp;key6[a]=1&amp;key7[b][d]=2&quot;
+queryString(testObj);
+</code></pre>
+
+<p>Также можно сразу закодировать все символы, которые являются зарезервированными в URI, с помощью <a href="https://developer.mozilla.org/ru/docs/Web/JavaScript/Reference/Global_Objects/encodeURIComponent">encodeURIComponent</a>. «Процентное» кодирование  предотвращает проблемы с синтаксическим анализом, когда необходимо распарсить URL. Бывают ситуации, когда в query-параметрах нужно передавать другой URL (в котором могут быть свои query-параметры) и без кодирования не обойтись:</p>
+
+<pre><code class="language-diff">function getParams(data: PlainObject | [], parentKey?: string) {
+  const result: [string, string][] = [];
+
+  for(const [key, value] of Object.entries(data)) {
+    if (isArrayOrObject(value)) {
+      result.push(...getParams(value, getKey(key, parentKey)));
+    } else {
+-     result.push([getKey(key, parentKey), String(value)]);
++     result.push([getKey(key, parentKey), encodeURIComponent(String(value))]);
+    }
+  }
+
+  return result;
+}
+</code></pre>
+
+<p>Теперь пробелы, вопросы, знак равенства, квадратные скобки и другие символы будут кодироваться:</p>
+
+<pre><code class="language-tsx">// Пробел заменится на %20, / на %2F
+queryString({key: &quot;/ho /ho&quot;}); // key=%2Fho%20%2Fho
+</code></pre>
+
+<h3>Итоговое решение</h3>
+
+<pre><code class="language-tsx">type PlainObject&lt;T = unknown&gt; = {
+  [k in string]: T;
+};
+
+function isPlainObject(value: unknown): value is PlainObject {
+  return typeof value === 'object'
+    &amp;&amp; value !== null
+    &amp;&amp; value.constructor === Object
+    &amp;&amp; Object.prototype.toString.call(value) === '[object Object]';
+}
+
+function isArray(value: unknown): value is [] {
+  return Array.isArray(value);
+}
+
+function isArrayOrObject(value: unknown): value is [] | PlainObject {
+  return isPlainObject(value) || isArray(value);
+}
+
+function getKey(key: string, parentKey?: string) {
+  return parentKey ? `${parentKey}[${key}]` : key;
+}
+
+function getParams(data: PlainObject | [], parentKey?: string) {
+  const result: [string, string][] = [];
+
+  for(const [key, value] of Object.entries(data)) {
+    if (isArrayOrObject(value)) {
+      result.push(...getParams(value, getKey(key, parentKey)));
+    } else {
+      result.push([getKey(key, parentKey), encodeURIComponent(String(value))]);
+    }
+  }
+
+  return result;
+}
+
+function queryString(data: PlainObject) {
+  if (!isPlainObject(data)) {
+    throw new Error('input must be an object');
+  }
+
+  return getParams(data).map(arr =&gt; arr.join('=')).join('&amp;');
+}
+</code></pre>
+
+</body>
+</html>

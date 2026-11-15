@@ -1,0 +1,262 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Методологии</title>
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+  <meta charset="utf-8">
+<style>body{font-family:Helvetica,arial,sans-serif;font-size:14px;line-height:1.6;background-color:#fff;padding:30px;color:#333;max-width:1140px;margin:0 auto}body > :first-child{margin-top:0!important}body > :last-child{margin-bottom:0!important}a{color:#4183C4;text-decoration:none}a.absent{color:#c00}a.anchor{display:block;padding-left:30px;margin-left:-30px;cursor:pointer;position:absolute;top:0;left:0;bottom:0}h1,h2,h3,h4,h5,h6{margin:20px 0 10px;padding:0;font-weight:700;-webkit-font-smoothing:antialiased;cursor:text;position:relative}h2:first-child,h1:first-child,h1:first-child + h2,h3:first-child,h4:first-child,h5:first-child,h6:first-child{margin-top:0;padding-top:0}h1:hover a.anchor,h2:hover a.anchor,h3:hover a.anchor,h4:hover a.anchor,h5:hover a.anchor,h6:hover a.anchor{text-decoration:none}h1 tt,h1 code{font-size:inherit}h2 tt,h2 code{font-size:inherit}h3 tt,h3 code{font-size:inherit}h4 tt,h4 code{font-size:inherit}h5 tt,h5 code{font-size:inherit}h6 tt,h6 code{font-size:inherit}h1{font-size:28px;color:#000}h2{font-size:24px;border-bottom:1px solid #ccc;color:#000}h3{font-size:18px}h4{font-size:16px}h5{font-size:14px}h6{color:#777;font-size:14px}p,blockquote,ul,ol,dl,li,table,pre{margin:15px 0}hr {padding:0;margin-bottom:-8px;height:1px;border:none;background:black}body > h2:first-child{margin-top:0;padding-top:0}body > h1:first-child{margin-top:0;padding-top:0}body > h1:first-child + h2{margin-top:0;padding-top:0}body > h3:first-child,body > h4:first-child,body > h5:first-child,body > h6:first-child{margin-top:0;padding-top:0}a:first-child h1,a:first-child h2,a:first-child h3,a:first-child h4,a:first-child h5,a:first-child h6{margin-top:0;padding-top:0}h1 p,h2 p,h3 p,h4 p,h5 p,h6 p{margin-top:0}li p.first{display:inline-block}ul,ol{padding-left:30px}ul :first-child,ol :first-child{margin-top:0}ul :last-child,ol :last-child{margin-bottom:0}dl{padding:0}dl dt{font-size:14px;font-weight:700;font-style:italic;padding:0;margin:15px 0 5px}dl dt:first-child{padding:0}dl dt > :first-child{margin-top:0}dl dt > :last-child{margin-bottom:0}dl dd{margin:0 0 15px;padding:0 15px}dl dd > :first-child{margin-top:0}dl dd > :last-child{margin-bottom:0}blockquote{border-left:4px solid #ddd;padding:0 15px;color:#777}blockquote > :first-child{margin-top:0}blockquote > :last-child{margin-bottom:0}table{padding:0}table tr{border-top:1px solid #ccc;background-color:#fff;margin:0;padding:0}table tr:nth-child(2n){background-color:#f8f8f8}table tr th{font-weight:700;border:1px solid #ccc;text-align:left;margin:0;padding:6px 13px}table tr td{border:1px solid #ccc;text-align:left;margin:0;padding:6px 13px}table tr th :first-child,table tr td :first-child{margin-top:0}table tr th :last-child,table tr td :last-child{margin-bottom:0}img{max-width:100%}span.frame{display:block;overflow:hidden}span.frame > span{border:1px solid #ddd;display:block;float:left;overflow:hidden;margin:13px 0 0;padding:7px;width:auto}span.frame span img{display:block;float:left}span.frame span span{clear:both;color:#333;display:block;padding:5px 0 0}span.align-center{display:block;overflow:hidden;clear:both}span.align-center > span{display:block;overflow:hidden;margin:13px auto 0;text-align:center}span.align-center span img{margin:0 auto;text-align:center}span.align-right{display:block;overflow:hidden;clear:both}span.align-right > span{display:block;overflow:hidden;margin:13px 0 0;text-align:right}span.align-right span img{margin:0;text-align:right}span.float-left{display:block;margin-right:13px;overflow:hidden;float:left}span.float-left span{margin:13px 0 0}span.float-right{display:block;margin-left:13px;overflow:hidden;float:right}span.float-right > span{display:block;overflow:hidden;margin:13px auto 0;text-align:right}code,tt{margin:0 2px;padding:0 5px;white-space:nowrap;border:1px solid #eaeaea;background-color:#f8f8f8;border-radius:3px}pre code{margin:0;padding:0;white-space:pre;border:none;background:transparent}.highlight pre{background-color:#f8f8f8;border:1px solid #ccc;font-size:13px;line-height:19px;overflow:auto;padding:6px 10px;border-radius:3px}pre{background-color:#f8f8f8;border:1px solid #ccc;font-size:13px;line-height:19px;overflow:auto;padding:6px 10px;border-radius:3px}pre code,pre tt{background-color:transparent;border:none}.slasher{color:#000000}</style></head>
+<body>
+
+<h1>Методологии</h1>
+
+<h2>OOCSS</h2>
+
+<p>OOCSS — это объектно-ориентированный CSS. Подобный подход позволяет применять метод «разделяй и властвуй». Другие методологии возникли как развитие идей OOCSS.</p>
+
+<p>Принцип: внешний вид элемента не зависит от того, где он расположен. Вместо <code>.my-element button { ... }</code> создаём отдельный стиль <code>.control</code> для конкретного случая.</p>
+
+<p>Основные преимущества:</p>
+
+<ul>
+<li>код становится атомарным и разделяется — паттерн DRY в действии;</li>
+<li>происходит разделение контейнера и содержимого контента;</li>
+<li>все однотипные элементы будут выглядеть одинаково;</li>
+<li>к любому элементу можно добавить класс <code>.control</code> и работать как с миксином;</li>
+<li>чтобы поменять стиль элемента на отдельной странице, не придётся обращаться к <code>!important</code> — стили пишутся один раз и при этом у них есть разные варианты.</li>
+</ul>
+
+<p>Пример с дублированием кода:</p>
+
+<pre><code class="language-css">.header {
+  color: #000;
+  background: #BADA55; 
+  width: 960px;
+  margin: 0 auto;
+}
+
+.footer {
+ color: #000;
+ background: #BADA55;
+ text-align: center;
+ padding-top: 20px;
+}
+</code></pre>
+
+<p>В примере оба селектора используют одинаковые стили с цветом и фоном. Данная методология предлагает выносить общие стили в отдельные классы:</p>
+
+<pre><code class="language-css">.colors-skin {                  /* Использование */
+  color: #000;                  .footer .colors-skin
+  background: #BADA55;          .header .colors-skin
+}
+</code></pre>
+
+<p>Подробнее про методологию можно почитать в <a href="https://github.com/stubbornella/oocss/wiki">wiki разработчиков</a>.</p>
+
+<p>У подхода есть минус — сложная поддержка при изменении элемента. В таком случае, скорее всего, придётся добавлять классы в разметку. Большой проблемы в этом нет, но часто считают дурным тоном.</p>
+
+<p>В результате OOCSS применяется не так часто. Он остаётся абстрактным идеалом, недостижимым на практике.</p>
+
+<h2>БЭМ</h2>
+
+<p>БЭМ — аббревиатура для «Блок, Элемент, Модификатор». <a href="https://ru.bem.info/methodology/">На странице проекта</a> описано применение для CSS и JavaScript. Этот метод придуман в Яндексе и считается одним из самых популярных в мире.</p>
+
+<p>Рассмотрим подробнее каждую сущность методологии.</p>
+
+<h3>Блок</h3>
+
+<p>Блок — функционально независимый компонент страницы, который может быть использован повторно.</p>
+
+<p>Название блока должно характеризовать смысл, а не состояние. Отвечает на вопрос «что это?». «Меню» — <code>menu</code>, «кнопка» — <code>button</code>.</p>
+
+<p>Название блока не отвечает на вопросы состояния, например «какой, как выглядит?». «Красный», «большой» и другие описания состояний не подходят для блока.</p>
+
+<h3>Элемент</h3>
+
+<p>Элемент — часть блока, которая не может быть использована в отрыве от него.</p>
+
+<p>Для названия элемента верно всё то же, что и для названия блока. Оно описывает смысл, а не состояние и отвечает на вопрос «что это?». «Пункт» — <code>item,</code> «текст» — <code>text</code>.</p>
+
+<p>Структура имени элемента соответствует схеме: <code>имя-блока__имя-элемента</code>. Использование двойного подчёркивания — не строгое правило, а сложившаяся практика. Никто не запрещает изменять разделители. Однако не стоит без веских причин отказываться от популярных условностей — они помогают делать код единообразным и понятным.</p>
+
+<h3>Модификатор</h3>
+
+<p>Модификатор определяет внешний вид, состояние или поведение блока, или элемента.</p>
+
+<p>Название модификатора должно характеризовать:</p>
+
+<ul>
+<li>внешний вид — «размер»: <code>size_s</code>, «тему»: <code>theme_island</code>;</li>
+<li>состояние — «отключён»: <code>disabled</code>, «фокусированный»: <code>focused</code>;</li>
+<li>поведение — «направление»: <code>directions_left-top</code>.</li>
+</ul>
+
+<p>Имя модификатора отделяют одним подчёркиванием: <code>имя-блока__имя-элемента_имя-модификатора</code>.</p>
+
+<h3>Примеры</h3>
+
+<p>Рассмотрим пример реализации формы:</p>
+
+<pre><code class="language-html">&lt;form class=&quot;login-form&quot;&gt;
+	&lt;input 
+		type=&quot;text&quot; 
+		class=&quot;text-input login-form__username-input&quot;
+	/&gt;
+	&lt;div class=&quot;login-form__buttons&quot;&gt;
+		&lt;button class=&quot;login-form__submit button&quot;&gt;
+			&lt;span class=&quot;button__capture button__capture_red&quot;&gt;CLICK ME&lt;/span&gt;
+		&lt;/button&gt;
+		&lt;button class=&quot;button__active_disabled login-form__reset button&quot;&gt;
+            RESET
+		&lt;/button&gt;
+	&lt;/div&gt;
+&lt;/form&gt;
+</code></pre>
+
+<p>Основной блок обёрнут в класс <code>login-form</code>. Вложенное поле ввода формы получает класс <code>login-form__username-input</code>:</p>
+
+<pre><code class="language-html">&lt;input 
+	type=&quot;text&quot; 
+	class=&quot;text-input login-form__username-input&quot;
+/&gt;
+</code></pre>
+
+<p>У кнопок — своя обёртка <code>login-form__buttons</code>:</p>
+
+<pre><code class="language-html">&lt;div class=&quot;login-form__buttons&quot;&gt;
+    ...
+&lt;/div&gt;
+</code></pre>
+
+<p>Но кнопки и поля ввода могут встречаться не только в этой форме. Здесь берёт начало разделение классов:</p>
+
+<ul>
+<li>классы формы описывают положение элементов в контексте формы;</li>
+<li>кнопки и поля ввода получают собственные классы <code>button__capture_red</code> и <code>text-input</code>:</li>
+</ul>
+
+<pre><code class="language-html">&lt;input 
+	type=&quot;text&quot; 
+	class=&quot;text-input login-form__username-input&quot;
+/&gt;
+...
+&lt;button class=&quot;login-form__submit button&quot;&gt;
+	&lt;span class=&quot;button__capture button__capture_red&quot;&gt;CLICK ME&lt;/span&gt;
+&lt;/button&gt;
+</code></pre>
+
+<p>В результате классы формы и отдельных элементов разделены и не вмешиваются в работу друг друга.</p>
+
+<p>Чтобы сделать переиспользование и масштабирование ещё удобнее, этот функционал объединяется в компоненты. При этом используют и блоки, и модификаторы, и элементы.</p>
+
+<p>Описание формы:</p>
+
+<pre><code class="language-css">/* блок */
+.login-form { ... }
+
+/* элемененты */
+.login-form__buttons { ... }
+.login-form__submit { ... }
+.login-form__reset { ... }
+.login-form__username-input { ... }
+.login-form__password-input { ... }
+</code></pre>
+
+<p>Описание отдельных компонентов:</p>
+
+<pre><code class="language-css">/* блок */
+.button { ... }
+
+/* элементы */
+.button__capture { ... }
+.button__icon { ... }
+
+/* модификаторы */
+.button__size_big { ... }
+.button__active_disabled { ... }
+.button__capture_red { ... }
+.button__capture_green { ... }
+</code></pre>
+
+<h2>CSS Modules</h2>
+
+<p>Как бы ни было удобно использовать чистый БЭМ, крупный проект не застрахован от случайного совпадения типичных имён:</p>
+
+<pre><code class="language-css">.text { ... } 
+</code></pre>
+
+<p>В крупном проекте такие пересечения стилей получится отловить только случайно — когда они приведут к ошибкам оформления. Хорошо, если ошибка вскроется при тестировании. Хуже, когда она найдётся в продакшне.</p>
+
+<p>Проблему решают CSS-модули. Эта неофициальная спецификация делает классы и другие имена уникальными и задаёт локальные пространства имён. Всё это происходит на этапе сборки проекта.</p>
+
+<p>В CSS-модулях стили становятся JS-объектами, из которых компоненты получают свои имена:</p>
+
+<pre><code class="language-css">.button {}
+</code></pre>
+
+<pre><code class="language-jsx">import buttonStyles from './button.css';
+
+element.innerHTML = `&lt;div class=&quot;${buttonStyles.button} ${buttonStyles.red}&quot; ...`;
+</code></pre>
+
+<p>В результате класс получит уникальное имя:</p>
+
+<pre><code class="language-jsx">&lt;div class=&quot;button-213ge1hw ...&quot;&gt;
+    ...
+&lt;/button&gt;
+</code></pre>
+
+<p>Подробнее про CSS-модули — в <a href="https://github.com/css-modules/css-modules">репозитории разработчика</a> этой техники.</p>
+
+<h3>Инструменты</h3>
+
+<p>Сложно вручную создавать такие связанные системы блоков, элементов и модификаторов. Помогают специальные утилиты:</p>
+
+<ul>
+<li><a href="https://www.npmjs.com/package/b_">утилита b_</a> поможет строить имена классов по методологии БЭМ. Схему с разделителями БЭМ можно изменять в настройках утилиты;</li>
+</ul>
+
+<pre><code class="language-jsx">b_('modal', 'close', {size: 'xl'}) === 'modal__close modal__close_size_xl';
+</code></pre>
+
+<ul>
+<li><a href="https://www.npmjs.com/package/classnames">утилита classnames</a> позволяет объединять стили, чтобы не пришлось руками ставить пробелы в строках или делать очень длинные шаблонные строки.</li>
+</ul>
+
+<pre><code class="language-JavaScript">cn('foo', 'bar'); // =&gt; 'foo bar'
+cn(
+  class1,
+	cond1 &amp;&amp; class2,
+	class3,
+	...
+);
+
+// Вместо
+
+&lt;div class=&quot;${class1} ${cond1 ? class2 : ''} ${class3} ...&quot;&gt;...
+</code></pre>
+
+<p>Первую половину курса вам придётся обойтись без таких утилит — использовать их в практике и проектной работе запрещено. Простую реализацию этого функционала вы сделаете самостоятельно.</p>
+
+<p>Чтобы получить хорошую архитектуру в CSS:</p>
+
+<ul>
+<li>разорвите тесные связи между CSS и структурой HTML;</li>
+<li>почти везде избавьтесь от каскадирования;</li>
+<li>продумайте слои приложения: компонент → приложение → глобальные стили;</li>
+<li>держите стили внутри определённого слоя — <code>button.html</code> + <code>button.css</code> + <code>button.js</code> + <code>button.tmpl.js</code>;</li>
+<li>изолируйте компоненты при помощи строгой системы именования;</li>
+<li>применяйте миксины;</li>
+<li>используйте специальные классы и атрибуты HTML. Например, <code>data-form=value</code>.</li>
+</ul>
+
+<p>Больше об архитектуре CSS — в дополнительных материалах:</p>
+
+<ul>
+<li><a href="https://habr.com/ru/post/256109/">Способы организации CSS-кода</a>;</li>
+<li>Алексей Охрименко рассказывает про <a href="https://www.youtube.com/watch?v=1VM-vEItVeA">CSS-методологии</a>;</li>
+<li><a href="https://web-standards.ru/articles/cargo-cult-css/">Культ карго CSS</a>;</li>
+<li><a href="https://web-standards.ru/articles/css-architecture/">Архитектура CSS</a>.</li>
+</ul>
+
+</body>
+</html>

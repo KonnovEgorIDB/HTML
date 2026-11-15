@@ -1,0 +1,131 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Архитектурное упражнение с REST</title>
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+  <meta charset="utf-8">
+<style>body{font-family:Helvetica,arial,sans-serif;font-size:14px;line-height:1.6;background-color:#fff;padding:30px;color:#333;max-width:1140px;margin:0 auto}body > :first-child{margin-top:0!important}body > :last-child{margin-bottom:0!important}a{color:#4183C4;text-decoration:none}a.absent{color:#c00}a.anchor{display:block;padding-left:30px;margin-left:-30px;cursor:pointer;position:absolute;top:0;left:0;bottom:0}h1,h2,h3,h4,h5,h6{margin:20px 0 10px;padding:0;font-weight:700;-webkit-font-smoothing:antialiased;cursor:text;position:relative}h2:first-child,h1:first-child,h1:first-child + h2,h3:first-child,h4:first-child,h5:first-child,h6:first-child{margin-top:0;padding-top:0}h1:hover a.anchor,h2:hover a.anchor,h3:hover a.anchor,h4:hover a.anchor,h5:hover a.anchor,h6:hover a.anchor{text-decoration:none}h1 tt,h1 code{font-size:inherit}h2 tt,h2 code{font-size:inherit}h3 tt,h3 code{font-size:inherit}h4 tt,h4 code{font-size:inherit}h5 tt,h5 code{font-size:inherit}h6 tt,h6 code{font-size:inherit}h1{font-size:28px;color:#000}h2{font-size:24px;border-bottom:1px solid #ccc;color:#000}h3{font-size:18px}h4{font-size:16px}h5{font-size:14px}h6{color:#777;font-size:14px}p,blockquote,ul,ol,dl,li,table,pre{margin:15px 0}hr {padding:0;margin-bottom:-8px;height:1px;border:none;background:black}body > h2:first-child{margin-top:0;padding-top:0}body > h1:first-child{margin-top:0;padding-top:0}body > h1:first-child + h2{margin-top:0;padding-top:0}body > h3:first-child,body > h4:first-child,body > h5:first-child,body > h6:first-child{margin-top:0;padding-top:0}a:first-child h1,a:first-child h2,a:first-child h3,a:first-child h4,a:first-child h5,a:first-child h6{margin-top:0;padding-top:0}h1 p,h2 p,h3 p,h4 p,h5 p,h6 p{margin-top:0}li p.first{display:inline-block}ul,ol{padding-left:30px}ul :first-child,ol :first-child{margin-top:0}ul :last-child,ol :last-child{margin-bottom:0}dl{padding:0}dl dt{font-size:14px;font-weight:700;font-style:italic;padding:0;margin:15px 0 5px}dl dt:first-child{padding:0}dl dt > :first-child{margin-top:0}dl dt > :last-child{margin-bottom:0}dl dd{margin:0 0 15px;padding:0 15px}dl dd > :first-child{margin-top:0}dl dd > :last-child{margin-bottom:0}blockquote{border-left:4px solid #ddd;padding:0 15px;color:#777}blockquote > :first-child{margin-top:0}blockquote > :last-child{margin-bottom:0}table{padding:0}table tr{border-top:1px solid #ccc;background-color:#fff;margin:0;padding:0}table tr:nth-child(2n){background-color:#f8f8f8}table tr th{font-weight:700;border:1px solid #ccc;text-align:left;margin:0;padding:6px 13px}table tr td{border:1px solid #ccc;text-align:left;margin:0;padding:6px 13px}table tr th :first-child,table tr td :first-child{margin-top:0}table tr th :last-child,table tr td :last-child{margin-bottom:0}img{max-width:100%}span.frame{display:block;overflow:hidden}span.frame > span{border:1px solid #ddd;display:block;float:left;overflow:hidden;margin:13px 0 0;padding:7px;width:auto}span.frame span img{display:block;float:left}span.frame span span{clear:both;color:#333;display:block;padding:5px 0 0}span.align-center{display:block;overflow:hidden;clear:both}span.align-center > span{display:block;overflow:hidden;margin:13px auto 0;text-align:center}span.align-center span img{margin:0 auto;text-align:center}span.align-right{display:block;overflow:hidden;clear:both}span.align-right > span{display:block;overflow:hidden;margin:13px 0 0;text-align:right}span.align-right span img{margin:0;text-align:right}span.float-left{display:block;margin-right:13px;overflow:hidden;float:left}span.float-left span{margin:13px 0 0}span.float-right{display:block;margin-left:13px;overflow:hidden;float:right}span.float-right > span{display:block;overflow:hidden;margin:13px auto 0;text-align:right}code,tt{margin:0 2px;padding:0 5px;white-space:nowrap;border:1px solid #eaeaea;background-color:#f8f8f8;border-radius:3px}pre code{margin:0;padding:0;white-space:pre;border:none;background:transparent}.highlight pre{background-color:#f8f8f8;border:1px solid #ccc;font-size:13px;line-height:19px;overflow:auto;padding:6px 10px;border-radius:3px}pre{background-color:#f8f8f8;border:1px solid #ccc;font-size:13px;line-height:19px;overflow:auto;padding:6px 10px;border-radius:3px}pre code,pre tt{background-color:transparent;border:none}.slasher{color:#000000}</style></head>
+<body>
+
+<h1>Архитектурное упражнение с REST</h1>
+
+<p>Ответственный фронтенд-разработчик наравне с бэкендерами принимает участие в проектировании протокола взаимодействия клиента и сервера (проще говоря, они договариваются о «ручках»). В этом уроке рассмотрим процесс разработки API с использованием REST для двух задач.</p>
+
+<h2>Задача про аватарку пользователя</h2>
+
+<p>Практически каждое веб-приложение сегодня, которое позволяет регистрироваться, позволяет и устанавливать аватарку. Наша задача — спроектировать REST API для работы с аватаркой.</p>
+
+<p>Предположим, у нас уже есть простейшая модель пользователя:</p>
+
+<pre><code class="language-json">{
+	&quot;id&quot;: &quot;string&quot;,
+	&quot;login&quot;: &quot;string&quot;,
+	&quot;password&quot;: &quot;string&quot;
+}
+</code></pre>
+
+<p>Перегружать модель дополнительными полями не будем — это не важно сейчас.</p>
+
+<p>Какие действия нужны изначально? Регистрация, вход, изменение логина, изменение пароля. Прежде чем перейти к аватарке, посмотрим, как эти действия укладываются в REST.</p>
+
+<h3>Регистрация</h3>
+
+<p>С регистрацией всё просто, ведь по сути регистрация — это создание пользователя.</p>
+
+<pre><code>POST /users HTTP/1.1
+{
+	&quot;login&quot;: &quot;...&quot;,
+	&quot;password&quot;: &quot;...&quot;
+}
+</code></pre>
+
+<p>Достойная тема для обсуждения: что должен возвращать ответ на создание пользователя? Модель пользователя с ID? Просто статус ответа без тела? Зависит от обстоятельств, и вы должны решить это сами. В общем случае кажется, что от регистрации достаточно кода ответа без тела, потому что после пользователь всё равно должен совершить вход. Или должен быть сразу авторизован?</p>
+
+<h3>Вход</h3>
+
+<p>Независимо от того, что вы решите по регистрации, — авторизовать ли сразу после регистрации или нет, вход представляет собой интересную задачу в терминах REST.</p>
+
+<p>Вы помните, что в REST есть ресурсы и действия с ними. Ключевое слово — ресурсы. И тут впервые приходится задуматься, как описать «вход» в нужных терминах, — какой это ресурс и какое действие?</p>
+
+<p>Обычно всё сводится к тому, что вход — это работа с активной сессией. Вход — создание сессии. Выход — удаление сессии. Пролонгирующие запросы — обновление сессии.</p>
+
+<pre><code>POST /session HTTP/1.1
+{
+	&quot;login&quot;: &quot;...&quot;,
+	&quot;password&quot;: &quot;...&quot;
+}
+
+// ответ:
+HTTP/1.1 201 CREATED
+{
+	&quot;token&quot;: &quot;....&quot;
+}
+
+</code></pre>
+
+<p>Вот таким образом «вход пользователя в систему» превратился в «создание сессии».</p>
+
+<h3>Изменение данных пользователя</h3>
+
+<p>Здесь наконец-то подбираемся к аватарке. Во-первых, договариваемся с бэкэндом, что у пользователя появляется новое поле <code>avatar</code>, по умолчанию <code>null</code>, при регистрации не указывается, содержит ссылку на изображение. Теперь задача изменения данных пользователя включает в себя и аватарку без каких-то особенностей: есть ресурс «пользователь», есть действие «обновить данные». Какие данные отправим (логин, пароль, аватар или их сочетания) — такие и будут.</p>
+
+<pre><code>PATCH /users HTTP/1.1
+{
+	&quot;login&quot;: &quot;....&quot;,
+	&quot;password&quot;: &quot;...&quot;,
+	&quot;avatar&quot;: ???
+}
+</code></pre>
+
+<p>Маловероятно, что интерфейс будет предлагать пользователю вставить ссылку на аватарку. Скорее всего, пользователю будет предложено выбрать файл со своего компьютера.</p>
+
+<p>И тут появляется интересный момент: отправлять на сервер аватарку мы будем с помощью <code>content-type: multipart/form-data</code> или кодировать изображение в base64, а получать как ссылку. Уже получается нечестно, данные в одну сторону (фронт → бэк) идут в одном виде, а назад (бэк → фронт) приходят в другом. Способы разобраться с этим есть, наша же задача сейчас показать вам, что такое бывает, а не как с этим справиться (потому что REST богат на подобные задачи).</p>
+
+<h3>Доработка — пропорции аватарки</h3>
+
+<p>Менеджеру приходит отличная мысль: пусть пользователь может при выборе файла с аватаркой также настроить размер и положение зоны внутри фотографии, которая будет миниатюрой аватарки.</p>
+
+<p>Для решения этой задачи на бэкэнд нужно передавать дополнительные поля. Если расширить модель пользователя, она будет выглядеть раздуто и перестанет отвечать своей основной цели: отвечать только за пользователя.</p>
+
+<pre><code>{
+	&quot;id&quot;: &quot;string&quot;,
+	&quot;login&quot;: &quot;string&quot;,
+	&quot;password&quot;: &quot;string&quot;,
+	&quot;avatar&quot;: &quot;string&quot;,
+	&quot;x&quot;: number,
+	&quot;y&quot;: number,
+	&quot;width&quot;: number,
+	&quot;height&quot;: number
+}
+</code></pre>
+
+<p>Логично будет вынести аватар в отдельный ресурс и убрать все связанные с ним поля из модели пользователя:</p>
+
+<pre><code>{
+	&quot;avatar&quot;: &quot;string&quot;,
+	&quot;x&quot;: number,
+	&quot;y&quot;: number,
+	&quot;width&quot;: number,
+	&quot;height&quot;: number
+}
+</code></pre>
+
+<p>Так как теперь есть отдельный ресурс и этот ресурс принадлежит пользователю, — можно сконструировать эндпоинт для аватара: <code>/users/:id/avatar</code>.</p>
+
+<p>Тут появляется новый вопрос: в соответствии с REST, с ресурсом аватара надо будет работать как с коллекцией, так как <code>GET /users/:id/avatar</code> возвращает список ресурсов, а POST будет создавать аватар и присвоит ему ID. Конечно, можно попросить бэкенд сделать исключение для аватаров и работать с этим эндпоинтом нестандартно, но это головная боль для бэкендеров.</p>
+
+<p>Чтобы всё было честно, можно сделать установку аватара следующим образом:</p>
+
+<ul>
+<li>создать аватар запросом POST на эндпоинт <code>/users/:id/avatar</code>,</li>
+<li>полученный идентификатор аватара установить в поле <code>avatar</code> пользователю запросом PATCH.</li>
+</ul>
+
+<p>Либо договориться с бэкэндом, чтобы <code>GET /users/:id/avatar</code> в списке первым возвращал актуальный аватар (на случай, если пользователь много раз менял аватар, а предыдущие не удалялись).</p>
+
+<h2>Заключение</h2>
+
+<p>Будьте готовы к таким ухищрениям с представлением действий в виде ресурсов при работе с REST. Надо понимать, что REST — не «серебряная пуля» и не абсолютный стандарт: какие-то вещи с ним делать удобно (всё, что касается CRUD), какие-то не так удобно (загрузка файлов, бизнес-процессы, сайд-эффекты).</p>
+
+</body>
+</html>

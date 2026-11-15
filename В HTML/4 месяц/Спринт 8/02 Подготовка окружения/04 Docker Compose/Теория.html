@@ -1,0 +1,341 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Docker Compose</title>
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+  <meta charset="utf-8">
+<style>body{font-family:Helvetica,arial,sans-serif;font-size:14px;line-height:1.6;background-color:#fff;padding:30px;color:#333;max-width:1140px;margin:0 auto}body > :first-child{margin-top:0!important}body > :last-child{margin-bottom:0!important}a{color:#4183C4;text-decoration:none}a.absent{color:#c00}a.anchor{display:block;padding-left:30px;margin-left:-30px;cursor:pointer;position:absolute;top:0;left:0;bottom:0}h1,h2,h3,h4,h5,h6{margin:20px 0 10px;padding:0;font-weight:700;-webkit-font-smoothing:antialiased;cursor:text;position:relative}h2:first-child,h1:first-child,h1:first-child + h2,h3:first-child,h4:first-child,h5:first-child,h6:first-child{margin-top:0;padding-top:0}h1:hover a.anchor,h2:hover a.anchor,h3:hover a.anchor,h4:hover a.anchor,h5:hover a.anchor,h6:hover a.anchor{text-decoration:none}h1 tt,h1 code{font-size:inherit}h2 tt,h2 code{font-size:inherit}h3 tt,h3 code{font-size:inherit}h4 tt,h4 code{font-size:inherit}h5 tt,h5 code{font-size:inherit}h6 tt,h6 code{font-size:inherit}h1{font-size:28px;color:#000}h2{font-size:24px;border-bottom:1px solid #ccc;color:#000}h3{font-size:18px}h4{font-size:16px}h5{font-size:14px}h6{color:#777;font-size:14px}p,blockquote,ul,ol,dl,li,table,pre{margin:15px 0}hr {padding:0;margin-bottom:-8px;height:1px;border:none;background:black}body > h2:first-child{margin-top:0;padding-top:0}body > h1:first-child{margin-top:0;padding-top:0}body > h1:first-child + h2{margin-top:0;padding-top:0}body > h3:first-child,body > h4:first-child,body > h5:first-child,body > h6:first-child{margin-top:0;padding-top:0}a:first-child h1,a:first-child h2,a:first-child h3,a:first-child h4,a:first-child h5,a:first-child h6{margin-top:0;padding-top:0}h1 p,h2 p,h3 p,h4 p,h5 p,h6 p{margin-top:0}li p.first{display:inline-block}ul,ol{padding-left:30px}ul :first-child,ol :first-child{margin-top:0}ul :last-child,ol :last-child{margin-bottom:0}dl{padding:0}dl dt{font-size:14px;font-weight:700;font-style:italic;padding:0;margin:15px 0 5px}dl dt:first-child{padding:0}dl dt > :first-child{margin-top:0}dl dt > :last-child{margin-bottom:0}dl dd{margin:0 0 15px;padding:0 15px}dl dd > :first-child{margin-top:0}dl dd > :last-child{margin-bottom:0}blockquote{border-left:4px solid #ddd;padding:0 15px;color:#777}blockquote > :first-child{margin-top:0}blockquote > :last-child{margin-bottom:0}table{padding:0}table tr{border-top:1px solid #ccc;background-color:#fff;margin:0;padding:0}table tr:nth-child(2n){background-color:#f8f8f8}table tr th{font-weight:700;border:1px solid #ccc;text-align:left;margin:0;padding:6px 13px}table tr td{border:1px solid #ccc;text-align:left;margin:0;padding:6px 13px}table tr th :first-child,table tr td :first-child{margin-top:0}table tr th :last-child,table tr td :last-child{margin-bottom:0}img{max-width:100%}span.frame{display:block;overflow:hidden}span.frame > span{border:1px solid #ddd;display:block;float:left;overflow:hidden;margin:13px 0 0;padding:7px;width:auto}span.frame span img{display:block;float:left}span.frame span span{clear:both;color:#333;display:block;padding:5px 0 0}span.align-center{display:block;overflow:hidden;clear:both}span.align-center > span{display:block;overflow:hidden;margin:13px auto 0;text-align:center}span.align-center span img{margin:0 auto;text-align:center}span.align-right{display:block;overflow:hidden;clear:both}span.align-right > span{display:block;overflow:hidden;margin:13px 0 0;text-align:right}span.align-right span img{margin:0;text-align:right}span.float-left{display:block;margin-right:13px;overflow:hidden;float:left}span.float-left span{margin:13px 0 0}span.float-right{display:block;margin-left:13px;overflow:hidden;float:right}span.float-right > span{display:block;overflow:hidden;margin:13px auto 0;text-align:right}code,tt{margin:0 2px;padding:0 5px;white-space:nowrap;border:1px solid #eaeaea;background-color:#f8f8f8;border-radius:3px}pre code{margin:0;padding:0;white-space:pre;border:none;background:transparent}.highlight pre{background-color:#f8f8f8;border:1px solid #ccc;font-size:13px;line-height:19px;overflow:auto;padding:6px 10px;border-radius:3px}pre{background-color:#f8f8f8;border:1px solid #ccc;font-size:13px;line-height:19px;overflow:auto;padding:6px 10px;border-radius:3px}pre code,pre tt{background-color:transparent;border:none}.slasher{color:#000000}</style></head>
+<body>
+
+<h1>Docker Compose</h1>
+
+<p>Ранее мы уже рассмотрели базовую работу с докером и описанием контейнера. Но как быть, если для приложения требуется не один контейнер, а много? Ведь могут понадобиться реляционная база данных, нереляционная, шина&hellip; Если под каждую сущность описывать свой контейнер, то как их вместе запускать? Скопировать в <code>README.md</code> все команды и копировать оттуда в терминал? Не выглядит как хорошая идея.</p>
+
+<p>Решение есть — утилита <a href="https://docs.docker.com/compose/">docker-compose</a>, которая идёт в комплекте с Docker. Её суть в следующем: простым и понятным yaml-языком описать, какие контейнеры надо запускать, в каком порядке, какие порты и папки пробросить, а дальше она сделает всё сама. Да, docker-compose позволяет одной командой запустить сколько угодно контейнеров так, как вы опишете.</p>
+
+<h2>Конфигурация</h2>
+
+<p>Настройки для docker-compose описываются в файле <code>docker-compose.yaml</code>, он состоит из следующих позиций:</p>
+
+<pre><code class="language-yaml">verison: &quot;3&quot;  # версия синтаксиса, оставляем 3, пока не выйдет новый docker-compose
+
+services:  # самая главная секция, тут опишем, какие контейнеры запускать
+	service1:
+		...  # тут описываем настройки контейнера
+	service2:
+		...
+# и т. д.
+	
+</code></pre>
+
+<p>Для начала давайте запустим наш контейнер не через Docker, а через docker-compose. Для этого нужно:</p>
+
+<ul>
+<li>собирать контейнер из описанного Dockerfile;</li>
+<li>пробросить из контейнера 3000 порт;</li>
+<li>пробросить в контейнер папку <code>./shared</code>.</li>
+</ul>
+
+<p>Опишем это в синтаксисе docker-compose:</p>
+
+<pre><code class="language-yaml"># docker-compose.yaml
+version: &quot;3&quot;
+
+services:
+  server-app:
+		# Этим ключом мы скажем docker-compose, чтобы он собирал Dockerfile, который 
+		# находится в папке рядом с docker-compose.yaml
+    build:
+      context: .
+		# Проброс порта так же, как в командной строке — на какой порт хоста какой порт контейнера
+    ports:
+      - &quot;4000:3000&quot;
+		# Проброс файлов, откуда с хоста, куда в контейнер
+		volumes:
+      - ./shared:/var/www/shared
+</code></pre>
+
+<p>Есть одно отличие от того, как производился запуск Docker в первом модуле — проброс папок. В docker-compose можно использовать относительные пути, и это очень удобно для командной работы: у каждого разработчика проект хранится где угодно на его машине, но docker-compose знает, что папку <code>shared</code> надо прокидывать именно из директории с проектом.</p>
+
+<h2>Запуск контейнеров с помощью docker-compose</h2>
+
+<p>Пришло время запустить контейнер. Для этого запустите команду <code>docker-compose up server-app</code>. Вообще её синтаксис такой: <code>docker-compose up %service-name%</code>, где <code>%service-name%</code> — название сервиса в секции <code>services</code>.</p>
+
+<p>Если всё прошло успешно — в консоли вы увидите что-то похожее:</p>
+
+<pre><code class="language-bash">Starting docker_lesson_server-app_1 ... done
+Attaching to docker_lesson_server-app_1
+server-app_1  | Server running at http://0.0.0.0:3000/
+</code></pre>
+
+<p>Убедитесь, что всё работает, — откройте в браузере <a href="http://localhost:4000">localhost:4000</a>, поизменяйте файл в <code>shared</code>, посмотрите на результат. Остановите процесс с помощью <code>Ctrl+C</code>.</p>
+
+<p>Как и у Docker, у docker-compose для запуска есть ключ <code>-d</code>, чтобы запустить процесс в фоне. Запуск контейнеров в фоне — самый используемый вариант, хотя если нужно посмотреть <code>stdout</code> — можно запускать без ключа <code>-d</code>.</p>
+
+<h2>Мониторинг и остановка контейнеров</h2>
+
+<p>Просмотр запущенных контейнеров с использованием docker-compose ничем не отличается от Docker: <code>docker-compose ps</code>. Однако, чтобы увидеть имена запущенных сервисов, надо использовать дополнительный ключ: <code>docker-compose ps --services</code>.</p>
+
+<p>Остановка контейнеров немного отличается, хотя команда похожа на ту, что используется в Docker — <code>stop</code>. Но в качестве аргумента передаётся имя сервиса, а не идентификатор запущенного контейнера: <code>docker-compose server-app</code>.</p>
+
+<p>Так же можно остановить вообще все запущенные контейнеры в текущем контексте docker-compose, просто написав <code>stop</code> без аргументов: <code>docker-compose stop</code>.</p>
+
+<p>Надо объяснить, что имеется в виду под контекстом. docker-compose не может работать без файла <code>docker-compose.yaml</code>. Другими словами — docker-compose может работать только в той папке, где есть его конфигурационный файл. Такая папка здесь подразумевается под контекстом. У вас может быть много проектов, в каждом из которых будет <code>docker-compose.yaml</code>. Можно не бояться, что выполнение <code>docker-compose stop</code> остановит контейнеры из другого проекта.</p>
+
+<h1>Связывание контейнеров</h1>
+
+<p>В <code>docker-compose.yaml</code> можно описать несколько сервисов. Это удобно, когда достаточно в одном файле описать все настройки окружения, и каждый разработчик сможет поднять это на своей машине одной командой.</p>
+
+<p>Для примера добавим в наш файл сервис с MongoDB.</p>
+
+<p>В первую очередь надо найти образ с MongoDB на <a href="http://hub.docker.com">hub.docker.com</a> и почитать его документацию. Вот <a href="https://hub.docker.com/_/mongo">официальный образ mongo</a>. Нас в нём интересует несколько вещей:</p>
+
+<ul>
+<li>как задать логин и пароль для доступа к монге;</li>
+<li>где монга хранит свои файлы, чтобы пробросить туда папку.</li>
+</ul>
+
+<p>Найдите эти моменты в документации самостоятельно и возвращайтесь.</p>
+
+<h2>Настраиваем конфигурацию</h2>
+
+<p>Добавим в раздел <code>services</code> новый сервис, назовём его <code>mongo</code> (вы можете назвать, как вам удобно) и допишем зависимость от него к нашему <code>server-app</code>.</p>
+
+<p>Также настроим сеть внутри docker-compose, которая свяжет сервисы.</p>
+
+<pre><code class="language-bash"># docker-compose.yaml
+version: &quot;3&quot;
+
+services:
+	# MongoDB ставим впереди server-app, так как тот server-app от этого сервиса
+	mongo:
+		# Здесь именно image, потому что мы его сами не пишем, он будет взят с докерхаба
+		image: mongo
+		environment:
+			MONGO_INITDB_ROOT_USERNAME: user
+			MONGO_INITDB_ROOT_PASSWORD: password
+		volumes:
+		  - ./mongo:/data/db
+		ports:
+		  - &quot;27017:27017&quot;
+		# Появился новый параметр — networks, о нём ниже
+		networks:
+			# Назвать сеть можно как угодно
+			- awesome
+
+  server-app:
+		# Этим ключом мы скажем docker-compose, чтобы он собирал докерфайл, который 
+		# находится в папке рядом с docker-compose.yaml
+    build:
+      context: .
+		# Проброс порта так же, как в командной строке — на какой порт хоста какой порт контейнера
+    ports:
+      - &quot;4000:3000&quot;
+		# Проброс файлов, откуда с хоста, куда в контейнер
+		volumes:
+      - ./shared:/var/www/shared
+		# Зависимость от сервиса mongo
+		depends_on:
+			- mongo
+		# Важно добавить сеть всем сервисам, которые должны взаимодействовать между собой
+		networks:
+			- awesome
+
+# Настройки созданной сети между сервисами
+networks:
+	awesome:
+		driver: bridge
+</code></pre>
+
+<p>Запустите сервис <code>docker-compose up -d server-app</code> и посмотрите вывод <code>docker-compose ps</code> — там будут уже два запущенных сервиса. Если сейчас остановить только <code>server-app</code>, контейнер с MongoDB продолжит работать. Подключитесь к нему с помощью вашей утилиты для работы с Mongo и проверьте, что всё в порядке. Также обратите внимание на содержимое папки <code>mongo</code>: там появились служебные файлы базы данных, и теперь ей не страшны перезапуски — все данные хранятся в хостовой системе.</p>
+
+<h2>Ставим node_modules и драйвер mongodb</h2>
+
+<p>Чтобы проверить связь с MongoDB из нашего приложения, нужно внести несколько правок.</p>
+
+<p>Во-первых, нужно создать <code>package.json</code> и записать туда зависимость <code>mongodb</code>, чтобы можно было подключаться к базе.</p>
+
+<p>Во-вторых, изменить Dockerfile, чтобы он корректно копировал приложение в контейнер и при сборке делал <code>npm install</code>.</p>
+
+<p>В третьих, подредактировать скрипт и научить его работать с базой данных.</p>
+
+<p>И наконец, нужно немного изменить файловую структуру. С этого и начнём.</p>
+
+<p>Пока у нас был один скрипт — особых проблем его скопировать в контейнер при сборке не было. Но наши приложения всегда имеют множество файлов, и чтобы не превращать файловую структуру проекта в помойку — выделим файлы приложения в папку <code>app</code> (но прежде создадим её). Файловая структура получится вот такой:</p>
+
+<pre><code class="language-bash">% tree .
+.
+├── Dockerfile
+├── app
+│   └── simpleServer.js
+├── docker-compose.yaml
+├── mongo
+│   └── .gitkeep
+└── shared
+│   └── .gitkeep
+│   └── text.json
+</code></pre>
+
+<p>Добавляем в папку <code>app</code> файл <code>package.json</code> и пишем туда зависимость:</p>
+
+<pre><code class="language-json">{
+  &quot;name&quot;: &quot;docker-lesson&quot;,
+  &quot;version&quot;: &quot;1.0.0&quot;,
+  &quot;dependencies&quot;: {
+    &quot;mongodb&quot;: &quot;3.6.5&quot;
+  }
+}
+</code></pre>
+
+<p>Изменяем Dockerfile, чтобы файлы приложения корректно копировались в контейнер:</p>
+
+<pre><code class="language-docker">FROM ubuntu:18.04
+RUN apt update &amp;&amp; apt install -y nodejs &amp;&amp; apt install -y npm
+WORKDIR /var/www
+# Слеши в конце означают, что надо все файлы из папки app скопировать в папку /var/www/
+COPY app/ /var/www/
+# При сборке контейнера в нём нужно исполнить npm install, и в папке /var/www
+# будет лежать папка node_modules
+RUN npm install
+EXPOSE 3000
+CMD node simpleServer.js
+</code></pre>
+
+<p>Теперь пора написать в скрипт работу с базой данных. Напишем простейшее подключение:</p>
+
+<pre><code class="language-jsx">const http = require('http');
+const fs = require('fs');
+// Подключаем библиотеку драйвера
+const MongoClient = require('mongodb').MongoClient;
+
+const hostname = '0.0.0.0';
+const port = 3000;
+
+const server = http.createServer((req, res) =&gt; {
+  const sharedValue = fs.readFileSync('./shared/text.json');
+  res.statusCode = 200;
+  res.setHeader('Content-Type', 'text/plain');
+  res.end('Hello World' + sharedValue);
+});
+
+// mongo connection URL
+// Обратите внимание на хост - mongo
+const url = 'mongodb://mongo:27017';
+
+const dbName = 'docker-lesson';
+const client = new MongoClient(url);
+
+client.connect(function(err) {
+  if (err) {
+    console.error('Cant connect to MongoDB');
+    throw err;
+  }
+  console.log('Connected successfully to server');
+
+  const db = client.db(dbName);
+
+  server.listen(port, hostname, () =&gt; {
+    console.log(`Server running at http://${hostname}:${port}/`);
+    console.log('Database: ', db);
+  });
+});
+</code></pre>
+
+<p>По коду какие-то объяснения излишни. Всё стандартно, за исключением URL для соединения с базой данных. Почему адрес содержит <code>mongo:27017</code>?</p>
+
+<p>При написании docker-compose мы указали обоим сервисам сеть. Теперь, когда docker-compose запускает контейнеры, — он создаёт между ними локальную сеть, знает, какие IP-адреса имеют контейнеры, и в каждый контейнер прописывает в файл <code>hosts</code> строки-алиасы с именами контейнеров и их адресами (на самом деле не совсем так, но смысл именно в этом). Поэтому по хосту mongo резолвится нужный IP-адрес.</p>
+
+<h2>Пересборка контейнера с docker-compose</h2>
+
+<p>После всех этих действий можно попробовать запустить контейнер. И получить то, на чём остановились в первый раз, — запустится сервер. Но почему? Мы же изменили Dockerfile, сильно изменили, как так? Дело в том, что надо явно сказать docker-compose пересобрать образ. Для этого выполните <code>docker-compose build server-app</code>. Если у вас сервис в <code>docker-compose.yaml</code> называется по-другому, используйте его имя.</p>
+
+<p>Теперь при запуске сервиса «на холодную» (то есть после остановки всех сервисов) вы получите в консоль сообщение об ошибке из ноды:</p>
+
+<pre><code class="language-bash">MongoNetworkError: failed to connect to server [mongo:27017] on first connect
+</code></pre>
+
+<p>Если такого сообщения вы не получили — значит, запускаете сервис приложения с уже запущенным сервисом mongo. Остановите всё с помощью <code>docker-compose stop</code>, а затем <code>docker-compose up server-app</code> — ошибка должна случиться, потому что MongoDB стартует не мгновенно. Да, контейнер с ней поднялся, и docker-compose командует подъём контейнеру с нашим приложением. А в это время движок MongoDB ещё запускается. От этого и происходит ошибка.</p>
+
+<p>Если спустя некоторое время попробовать запустить контейнер с приложением — всё будет хорошо, сервер поднимется, соединение с базой установится. Но для боевых условий, конечно, не подходит такой ручной менеджмент запуска — дожидаться, пока всё заведётся.</p>
+
+<h2>Настраиваем ожидание старта MongoDB</h2>
+
+<p>Воспользуемся инструментом <a href="https://github.com/Eficode/wait-for">wait-for</a>. Создайте папку <code>utils</code>, положите в неё файл <code>wait-for.sh</code> и скопируйте в него <a href="https://github.com/eficode/wait-for/blob/master/wait-for">соответствующий код</a>.</p>
+
+<p>Теперь надо опять поредактировать Dockerfile.</p>
+
+<p>Во-первых, нужно поставить <a href="http://netcat.sourceforge.net/">netcat</a> — утилиту, которая нужна для работы <code>wait-for</code>.</p>
+
+<p>Во-вторых, необходимо скопировать <code>wait-for.sh</code> в контейнер и дать ему права на исполнение.</p>
+
+<p>В третьих, разнообразия ради, перенесём CMD из Dockerfile в docker-compose.</p>
+
+<p>Дописываем соответствующие команды в Dockerfile (и CMD удаляем):</p>
+
+<pre><code class="language-docker">FROM ubuntu:18.04
+# В эту строку добавилась установка netcat
+RUN apt update &amp;&amp; apt install -y nodejs &amp;&amp; apt install -y npm &amp;&amp; apt install -y netcat
+WORKDIR /var/www
+COPY app/ /var/www/
+# Копируем wait-for
+COPY utils/wait-for.sh wait-for.sh
+# даём ему прав на запуск
+RUN chmod +x wait-for.sh
+RUN npm install
+EXPOSE 3000
+# CMD больше нет
+</code></pre>
+
+<p>Теперь сам контейнер ничего не запустит. Чтобы запустить наш сервер, надо в <code>docker-compose.yaml</code> дописать к сервису параметр <code>command</code>:</p>
+
+<pre><code class="language-yaml">command: ./wait-for.sh mongo:27017 -- node simpleServer.js
+</code></pre>
+
+<p>Это укажет docker-compose, что после старта контейнера надо выполнить команду <code>./wait-for.sh</code> с аргументами <code>mongo:27017 -- node simpleServer.js</code>. mongo:27017 — это тот адрес, ответа которого надо дождаться, а через двойной минус та команда, которую надо будет запустить после ответа ожидаемого сервера.</p>
+
+<p>Пересоберите контейнер, и всё должно запуститься корректно.</p>
+
+<h1>Заключение</h1>
+
+<p>Вы познакомились с основами docker-compose, которых достаточно для продуктивной работы. Перед тем как приступить к базам данных, надо разобраться с последним моментом — с переменными окружения, потому что хранить логин-пароль от базы в <code>docker-compose.yaml</code> и название сервиса mongo в коде приложения — это <del>дичь</del> далеко не лучшая практика. Такие вещи должны быть конфигурируемы снаружи.</p>
+
+<p>И небольшой квиз напоследок.</p>
+
+<hr>
+
+<p><strong>1) Какое преимущество дает использование alpine-версий образа? Если такая имеется</strong></p>
+
+<ul>
+<li><p>Никакого преимущества, просто другие название</p></li>
+
+<li><p>Дает возможность использовать свежие бета-версии продукта, образ которого используем</p></li>
+
+<li><p>Специальная версия Linux в основе контейнера, из которой вынесены все утилиты, которые не влияют на запуск и работоспособность продукта</p></li>
+</ul>
+
+<hr>
+
+<p><strong>2) Что означает запись <code>5002:5000</code> в <code>docker-compose.yml</code>?</strong></p>
+
+<ul>
+<li><p>Проброс 5002 порта контейнера на 5000 сервера, где запущен docker-compose</p></li>
+
+<li><p>Проброс 5000 порта контейнера на 5002 сервера, где запущен docker-compose</p></li>
+
+<li><p>Открытие всех портов для доступа в контейнер с 5002 по 5000</p></li>
+</ul>
+
+<hr>
+
+<p><strong>3) Параметр <code>depends_on</code> в <code>docker-compose.yml</code> содержит имена контейнеров, которые&hellip;</strong></p>
+
+<ul>
+<li><p>Нужно запустись до запуска контейнера</p></li>
+
+<li><p>Нужно запустись после запуска контейнера</p></li>
+
+<li><p>Не могут быть запущены во время запуска контейнера</p></li>
+</ul>
+
+</body>
+</html>

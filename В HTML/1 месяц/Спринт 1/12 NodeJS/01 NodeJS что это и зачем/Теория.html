@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>NodeJS: что это и зачем</title>
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+  <meta charset="utf-8">
+<style>body{font-family:Helvetica,arial,sans-serif;font-size:14px;line-height:1.6;background-color:#fff;padding:30px;color:#333;max-width:1140px;margin:0 auto}body > :first-child{margin-top:0!important}body > :last-child{margin-bottom:0!important}a{color:#4183C4;text-decoration:none}a.absent{color:#c00}a.anchor{display:block;padding-left:30px;margin-left:-30px;cursor:pointer;position:absolute;top:0;left:0;bottom:0}h1,h2,h3,h4,h5,h6{margin:20px 0 10px;padding:0;font-weight:700;-webkit-font-smoothing:antialiased;cursor:text;position:relative}h2:first-child,h1:first-child,h1:first-child + h2,h3:first-child,h4:first-child,h5:first-child,h6:first-child{margin-top:0;padding-top:0}h1:hover a.anchor,h2:hover a.anchor,h3:hover a.anchor,h4:hover a.anchor,h5:hover a.anchor,h6:hover a.anchor{text-decoration:none}h1 tt,h1 code{font-size:inherit}h2 tt,h2 code{font-size:inherit}h3 tt,h3 code{font-size:inherit}h4 tt,h4 code{font-size:inherit}h5 tt,h5 code{font-size:inherit}h6 tt,h6 code{font-size:inherit}h1{font-size:28px;color:#000}h2{font-size:24px;border-bottom:1px solid #ccc;color:#000}h3{font-size:18px}h4{font-size:16px}h5{font-size:14px}h6{color:#777;font-size:14px}p,blockquote,ul,ol,dl,li,table,pre{margin:15px 0}hr {padding:0;margin-bottom:-8px;height:1px;border:none;background:black}body > h2:first-child{margin-top:0;padding-top:0}body > h1:first-child{margin-top:0;padding-top:0}body > h1:first-child + h2{margin-top:0;padding-top:0}body > h3:first-child,body > h4:first-child,body > h5:first-child,body > h6:first-child{margin-top:0;padding-top:0}a:first-child h1,a:first-child h2,a:first-child h3,a:first-child h4,a:first-child h5,a:first-child h6{margin-top:0;padding-top:0}h1 p,h2 p,h3 p,h4 p,h5 p,h6 p{margin-top:0}li p.first{display:inline-block}ul,ol{padding-left:30px}ul :first-child,ol :first-child{margin-top:0}ul :last-child,ol :last-child{margin-bottom:0}dl{padding:0}dl dt{font-size:14px;font-weight:700;font-style:italic;padding:0;margin:15px 0 5px}dl dt:first-child{padding:0}dl dt > :first-child{margin-top:0}dl dt > :last-child{margin-bottom:0}dl dd{margin:0 0 15px;padding:0 15px}dl dd > :first-child{margin-top:0}dl dd > :last-child{margin-bottom:0}blockquote{border-left:4px solid #ddd;padding:0 15px;color:#777}blockquote > :first-child{margin-top:0}blockquote > :last-child{margin-bottom:0}table{padding:0}table tr{border-top:1px solid #ccc;background-color:#fff;margin:0;padding:0}table tr:nth-child(2n){background-color:#f8f8f8}table tr th{font-weight:700;border:1px solid #ccc;text-align:left;margin:0;padding:6px 13px}table tr td{border:1px solid #ccc;text-align:left;margin:0;padding:6px 13px}table tr th :first-child,table tr td :first-child{margin-top:0}table tr th :last-child,table tr td :last-child{margin-bottom:0}img{max-width:100%}span.frame{display:block;overflow:hidden}span.frame > span{border:1px solid #ddd;display:block;float:left;overflow:hidden;margin:13px 0 0;padding:7px;width:auto}span.frame span img{display:block;float:left}span.frame span span{clear:both;color:#333;display:block;padding:5px 0 0}span.align-center{display:block;overflow:hidden;clear:both}span.align-center > span{display:block;overflow:hidden;margin:13px auto 0;text-align:center}span.align-center span img{margin:0 auto;text-align:center}span.align-right{display:block;overflow:hidden;clear:both}span.align-right > span{display:block;overflow:hidden;margin:13px 0 0;text-align:right}span.align-right span img{margin:0;text-align:right}span.float-left{display:block;margin-right:13px;overflow:hidden;float:left}span.float-left span{margin:13px 0 0}span.float-right{display:block;margin-left:13px;overflow:hidden;float:right}span.float-right > span{display:block;overflow:hidden;margin:13px auto 0;text-align:right}code,tt{margin:0 2px;padding:0 5px;white-space:nowrap;border:1px solid #eaeaea;background-color:#f8f8f8;border-radius:3px}pre code{margin:0;padding:0;white-space:pre;border:none;background:transparent}.highlight pre{background-color:#f8f8f8;border:1px solid #ccc;font-size:13px;line-height:19px;overflow:auto;padding:6px 10px;border-radius:3px}pre{background-color:#f8f8f8;border:1px solid #ccc;font-size:13px;line-height:19px;overflow:auto;padding:6px 10px;border-radius:3px}pre code,pre tt{background-color:transparent;border:none}.slasher{color:#000000}</style></head>
+<body>
+
+<p># NodeJS: что это и зачем</p>
+
+<p><strong><a href="https://nodejs.org/en/">NodeJS</a></strong> — интерпретатор JavaScript, основанный на движке V8. Тот же движок работает в браузерах на базе Chromium — он транслирует JavaScript в машинный код. Однако NodeJS исполняет код вне браузера, например на сервере. Так JavaScript из специализированного языка для сайтов превращается в универсальный язык программирования.</p>
+
+<p>NodeJS добавляет возможность работать с устройствами ввода-вывода через свой API (написанный на C++) и подключать библиотеки, написанные на разных языках, обеспечивая вызовы к ним из JavaScript-кода.</p>
+
+<p>По ходу курса вы будете работать с NodeJS, например, для создания серверной части приложений или работы с базами данных, подключите SSR.</p>
+
+<h2>Установка NodeJS</h2>
+
+<p>Она может отличаться в зависимости от операционной системы:</p>
+
+<ul>
+<li><a href="https://nodejs.org/en/download/">Windows и MacOS</a>,</li>
+<li><a href="https://nodejs.org/en/download/package-manager/">Linux и другие</a>.</li>
+</ul>
+
+<p>Составим скрипт, чтобы протестировать работу NodeJS:</p>
+
+<pre><code class="language-javascript">const hello = 'Hello, NodeJS';
+console.log(hello);
+</code></pre>
+
+<p>Запустить скрипт можно через команду <code>node</code>, передав в качестве аргумента исполняемый файл. На выходе увидите содержимое файла в консоли:</p>
+
+<pre><code class="language-bash">$ node script.js 
+
+Hello, NodeJS
+</code></pre>
+
+<p>Как видите, это обычный JavaScript, ничего нового.</p>
+
+<h2>Пакетный менеджер npm</h2>
+
+<p><strong><a href="https://www.npmjs.com/">npm</a></strong> — это пакетный менеджер JavaScript. Аналоги в других ЯП / системах — <a href="https://pypi.org/project/pip/">pip</a>, <a href="https://tracker.debian.org/pkg/apt">apt</a>. Этот менеджер по умолчанию устанавливается вместе с NodeJS.</p>
+
+<p>Как и с любым другим пакетным менеджером — можно устанавливать пакеты из глобального хранилища.</p>
+
+<pre><code class="language-bash">$ npm -v # Посмотреть версию npm
+6.13.7
+
+$ npm install express 
+</code></pre>
+
+<p>Также есть возможность создать собственный модуль или проект. <code>npm init</code> сначала опросит вас по основным параметрам проекта, затем создаст файл <code>package.json</code> уже с параметрами:</p>
+
+<pre><code class="language-bash">$ mkdir test &amp;&amp; cd test
+$ npm init
+# Проходим шаги создания проекта
+
+$ ls
+package.json
+</code></pre>
+
+<p>Содержимое файла будет следующим:</p>
+
+<pre><code class="language-json">{
+    &quot;name&quot;: &quot;test&quot;,
+    &quot;version&quot;: &quot;1.0.0&quot;,
+    &quot;description&quot;: &quot;&quot;,
+    &quot;main&quot;: &quot;index.js&quot;,
+    &quot;keywords&quot;: [],
+    &quot;author&quot;: &quot;&quot;,
+    &quot;license&quot;: &quot;ISC&quot;
+}
+</code></pre>
+
+<p>Часто при создании проекта устраивают стандартные параметры npm, потому можно запустить инициализацию проекта с ключом <code>--yes</code>, который просто создаст <code>package.json</code> без всяких вопросов. Для краткости можно использовать сокращённый синоним <code>-y</code>:</p>
+
+<pre><code class="language-bash">$ npm init --yes # Или: npm init -y
+</code></pre>
+
+<p>Пакетный менеджер может быть не только глобальным, но и локальным внутри компании. По умолчанию пакеты скачиваются из <code>--registry=https://registry.npmjs.org/</code>.</p>
+
+<p>Если npm в компании локальный, в корне проекта можно найти файл <code>.npmrc</code>, где описаны разные параметры, в том числе и <code>registry</code>:</p>
+
+<pre><code class="language-bash">registry=https://npm.yandex.net/
+</code></pre>
+
+<h2>Публикация пакетов</h2>
+
+<p>Npm позволяет легко добавлять пакеты в глобальное хранилище. Допустим, вы написали утилиту. У неё есть <code>package.json</code>. Называете пакет уникальным именем и можете <a href="https://medium.com/the-andela-way/build-and-publish-your-first-npm-package-a4daf0e2431">опубликовать</a> пакет наружу.</p>
+
+<pre><code class="language-bash">$ npm login
+
+$ npm publish
+</code></pre>
+
+<p>Чтобы упростить обновление версий пакета и их публикацию, в npm вы можете поставить глобально пакет <a href="https://www.npmjs.com/package/np">np</a>:</p>
+
+<pre><code class="language-bash">$ npm install --global np # -g
+</code></pre>
+
+<p>После достаточно запустить <code>np</code>:</p>
+
+<pre><code class="language-bash">$ np # --any-branch, если хотите публиковать не из ветки по умолчанию
+</code></pre>
+
+<p>Больше полезного найдёте на сайте <a href="https://www.npmjs.com/">npm</a> или <a href="https://medium.com/webbdev/npm-daa12a10caac">в статье на Medium</a>.</p>
+
+</body>
+</html>

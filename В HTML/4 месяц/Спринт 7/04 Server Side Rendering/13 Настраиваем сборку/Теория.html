@@ -1,0 +1,355 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Настраиваем сборку</title>
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+  <meta charset="utf-8">
+<style>body{font-family:Helvetica,arial,sans-serif;font-size:14px;line-height:1.6;background-color:#fff;padding:30px;color:#333;max-width:1140px;margin:0 auto}body > :first-child{margin-top:0!important}body > :last-child{margin-bottom:0!important}a{color:#4183C4;text-decoration:none}a.absent{color:#c00}a.anchor{display:block;padding-left:30px;margin-left:-30px;cursor:pointer;position:absolute;top:0;left:0;bottom:0}h1,h2,h3,h4,h5,h6{margin:20px 0 10px;padding:0;font-weight:700;-webkit-font-smoothing:antialiased;cursor:text;position:relative}h2:first-child,h1:first-child,h1:first-child + h2,h3:first-child,h4:first-child,h5:first-child,h6:first-child{margin-top:0;padding-top:0}h1:hover a.anchor,h2:hover a.anchor,h3:hover a.anchor,h4:hover a.anchor,h5:hover a.anchor,h6:hover a.anchor{text-decoration:none}h1 tt,h1 code{font-size:inherit}h2 tt,h2 code{font-size:inherit}h3 tt,h3 code{font-size:inherit}h4 tt,h4 code{font-size:inherit}h5 tt,h5 code{font-size:inherit}h6 tt,h6 code{font-size:inherit}h1{font-size:28px;color:#000}h2{font-size:24px;border-bottom:1px solid #ccc;color:#000}h3{font-size:18px}h4{font-size:16px}h5{font-size:14px}h6{color:#777;font-size:14px}p,blockquote,ul,ol,dl,li,table,pre{margin:15px 0}hr {padding:0;margin-bottom:-8px;height:1px;border:none;background:black}body > h2:first-child{margin-top:0;padding-top:0}body > h1:first-child{margin-top:0;padding-top:0}body > h1:first-child + h2{margin-top:0;padding-top:0}body > h3:first-child,body > h4:first-child,body > h5:first-child,body > h6:first-child{margin-top:0;padding-top:0}a:first-child h1,a:first-child h2,a:first-child h3,a:first-child h4,a:first-child h5,a:first-child h6{margin-top:0;padding-top:0}h1 p,h2 p,h3 p,h4 p,h5 p,h6 p{margin-top:0}li p.first{display:inline-block}ul,ol{padding-left:30px}ul :first-child,ol :first-child{margin-top:0}ul :last-child,ol :last-child{margin-bottom:0}dl{padding:0}dl dt{font-size:14px;font-weight:700;font-style:italic;padding:0;margin:15px 0 5px}dl dt:first-child{padding:0}dl dt > :first-child{margin-top:0}dl dt > :last-child{margin-bottom:0}dl dd{margin:0 0 15px;padding:0 15px}dl dd > :first-child{margin-top:0}dl dd > :last-child{margin-bottom:0}blockquote{border-left:4px solid #ddd;padding:0 15px;color:#777}blockquote > :first-child{margin-top:0}blockquote > :last-child{margin-bottom:0}table{padding:0}table tr{border-top:1px solid #ccc;background-color:#fff;margin:0;padding:0}table tr:nth-child(2n){background-color:#f8f8f8}table tr th{font-weight:700;border:1px solid #ccc;text-align:left;margin:0;padding:6px 13px}table tr td{border:1px solid #ccc;text-align:left;margin:0;padding:6px 13px}table tr th :first-child,table tr td :first-child{margin-top:0}table tr th :last-child,table tr td :last-child{margin-bottom:0}img{max-width:100%}span.frame{display:block;overflow:hidden}span.frame > span{border:1px solid #ddd;display:block;float:left;overflow:hidden;margin:13px 0 0;padding:7px;width:auto}span.frame span img{display:block;float:left}span.frame span span{clear:both;color:#333;display:block;padding:5px 0 0}span.align-center{display:block;overflow:hidden;clear:both}span.align-center > span{display:block;overflow:hidden;margin:13px auto 0;text-align:center}span.align-center span img{margin:0 auto;text-align:center}span.align-right{display:block;overflow:hidden;clear:both}span.align-right > span{display:block;overflow:hidden;margin:13px 0 0;text-align:right}span.align-right span img{margin:0;text-align:right}span.float-left{display:block;margin-right:13px;overflow:hidden;float:left}span.float-left span{margin:13px 0 0}span.float-right{display:block;margin-left:13px;overflow:hidden;float:right}span.float-right > span{display:block;overflow:hidden;margin:13px auto 0;text-align:right}code,tt{margin:0 2px;padding:0 5px;white-space:nowrap;border:1px solid #eaeaea;background-color:#f8f8f8;border-radius:3px}pre code{margin:0;padding:0;white-space:pre;border:none;background:transparent}.highlight pre{background-color:#f8f8f8;border:1px solid #ccc;font-size:13px;line-height:19px;overflow:auto;padding:6px 10px;border-radius:3px}pre{background-color:#f8f8f8;border:1px solid #ccc;font-size:13px;line-height:19px;overflow:auto;padding:6px 10px;border-radius:3px}pre code,pre tt{background-color:transparent;border:none}.slasher{color:#000000}</style></head>
+<body>
+
+<h1>Настраиваем сборку</h1>
+
+<p>Начнём с настройки сборки проекта. С точки зрения архитектуры нам нужно:</p>
+
+<ul>
+<li>TypeScript;</li>
+<li>CSS, SCSS (можно заменить на любой другой препроцессор, если он вам нужен) или PostCSS (например, автопрефиксер);</li>
+<li>работа с файлами, картинками, иной статикой.</li>
+</ul>
+
+<p>Все конфигурации для Webpack будем реализовывать на TypeScript (ну а как же иначе).</p>
+
+<p>Перейдём к архитектуре сборки. Процесс сборки будет состоять из нескольких этапов:</p>
+
+<ol>
+<li>Скомпилировать JS-бандл с вендорами проекта (react, react-dom).</li>
+<li>Скомпилировать конфигурационные файлы для проекта (конфиги хранят пути к статике и другую информацию, которой можно управлять через конфиги). Об этом подробнее напишем ниже.</li>
+<li>Скомпилировать сервер (тот, что Express и раздаёт проект).</li>
+<li>Скомпилировать клиент.</li>
+</ol>
+
+<p>И ещё пятое действие (если мы в <code>dev</code>) — запустить watch-процесс, который будет по изменению в коде обновлять вашу страницу.</p>
+
+<h2>Собираем вендор</h2>
+
+<p>Составим конфиг, в котором опишем, какие вендоры нужно скомпилировать и куда их вывести. Пример файла:</p>
+
+<pre><code class="language-tsx">// webpack/config/vendors.config.ts
+
+import {join} from 'path';
+import webpack from 'webpack';
+
+import {VENDORS} from '../assets/config';
+import {ROOT_DIR_FROM_WEBPACK} from '../assets/dir';
+import {ENVS} from '../assets/env';
+
+const DIST_DIR = join(ROOT_DIR_FROM_WEBPACK, 'dist');
+
+const config: webpack.Configuration = {
+  target: 'web',
+  devtool: 'source-map',
+  entry: {
+    vendors: VENDORS, // [ 'react', 'react-dom', ... ]
+  },
+  output: {
+    library: '[name]_[hash]',
+    filename: '[name]_[hash].js',
+    path: join(DIST_DIR, 'client', '_'),
+  },
+  plugins: [
+    new webpack.DllPlugin({
+      name: '[name]_[hash]',
+      path: join(DIST_DIR, 'webpack', 'vendors-manifest.json'),
+    }),
+  ],
+};
+
+export default config;
+</code></pre>
+
+<p>Полный файл вы можете посмотреть в <a href="https://github.com/Yandex-Practicum/web-middle-ssr/blob/master/react/webpack/config/vendors.config.ts">нашем репозитории</a>. Разберёмся с текущим сниппетом.</p>
+
+<p>В <code>entry</code> задаём список необходимых вам библиотек в отдельном бандле. Через <a href="https://webpack.js.org/plugins/dll-plugin/">DLL-плагин</a> собираем список необходимых зависимостей. На выходе получится JS-бандл и <code>vendors-manifest.json</code>, который будет нужен при сборке клиентской части.</p>
+
+<p>Сгенерированный JSON-файл будет нужен в следующих сборках, потому добавим его генерацию при запуске установки зависимостей, например, сделав отдельный скрипт:</p>
+
+<p><code>&quot;init&quot;: &quot;npm install &amp;&amp; npm run build:dev:vendors&quot;</code>. Можно воспользоваться хуком <code>postinstall</code> и навесить нужные команды после установки зависимостей.</p>
+
+<h2>Собираем сервер</h2>
+
+<p>Теперь нам нужно скомпилировать сервер. Компиляцию произведём утилитой <code>tsc</code>, указав нужный путь к папке: <code>tsc --project server</code>. После компиляции можно запускать процесс сборки сервера.</p>
+
+<p>Серверная сборка отличается от клиентской.</p>
+
+<p>Во-первых, для обработки файлов используются конфигурации, отличные от клиентских. Это сделано, поскольку на сервере, например, не получится корректно обработать стили. Однако их всё равно можно скомпилировать в CSS-бандлы.</p>
+
+<p>Во-вторых, на сервере не существует никаких <code>localStorage</code> и <code>window</code>. Поэтому, если вы используете что-то из вышеназванного, вам нужно будет замокать данные сущности. Замокать можно любую необходимую логику. Например, вот так:</p>
+
+<pre><code class="language-tsx">// webpack/mock/window.mock.ts
+
+let win;
+
+if (typeof window !== 'undefined' &amp;&amp; typeof window.getComputedStyle === 'function') {
+  win = window;
+} else {
+  win = {
+    getComputedStyle() {
+      return {
+        getPropertyValue() {},
+      };
+	  },
+    addEventListener() {},
+  };
+}
+
+export default win;
+
+// webpack/mock/localStorage.mock.ts
+
+let localStorage;
+
+if (typeof window !== 'undefined') {
+  localStorage = window.localStorage;
+} else {
+  localStorage = {
+    setItem() {},
+    getItem() {},
+  };
+}
+
+export default localStorage;
+</code></pre>
+
+<p>Подключить моки можно через <a href="https://webpack.js.org/plugins/provide-plugin/">ProvidePlugin</a>. В нашей сборке это сделано так:</p>
+
+<pre><code class="language-tsx">new webpack.ProvidePlugin({
+  window: resolve(join(__dirname, '../mock/window.mock')),
+  localStorage: resolve(join(__dirname, '../mock/localStorage.mock')),
+  document: 'global/document',
+}),
+</code></pre>
+
+<p>Подробнее пример можно рассмотреть на <a href="https://github.com/Yandex-Practicum/web-middle-ssr/blob/master/react/webpack/settings/initServerConfig.ts#L73">GitHub</a>.</p>
+
+<p>Кроме моков, в коде можно проверять, кто собирает данную часть: сервер или клиент. Это происходит через проверку наличия <code>window</code> в окружении:</p>
+
+<pre><code class="language-tsx">const isServer = !(
+  typeof window !== 'undefined' &amp;&amp;
+  window.document
+);
+
+export default isServer; // можно импортировать и использовать везде
+</code></pre>
+
+<p>Такой приём может пригодиться при создании <code>History</code> объекта:</p>
+
+<pre><code class="language-tsx">import isServer from 'path/to/checkServer';
+
+const history = !isServer
+	? createBrowserHistory()
+	: createMemoryHistory({initialEntries: router?.initialEntries || ['/']});
+</code></pre>
+
+<p>Кроме того, можно рендерить компонент в зависимости от окружения. Например, если на сервере библиотека не сможет скомпилироваться, можно оборачивать компонент в подобный блок:</p>
+
+<pre><code class="language-tsx">import isServer from 'path/to/checkServer';
+
+export function renderOnClientSideOnly(
+  Component: React.ComponentType,
+  props: any,
+) {
+  if (isServer) {
+	  return (
+      &lt;React.Fragment/&gt;
+	  );
+  }
+
+  return &lt;Component {...props}/&gt;;
+}
+</code></pre>
+
+<p>Вы можете спросить: «Какие это библиотеки нельзя скомпилировать на сервере?» Например, популярную и крайне мощную библиотеку по работе с графиками <a href="https://www.highcharts.com">Highcharts</a>. Они, к сожалению, не умеют рендериться на сервере, но их функционал зачастую незаменим.</p>
+
+<h2>Сборка клиента</h2>
+
+<p>Клиентская сборка делается в двух местах:</p>
+
+<ul>
+<li>в момент разработки для watch-режима;</li>
+<li>сборка для окружения.</li>
+</ul>
+
+<p>Сама сборка для всех идентична:</p>
+
+<pre><code class="language-tsx">function getConfig(lang: string, index: number): webpack.Configuration {
+  return flow([
+    initClientConfig({lang, index}),
+    loadScripts({isSSR: false}),
+    loadStyles({isSSR: false}),
+    loadAssets({isCopyStatic: false}),
+  ])({});
+}
+
+export default cfg.langs.map(getConfig);
+</code></pre>
+
+<p>Весь процесс сборки также разбит на шаги:</p>
+
+<ul>
+<li>описание точки входа, выхода и общих плагинов;</li>
+<li>обработка скриптов;</li>
+<li>обработка стилей;</li>
+<li>обработка картинок, файлов.</li>
+</ul>
+
+<p>В общих конфигурационных файлах мы храним ключ <code>langs</code>, который позволит собирать разные JS-бандлы в зависимости от языка (<code>cfg.langs.map(getConfig)</code>). На выходе будет, например, <code>bundle.ru.[hash].js</code>.</p>
+
+<p>Для всех языков мы можем собирать отдельные бандлы, просто указав количество языков.</p>
+
+<p>Расписывать каждый лоадер не будем, потому что вы можете добавлять нужные вам конфигурации, но покажем, как использовать два различных описания одного и того же процесса обработки стилей или скриптов. Для сервера будем использовать <code>null-loader</code>, чтобы не обрабатывать стили на сервере. Полностью лоадеры можно <a href="https://github.com/Yandex-Practicum/web-middle-ssr/blob/master/react/webpack/loaders/css.ts#L68">увидеть здесь</a>.</p>
+
+<pre><code class="language-tsx">// webpack/loaders/css.ts
+
+export default {
+  client: [
+    {
+      test: /\.css$/,
+      exclude: /node_modules/,
+      use: cssLoaders,
+    },
+    {
+      test: /\.css$/,
+      include: /node_modules/,
+      use: [
+        MiniCssExtractPlugin.loader,
+        {loader: 'css-loader'},
+        postcssLoader,
+      ],
+    },
+      {
+        test: /\.scss$/,
+        use: [
+          ...cssLoaders,
+          sassLoader,
+          {
+            loader: 'sass-resources-loader',
+            options: {
+              resources: [
+                'client/sass/_variables.scss',
+								// ...
+              ],
+            },
+          },
+        ],
+      },
+  ],
+
+  ssr: [
+    {
+      test: /\.scss$/,
+      loader: 'null-loader',
+    },
+    {
+      test: /\.css$/,
+      loader: 'null-loader',
+	  },
+	],
+};
+</code></pre>
+
+<p>На клиенте же можем использовать абсолютно любые необходимые нам модули. Из того, что может быть необычного, что можно не сразу найти в документации, — настройка CSS-модулей с возможностью загружать дополнительные стили из библиотек.</p>
+
+<p>Вы можете столкнуться с проблемой, что в вашем проекте используются CSS-модули:</p>
+
+<pre><code class="language-tsx">import styles from './Some.scss';
+
+&lt;div className={styles.wrapper}&gt; // В браузере будет хешированиый стиль, например: _3a29IuLy
+  ...
+&lt;/div&gt;
+
+</code></pre>
+
+<p>Но при этом, когда вы добавляете библиотеку, например, <a href="https://ant.design/">Ant Design</a> или <a href="https://react-select.com/home">react-select</a>, все стили будут также добавляться через <code>import</code> в CSS или TypeScript. Однако это добавляет проблем. Все классы в DOM-дереве будут хешированными. Поэтому мы добавили два лоадера для одного и того же вида файлов <code>.css</code>:</p>
+
+<ul>
+<li><code>include: /node_modules/,</code>;</li>
+<li><code>exclude: /node_modules/,</code>.</li>
+</ul>
+
+<p>Для стилей, которые включают нод-модули, мы не используем CSS-модули, в отличие от тех стилей, которые созданы в самом проекте.</p>
+
+<p>Подобное поведение можно реализовать не только через два лоадера, но и через один с обработкой входящих файлов через проверку путей. Какой способ вам удобнее и кажется более декларативным, тот и используйте.</p>
+
+<h3>Сборка для разработки</h3>
+
+<p>В момент разработки нас интересует обновление клиента при каждом изменении кода, например, как в webpack-dev-server с использованием hot module reload. Под капотом webpack-dev-server содержит обычный Express-сервер, в котором используются библиотеки:</p>
+
+<ul>
+<li><a href="https://github.com/webpack/webpack-dev-middleware">webpack-dev-middleware</a>,</li>
+<li><a href="https://github.com/webpack-contrib/webpack-hot-middleware">webpack-hot-middleware</a>.</li>
+</ul>
+
+<p>Вся магия webpack-dev-server раскроется для вас ровно в следующем предложении, готовы? Это просто дополнительный middleware для Express с использованием двух библиотек выше!</p>
+
+<p>Не верите? Смотрите!</p>
+
+<pre><code class="language-tsx">import {RequestHandler} from 'express';
+import webpack from 'webpack';
+import devMiddleware from 'webpack-dev-middleware';
+import hotMiddleware from 'webpack-hot-middleware';
+
+import webpackConfigs from 'webpack/config/client.config';
+
+import render from './render';
+
+function getWebpackMiddlewares(config: webpack.Configuration, index: number): RequestHandler[] {
+  const compiler = webpack({...config, mode: 'development'});
+
+  return [
+      devMiddleware(compiler, {
+        logLevel: 'error',
+        publicPath: config.output!.publicPath!,
+      }),
+      hotMiddleware(compiler, {path: `/__webpack_hmr_${index}`}),
+  ];
+}
+</code></pre>
+
+<p>Что мы здесь делаем:</p>
+
+<ol>
+<li>Импортируем конфиг для работы с клиентским кодом (выше про него говорили).</li>
+<li>Делаем компайлер из импортированной конфигурации.</li>
+<li>Настраиваем hot module reload.</li>
+<li>PROFIT!!!</li>
+</ol>
+
+<p>Всё, что остаётся, — подключить данную мидлварю к роуту рендеринга самого продукта:</p>
+
+<pre><code class="language-tsx">function render(req, res) {
+	const jsx = (&lt;div&gt;Hello, My App!&lt;/div&gt;);
+	const reactHtml = renderToString(jsx);
+
+	res.send(getHtml(reactHtml));
+}
+
+app.use('/', [mw1, mwi, ..., hmrMiddleware], render); // подключаем мидлвари
+</code></pre>
+
+<p>Напомним, что мидлвары исполняются поочерёдно перед каждым вызовом финального <code>render</code>.</p>
+
+<p>Поздравляю, вы реализовали свой webpack-dev-server, который можете править так, как вам нужно, и тогда, когда вам нужно, без необходимости заглядывать в исходники библиотеки.</p>
+
+<h3>Сборка клиента для окружения</h3>
+
+<p>Здесь всё гораздо проще. Достаточно запустить скрипт <code>webpack</code> с указанием пути к конфигурационному файлу сборки клиента. Например, так:</p>
+
+<pre><code class="language-bash">webpack --mode=production --hide-modules --config webpack/config/client.config.ts
+</code></pre>
+
+<h2>Итог</h2>
+
+<p>Теперь вы знаете, что под капотом webpack-dev-server, умеете настраивать сборку в SSR и как минимум понимаете, что здесь нет ракетостроения: всё делается через TypeScript, ExpressJS и Webpack. Достаточно немного заглянуть вглубь инструментов, и теперь вам не нужно завязывать на целую экосистему чужих команд (вроде NextJS).</p>
+
+</body>
+</html>

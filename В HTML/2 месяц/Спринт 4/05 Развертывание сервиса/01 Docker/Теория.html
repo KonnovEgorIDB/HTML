@@ -1,0 +1,313 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Docker</title>
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+  <meta charset="utf-8">
+<style>body{font-family:Helvetica,arial,sans-serif;font-size:14px;line-height:1.6;background-color:#fff;padding:30px;color:#333;max-width:1140px;margin:0 auto}body > :first-child{margin-top:0!important}body > :last-child{margin-bottom:0!important}a{color:#4183C4;text-decoration:none}a.absent{color:#c00}a.anchor{display:block;padding-left:30px;margin-left:-30px;cursor:pointer;position:absolute;top:0;left:0;bottom:0}h1,h2,h3,h4,h5,h6{margin:20px 0 10px;padding:0;font-weight:700;-webkit-font-smoothing:antialiased;cursor:text;position:relative}h2:first-child,h1:first-child,h1:first-child + h2,h3:first-child,h4:first-child,h5:first-child,h6:first-child{margin-top:0;padding-top:0}h1:hover a.anchor,h2:hover a.anchor,h3:hover a.anchor,h4:hover a.anchor,h5:hover a.anchor,h6:hover a.anchor{text-decoration:none}h1 tt,h1 code{font-size:inherit}h2 tt,h2 code{font-size:inherit}h3 tt,h3 code{font-size:inherit}h4 tt,h4 code{font-size:inherit}h5 tt,h5 code{font-size:inherit}h6 tt,h6 code{font-size:inherit}h1{font-size:28px;color:#000}h2{font-size:24px;border-bottom:1px solid #ccc;color:#000}h3{font-size:18px}h4{font-size:16px}h5{font-size:14px}h6{color:#777;font-size:14px}p,blockquote,ul,ol,dl,li,table,pre{margin:15px 0}hr {padding:0;margin-bottom:-8px;height:1px;border:none;background:black}body > h2:first-child{margin-top:0;padding-top:0}body > h1:first-child{margin-top:0;padding-top:0}body > h1:first-child + h2{margin-top:0;padding-top:0}body > h3:first-child,body > h4:first-child,body > h5:first-child,body > h6:first-child{margin-top:0;padding-top:0}a:first-child h1,a:first-child h2,a:first-child h3,a:first-child h4,a:first-child h5,a:first-child h6{margin-top:0;padding-top:0}h1 p,h2 p,h3 p,h4 p,h5 p,h6 p{margin-top:0}li p.first{display:inline-block}ul,ol{padding-left:30px}ul :first-child,ol :first-child{margin-top:0}ul :last-child,ol :last-child{margin-bottom:0}dl{padding:0}dl dt{font-size:14px;font-weight:700;font-style:italic;padding:0;margin:15px 0 5px}dl dt:first-child{padding:0}dl dt > :first-child{margin-top:0}dl dt > :last-child{margin-bottom:0}dl dd{margin:0 0 15px;padding:0 15px}dl dd > :first-child{margin-top:0}dl dd > :last-child{margin-bottom:0}blockquote{border-left:4px solid #ddd;padding:0 15px;color:#777}blockquote > :first-child{margin-top:0}blockquote > :last-child{margin-bottom:0}table{padding:0}table tr{border-top:1px solid #ccc;background-color:#fff;margin:0;padding:0}table tr:nth-child(2n){background-color:#f8f8f8}table tr th{font-weight:700;border:1px solid #ccc;text-align:left;margin:0;padding:6px 13px}table tr td{border:1px solid #ccc;text-align:left;margin:0;padding:6px 13px}table tr th :first-child,table tr td :first-child{margin-top:0}table tr th :last-child,table tr td :last-child{margin-bottom:0}img{max-width:100%}span.frame{display:block;overflow:hidden}span.frame > span{border:1px solid #ddd;display:block;float:left;overflow:hidden;margin:13px 0 0;padding:7px;width:auto}span.frame span img{display:block;float:left}span.frame span span{clear:both;color:#333;display:block;padding:5px 0 0}span.align-center{display:block;overflow:hidden;clear:both}span.align-center > span{display:block;overflow:hidden;margin:13px auto 0;text-align:center}span.align-center span img{margin:0 auto;text-align:center}span.align-right{display:block;overflow:hidden;clear:both}span.align-right > span{display:block;overflow:hidden;margin:13px 0 0;text-align:right}span.align-right span img{margin:0;text-align:right}span.float-left{display:block;margin-right:13px;overflow:hidden;float:left}span.float-left span{margin:13px 0 0}span.float-right{display:block;margin-left:13px;overflow:hidden;float:right}span.float-right > span{display:block;overflow:hidden;margin:13px auto 0;text-align:right}code,tt{margin:0 2px;padding:0 5px;white-space:nowrap;border:1px solid #eaeaea;background-color:#f8f8f8;border-radius:3px}pre code{margin:0;padding:0;white-space:pre;border:none;background:transparent}.highlight pre{background-color:#f8f8f8;border:1px solid #ccc;font-size:13px;line-height:19px;overflow:auto;padding:6px 10px;border-radius:3px}pre{background-color:#f8f8f8;border:1px solid #ccc;font-size:13px;line-height:19px;overflow:auto;padding:6px 10px;border-radius:3px}pre code,pre tt{background-color:transparent;border:none}.slasher{color:#000000}</style></head>
+<body>
+
+<h1>Docker</h1>
+
+<h2>Введение в проблему</h2>
+
+<p>Для запуска вашего приложения может потребоваться множество вещей:</p>
+
+<ul>
+<li>pm2 или ts-node для того, чтобы запустить приложение на JS/TS;</li>
+<li>nginx для того, чтобы корректно раздавать статику и управлять CORS, кэшированием и HTTP/2;</li>
+<li>PostgreSQL или MySQL как реляционная база данных;</li>
+<li>MongoDB как нереляционная база данных;</li>
+<li>Redis или Memcache для кэширования данных;</li>
+<li>Cron для запланированных задач;</li>
+<li>и прочие полезные вещи.</li>
+</ul>
+
+<p>Если все это поставить на ваш рабочий компьютер — начнётся кошмар. Особенно если вы работаете над несколькими проектами. Один проект, например, требует определённую версию Node, другой проект — иную. Какому-то проекту нужна одна база данных, другому — другая, третьему обе базы сразу и других версий (такое тоже бывает). В течение короткого времени ваш чистый рабочий компьютер будет завален программами и сервисами, которые не нужны в каждый момент времени, но они просто есть и тратят ресурсы. А ещё все эти программы замусоривают вашу операционную систему, вызывая неожиданные проблемы и конфликты при установке новых программ. Ситуация может усугубиться настолько, что придётся переустанавливать ОС.</p>
+
+<p>Как было бы здорово, если при работе с проектом понадобится база данных, а мы бы её запустили в каком-то ограниченном от основной операционной системы пространстве, поработали, выключили и забыли, сохранив чистоту нашего компьютера. Такой способ есть — контейнеризация.</p>
+
+<h2>Контейнеризация</h2>
+
+<blockquote>
+<p><a href="https://ru.wikipedia.org/wiki/Контейнеризация">Контейнеризация</a> — метод виртуализации, при котором ядро операционной системы поддерживает несколько изолированных экземпляров пространства пользователя вместо одного. Эти экземпляры (обычно называемые контейнерами или зонами) с точки зрения пользователя полностью идентичны отдельному экземпляру операционной системы.</p>
+</blockquote>
+
+<p>Проще говоря — в вашей операционной системе запускается ещё одна, обособленная операционная система (и может быть даже не одна), и вы можете с ней взаимодействовать. А когда она становится не нужна — выключаете её и удаляете. Красота!</p>
+
+<h2>Docker</h2>
+
+<p>Самый популярный на сегодня инструмент для контейнеризации — <a href="https://www.docker.com/">Docker</a>. Скачайте его с официального сайта, установите и запустите. На Windows придется пошаманить, вот <a href="https://docs.microsoft.com/ru-ru/windows/wsl/tutorials/wsl-containers">инструкция</a>. Если не хочется шаманить с Windows (нужна Windows 10 выше определенной версии) — можно установить Docker на вашу виртуальную машину в облаке, и проводить действия там. <a href="https://docs.docker.com/engine/install/ubuntu/">Инструкция по установке докера в Ubuntu</a>.</p>
+
+<p>Docker — это набор программного обеспечения, позволяющий легко описывать контейнеры, запускать и останавливать их, связывать друг с другом, удалять, поддерживать их работу и многое другое. Алгоритм работы с Docker состоит из нескольких шагов:</p>
+
+<ol>
+<li>Описать настройки контейнера — какая в нём будет операционная система, какие программы туда будут установлены, какие команды должны выполниться при старте операционной системы.</li>
+<li>Собрать (build) контейнер из описания настроек (на жёстком диске компьютера контейнер представлен файлами — там будут файлы операционной системы, программ и прочее).</li>
+<li>Запустить (run) контейнер, который был собран.</li>
+<li>Остановить запущенный контейнер.</li>
+<li>Удалить контейнер, чтобы больше не занимал место на диске.</li>
+</ol>
+
+<p>Шаги 3 и 4 можно повторять до тех пор, пока контейнер вам нужен в работе. Отвлеклись от одного проекта и перешли к другому? Просто остановите контейнер, а когда понадобится — снова включите. Сдали проект и больше контейнер не нужен? Удаляйте его.</p>
+
+<p>Теперь посмотрим как сделать все эти шаги и запустим наш первый контейнер с простейшим приложением на NodeJS, вот таким:</p>
+
+<pre><code class="language-jsx">const http = require('http');
+
+const hostname = '0.0.0.0'; // сервер запустим на всех интерфейсах
+const port = 3000;
+
+const server = http.createServer((req, res) =&gt; {
+  res.statusCode = 200;
+  res.setHeader('Content-Type', 'text/plain');
+  res.end('Hello World');
+});
+
+server.listen(port, hostname, () =&gt; {
+  console.log(`Server running at http://${hostname}:${port}/`);
+});
+</code></pre>
+
+<p>Запакуем его в контейнер, где оно сможет запускаться даже без NodeJS на вашем компьютере. А пока сохраните его в какую-нибудь папку.</p>
+
+<h2>Кофигурация и запуск докера</h2>
+
+<p>Конфигурация контейнера для Docker описывается в файле с именем Dockerfile. Создайте его рядом с JS-файлом.</p>
+
+<p>Полную документацию по написанию Dockerfile можно найти на <a href="https://docs.docker.com/engine/reference/builder/">официальном сайте</a>, а мы пройдёмся по основным командам.</p>
+
+<h3>FROM</h3>
+
+<p>Каждый контейнер должен иметь операционную систему. Одни из самых распространенных систем — Alpine, Ubuntu и Debian. Alpine — это очень маленький (буквально 5Мб) линукс. В нём нет почти ничего, кроме ядра и командной строки. Ubuntu и Debian побольше, в них есть всё нужное для работы.</p>
+
+<p>Описанный однажды Dockerfile называется образом. Множество готовых образов можно найти на <a href="https://hub.docker.com/">Docker Hub</a> и не писать их самостоятельно. Но сейчас в учебных целях создадим свой образ.</p>
+
+<p>Команда <code>FROM</code> обозначает, какой образ какой версии надо взять за основу вашего контейнера. Синтаксис команды: <code>FROM %BASE%:%VERSION%</code>. <code>%BASE%</code> — имя образа, <code>%VERSION%</code> — версия. Версия может быть конкретной, например <code>18.3</code>, а может быть последней, что обозначается <code>latest</code>.</p>
+
+<p>Хотите чтобы там была Ubuntu? Пишете <code>FROM ubuntu:latest</code>. Контейнер будет запускать Ubuntu последней версии. Хотите специфичную версию — пишите <code>FROM ubuntu:18.04</code>.</p>
+
+<p>Запишем эту команду в Dockerfile:</p>
+
+<pre><code class="language-docker">FROM ubuntu:18.04
+</code></pre>
+
+<p>Сейчас уже можно попробовать собрать ваш контейнер. Для этого перейдите в терминале в папку, где лежит Dockerfile и скрипт простого сервера, и введите <code>docker build -t lesson .</code>.</p>
+
+<p>Скомандуем докеру собрать образ, назвать его <code>lesson</code> (ключ <code>-t</code>), конфигурацию взять в текущей директории (за это отвечает точка в конце). Докер соберёт образ, скачав все нужные файлы, и в результате вы увидите что-то подобное:</p>
+
+<pre><code class="language-bash">% docker build -t lesson .
+[+] Building 7.9s (5/5) FINISHED                                                                                                              
+ =&gt; [internal] load build definition from Dockerfile                                                                                     0.0s
+ =&gt; =&gt; transferring dockerfile: 152B                                                                                                     0.0s
+ =&gt; [internal] load .dockerignore                                                                                                        0.0s
+ =&gt; =&gt; transferring context: 2B                                                                                                          0.0s
+ =&gt; [internal] load metadata for docker.io/library/ubuntu:18.04                                                                          3.5s
+ =&gt; [1/1] FROM docker.io/library/ubuntu:18.04@sha256:4bc3ae6596938cb0d9e5ac51a1152ec9dcac2a1c50829c74abd9c4361e321b26                    4.4s
+ =&gt; =&gt; resolve docker.io/library/ubuntu:18.04@sha256:4bc3ae6596938cb0d9e5ac51a1152ec9dcac2a1c50829c74abd9c4361e321b26                    0.0s
+ =&gt; =&gt; sha256:32776cc92b5810ce72e77aca1d949de1f348e1d281d3f00ebcc22a3adcdc9f42 943B / 943B                                               0.0s
+ =&gt; =&gt; sha256:329ed837d5081de117399fa94c258c766c389a9aa21b4013bc0e6444f6e898b0 3.32kB / 3.32kB                                           0.0s
+ =&gt; =&gt; sha256:92dc2a97ff99354714f17180401813eb3073e4f62a67643d66b461505a604cbe 26.71MB / 26.71MB                                         2.8s
+ =&gt; =&gt; sha256:be13a9d27eb82db7e9c7f3a76f70919a2d690e34e78cda8cae60161b0f5e9137 850B / 850B                                               0.6s
+ =&gt; =&gt; sha256:c8299583700ab4cc65a0126f99ca6f2b836a097dedcc64270094bea59b8b4306 162B / 162B                                               0.6s
+ =&gt; =&gt; sha256:4bc3ae6596938cb0d9e5ac51a1152ec9dcac2a1c50829c74abd9c4361e321b26 1.41kB / 1.41kB                                           0.0s
+ =&gt; =&gt; extracting sha256:92dc2a97ff99354714f17180401813eb3073e4f62a67643d66b461505a604cbe                                                1.2s
+ =&gt; =&gt; extracting sha256:be13a9d27eb82db7e9c7f3a76f70919a2d690e34e78cda8cae60161b0f5e9137                                                0.0s
+ =&gt; =&gt; extracting sha256:c8299583700ab4cc65a0126f99ca6f2b836a097dedcc64270094bea59b8b4306                                                0.0s
+ =&gt; exporting to image                                                                                                                   0.0s
+ =&gt; =&gt; exporting layers                                                                                                                  0.0s
+ =&gt; =&gt; writing image sha256:69852956c28ee8af0f1d82b2f03e9537bcb64bc6e2cb2a7206e17a9123dbd512
+ =&gt; =&gt; naming to docker.io/library/lesson
+</code></pre>
+
+<h3>RUN</h3>
+
+<p>Поставить одну операционную систему недостаточно — нужно установить в неё необходимый софт. В нашем случае это NodeJS.</p>
+
+<p>В процессе сборки образа Docker может запустить команды, которые мы можем прописать в Dockerfile. Для этого используется команда <code>RUN</code>. Синтаксис <code>RUN ...</code>, где троеточие означает любую валидную операцию в командной строке. Давайте установим NodeJS:</p>
+
+<pre><code class="language-docker">FROM ubuntu:18.04
+RUN apt update &amp;&amp; apt install -y nodejs &amp;&amp; apt install -y npm
+</code></pre>
+
+<p>Здесь мы указали докеру запустить три команды — обновить репозиторий пакетов, установить NodeJS и установить npm (просто на закуску).</p>
+
+<p>Опять соберём контейнер: <code>docker build -t lesson .</code></p>
+
+<pre><code class="language-bash">% docker build -t lesson .
+[+] Building 1.7s (6/6) FINISHED                                                                                                              
+ =&gt; [internal] load build definition from Dockerfile                                                                                     0.0s
+ =&gt; =&gt; transferring dockerfile: 227B                                                                                                     0.0s
+ =&gt; [internal] load .dockerignore                                                                                                        0.0s
+ =&gt; =&gt; transferring context: 2B                                                                                                          0.0s
+ =&gt; [internal] load metadata for docker.io/library/ubuntu:18.04                                                                          1.6s
+ =&gt; [1/2] FROM docker.io/library/ubuntu:18.04@sha256:4bc3ae6596938cb0d9e5ac51a1152ec9dcac2a1c50829c74abd9c4361e321b26                    0.0s
+ =&gt; [2/2] RUN apt update &amp;&amp; apt install -y nodejs &amp;&amp; apt install -y npm                                                           0.0s
+ =&gt; exporting to image                                                                                                                   0.0s
+ =&gt; =&gt; exporting layers                                                                                                                  0.0s
+ =&gt; =&gt; writing image sha256:a822d38ceddb07a06d6357ade50b44b38ecac82138d2de1254599136a22f6683                                             0.0s
+ =&gt; =&gt; naming to docker.io/library/lesson
+</code></pre>
+
+<p>Отлично, теперь у нас есть контейнер на базе Ubuntu, и в нём установлена NodeJS. Но толку от такого контейнера пока мало — он просто есть. Попробуем что-нибудь в нём запустить.</p>
+
+<h3>CMD</h3>
+
+<p>Эта команда выполнится, когда контейнер будет запущен (о запуске поговорим через мгновение). В этом принципиальная разница с командой <code>RUN</code> — та запускается на этапе сборки.</p>
+
+<p>Пока выполним простейшее действие — вывод версии NodeJS. Пропишем в Dockerfile новую строку:</p>
+
+<pre><code class="language-docker">FROM ubuntu:18.04
+RUN apt update &amp;&amp; apt install -y nodejs &amp;&amp; apt install -y npm
+CMD node -v
+</code></pre>
+
+<p>Синтаксис такой же, как у команды <code>RUN</code>. Не забудьте пересобрать контейнер.</p>
+
+<h3>Первый запуск контейнера</h3>
+
+<p>Убедимся, что наш контейнер получился рабочим. Для этого его надо запустить.</p>
+
+<p>Запуск в самом простом виде производится командой <code>docker run lesson</code>. Синтаксис <code>docker run %имя образа%</code>. Запустите команду и увидите что-то подобное:</p>
+
+<pre><code class="language-bash">% docker run lesson       
+v8.10.0
+</code></pre>
+
+<p>Отлично, команда запустилась и вывела в консоль версию ноды (древнюю в данном случае). Пришло время запустить в контейнере наш скрипт.</p>
+
+<h3>COPY и WORKDIR</h3>
+
+<p>Сейчас файл с простейшим сервером лежит просто рядом с докерфайлом и никак не попадает в контейнер. Контейнер изолирован от нашей операционной системы и её файловой системы. Надо скрипт как-то поместить в контейнер на этапе сборки, чтобы контейнер получился уже с нашим скриптом. А для того, чтобы поместить скрипт в предсказуемое место в контейнере используем команду <code>WORKDIR</code>.</p>
+
+<p>Команда <code>WORKDIR</code> указывает контейнеру, куда нужно сделать команду <code>cd</code> внутри контейнера при сборке и запуске контейнера. Изменим Dockerfile, уберём <code>CMD</code> с версией ноды и допишем пару команд:</p>
+
+<pre><code class="language-bash">FROM ubuntu:18.04
+RUN apt update &amp;&amp; apt install -y nodejs &amp;&amp; apt install -y npm
+WORKDIR /var/www
+COPY ./simpleServer.js simpleServer.js
+CMD echo $PWD &amp;&amp; ls -la &amp;&amp; cat simpleServer.js
+</code></pre>
+
+<p>Во-первых, мы указали докеру, что всю работу надо проводить в папке <code>/var/www</code>. Во-вторых,  использовали команду <code>COPY</code>. Её синтаксис: <code>COPY %local file% %container file%</code>. В нашем случае скрипт назывался <code>simpleServer.js</code>, и докеру было сказано скопировать его в файл <code>simpleServer.js</code>. А так как действие происходит в папке <code>/var/www</code> — файл скопируется именно в неё.</p>
+
+<p>Не забыли пересобрать контейнер после внесённых изменений?</p>
+
+<p>Чтобы убедиться, что файл скопировался правильно, мы изменили команду <code>CMD</code>, чтобы она вывела текущую директорию, список файлов в ней и вывела содержимое скрипта. При запуске контейнера вывод должен быть таким:</p>
+
+<pre><code class="language-bash">% docker run lesson       
+/var/www
+total 16
+drwxr-xr-x 1 root root 4096 Mar 16 11:42 .
+drwxr-xr-x 1 root root 4096 Mar 16 11:42 ..
+-rw-r--r-- 1 root root  338 Mar 16 08:20 simpleServer.js
+const http = require('http');
+
+const hostname = '0.0.0.0'; // сервер запустим на всех интерфейсах
+const port = 3000;
+
+const server = http.createServer((req, res) =&gt; {
+  res.statusCode = 200;
+  res.setHeader('Content-Type', 'text/plain');
+  res.end('Hello World');
+});
+
+server.listen(port, hostname, () =&gt; {
+  console.log(`Server running at http://${hostname}:${port}/`);
+});
+</code></pre>
+
+<p>Окей, всё работает! Теперь можно запустить наш сервер внутри контейнера.</p>
+
+<h3>Запуск Docker в фоновом процессе, остановка и мониторинг</h3>
+
+<p>Каждый раз, когда мы запускали контейнер — срабатывала та команда, что прописана в <code>CMD</code> и контейнер останавливался, а управление терминалом возвращалось к нам. Прежде чем перейти к запуску нашего простейшего сервера в докере надо научиться запускать Docker в фоне, следить за запущенными контейнерами и останавливать их при надобности.</p>
+
+<p>Чтобы запустить контейнер в фоновом режиме, достаточно написать флаг <code>-d</code> при запуске: <code>docker run -d lesson</code>. Контейнер запустится, в терминал будет выведен идентификатор запущенного процесса и управление консолью снова будет в нашем распоряжении.</p>
+
+<p>Чтобы посмотреть, какие контейнеры сейчас запущены, надо воспользоваться командой <code>docker ps</code>, и она выведет список контейнеров с их идентификаторами, именами и прочей информацией. Примерно вот так:</p>
+
+<pre><code class="language-bash">% docker ps
+CONTAINER ID   IMAGE     COMMAND                  CREATED          STATUS          PORTS     NAMES
+ed22504503c2   lesson    &quot;/bin/sh -c 'node si…&quot;   33 seconds ago   Up 30 seconds             sleepy_yonath
+</code></pre>
+
+<p>И наконец остановка контейнера: <code>docker stop -t 0 ed22</code>. Основная команда <code>docker stop</code>, далее параметр <code>-t 0</code>, говорящий докеру остановить контейнер немедленно (<code>t</code> значит &ldquo;timeout&rdquo;), и в конце начальные буквы идентификатора контейнера — не обязательно перепечатывать всё значение, достаточно первых уникальных символов.</p>
+
+<h3>Запуск node-сервера в контейнере</h3>
+
+<p>Теперь, когда мы вооружены знанием о запуске, мониторинге и остановке контейнеров, можно запустить приложение на ноде в контейнере и надеяться на результат (кстати, убедитесь, что этот скрипт работает: запустите и посмотрите ответ в браузере на <code>localhost:3000</code>, а затем остановите запущенный скрипт).</p>
+
+<p>Изменим команду запуска:</p>
+
+<pre><code class="language-docker">FROM ubuntu:18.04
+RUN apt update &amp;&amp; apt install -y nodejs &amp;&amp; apt install -y npm
+WORKDIR /var/www
+COPY ./simpleServer.js simpleServer.js
+CMD node simpleServer.js
+</code></pre>
+
+<p>Самостоятельная работа: пересоберите образ и запустите его в фоне. <code>docker ps</code> при этом должен сообщить вам, что контейнер запущен и функционирует.</p>
+
+<p>Теперь попробуйте зайти в браузере на <code>localhost:3000</code>, ничего не выйдет. Почему так? Ведь контейнер запущен, в нём запущен сервер на ноде — где деньги, Лебовски?</p>
+
+<h3>Проброс портов</h3>
+
+<p>Всё, что происходит в контейнере — остаётся в контейнере. Внутри контейнера действительно занят порт 3000, и там по нему будет отвечать веб-сервер. Но снаружи контейнер — это чёрный ящик, о котором мы ничего не знаем. Для связи нашей операционной системы (она называется хостом) с контейнером служат два механизма: проброс портов и проброс файловой системы. Начнём с первого.</p>
+
+<p>Нам надо указать в Dockerfile, чтобы Docker открыл доступ к определенным портам. Делается это с помощью команды <code>EXPOSE %N%</code>, где N — номер порта. Допишем в Dockerfile:</p>
+
+<pre><code class="language-docker">FROM ubuntu:18.04
+RUN apt update &amp;&amp; apt install -y nodejs &amp;&amp; apt install -y npm
+WORKDIR /var/www
+COPY ./simpleServer.js simpleServer.js
+EXPOSE 3000
+CMD node simpleServer.js
+</code></pre>
+
+<p>Остановим и пересоберём контейнер, а затем снова запустим. Но в браузере по прежнему ничего не увидим. Потому что недостаточно описать только <code>EXPOSE</code>, надо и при старте контейнера указать докеру заняться портами.</p>
+
+<p>Сделать это можно с помощью ключа  <code>-p</code>.</p>
+
+<p><code>-p</code> — ключ, которому надо указать порты: порт в хостовой системе и порт в контейнере. Docker их свяжет. <code>docker run -p %HOST_PORT%:%CONTAINER_PORT%</code>. Например, хотим чтобы 3000 порт из контейнера был доступен в хост-системе на 4000 порту. Для этого запуск будет таким: <code>docker run -p 4000:3000 -d lesson</code>.</p>
+
+<p>Теперь всё должно заработать. Запись <code>EXPOSE</code> в Dockerfile носит информационный характер и сообщает пользователю Dockerfile об используемых в приложении портах, чтобы он знал, что указывать в <code>-p</code>.</p>
+
+<h3>Проброс файловой системы</h3>
+
+<p>Дать контейнеру доступ к хостовой файловой системе — очень полезное свойство докера. Контейнеры абсолютно изолированы от нашей системы, и при выключении всё, что происходило в контейнере исчезает. Например, мы запустим MongoDB в контейнере. MongoDB хранит свои данные в файлах, что очевидно. 🙂 При старте контейнера файлы будут созданы, вы поработаете с базой, а потом выключите контейнер. И все данные сотрутся. Чтобы такого не происходило, придумали проброс файловой системы, когда мы можем папку с хоста «примонтировать» в какую-то папку в контейнере. Освоим этот навык.</p>
+
+<p>Для этого первым делом модифицируем скрипт и файловую структуру. Создайте рядом со скриптом и Dockerfile папку <code>shared</code> (название может быть любое), и положите в неё какой-нибудь текстовый файл, например <code>text.json</code>.</p>
+
+<p>Теперь изменим скрипт, чтобы он при получении запроса читал данные из этого файла <code>text.json</code> и отдавал в ответе:</p>
+
+<pre><code class="language-docker">const http = require('http');
+const fs = require('fs');
+
+const hostname = '0.0.0.0'; // сервер запустим на всех интерфейсах
+const port = 3000;
+
+const server = http.createServer((req, res) =&gt; {
+	const sharedValue = fs.readFileSync('./shared/text.json');
+  res.statusCode = 200;
+  res.setHeader('Content-Type', 'text/plain');
+  res.end('Hello World' + sharedValue);
+});
+
+server.listen(port, hostname, () =&gt; {
+  console.log(`Server running at http://${hostname}:${port}/`);
+});
+</code></pre>
+
+<p>Пересобираем контейнер.</p>
+
+<p>Теперь надо папку <code>shared</code> примонтировать в контейнер. Делается это с помощью ключа <code>-v</code> при запуске контейнера: <code>docker run -v %HOST_ABSOLUTE_PATH%:%CONTAINER_ABSOLUTE_PATH%</code>. Например <code>docker run -v ~/Documents/Code/docker_lesson/shared:/var/www/shared</code>. У вас до двоеточия будет путь в вашей файловой системе. Не забудьте про остальные аргументы запуска (порты, запуск в фоне, имя образа) и запустите контейнер. Посмотрите на ответ сервера. Потом поменяйте содержимое файла <code>text.json</code> и снова посмотрите на ответ сервера — он изменился. Потому что файлы, которые вы поменяли в вашей операционной системе в папке <code>shared</code> доступны и в контейнере.</p>
+
+<p>Проброс файловой системы применяют тогда, когда данные контейнера надо сохранить. Для этого выясняют, где в контейнере приложение хранит свои данные, и пробрасывают туда локальную папку из проекта. Содержимое пробрасываемых папок обязательно добавляют в <code>.gitignore</code>, оставляя в них только файл <code>.gitkeep</code>, чтобы не возникло приключений с отсутствующими папками (попробуйте прокинуть в контейнер папку, которой не существует на хосте, будет ошибка).</p>
+
+<h2>Заключение</h2>
+
+<p>Вы познакомились с очень важным современным инструментом, делающим вашу работу проще и спокойнее. Но выглядит это пока не очень удобно — постоянные пересборки Dockerfile, запуск с параметрами из командной строки&hellip; Во втором модуле расскажем про Docker Compose, который поможет сделать эти процессы удобнее, а для текущих целей можно обойтись без него.</p>
+
+</body>
+</html>

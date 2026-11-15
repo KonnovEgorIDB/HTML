@@ -1,0 +1,179 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Знакомство с HOC</title>
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+  <meta charset="utf-8">
+<style>body{font-family:Helvetica,arial,sans-serif;font-size:14px;line-height:1.6;background-color:#fff;padding:30px;color:#333;max-width:1140px;margin:0 auto}body > :first-child{margin-top:0!important}body > :last-child{margin-bottom:0!important}a{color:#4183C4;text-decoration:none}a.absent{color:#c00}a.anchor{display:block;padding-left:30px;margin-left:-30px;cursor:pointer;position:absolute;top:0;left:0;bottom:0}h1,h2,h3,h4,h5,h6{margin:20px 0 10px;padding:0;font-weight:700;-webkit-font-smoothing:antialiased;cursor:text;position:relative}h2:first-child,h1:first-child,h1:first-child + h2,h3:first-child,h4:first-child,h5:first-child,h6:first-child{margin-top:0;padding-top:0}h1:hover a.anchor,h2:hover a.anchor,h3:hover a.anchor,h4:hover a.anchor,h5:hover a.anchor,h6:hover a.anchor{text-decoration:none}h1 tt,h1 code{font-size:inherit}h2 tt,h2 code{font-size:inherit}h3 tt,h3 code{font-size:inherit}h4 tt,h4 code{font-size:inherit}h5 tt,h5 code{font-size:inherit}h6 tt,h6 code{font-size:inherit}h1{font-size:28px;color:#000}h2{font-size:24px;border-bottom:1px solid #ccc;color:#000}h3{font-size:18px}h4{font-size:16px}h5{font-size:14px}h6{color:#777;font-size:14px}p,blockquote,ul,ol,dl,li,table,pre{margin:15px 0}hr {padding:0;margin-bottom:-8px;height:1px;border:none;background:black}body > h2:first-child{margin-top:0;padding-top:0}body > h1:first-child{margin-top:0;padding-top:0}body > h1:first-child + h2{margin-top:0;padding-top:0}body > h3:first-child,body > h4:first-child,body > h5:first-child,body > h6:first-child{margin-top:0;padding-top:0}a:first-child h1,a:first-child h2,a:first-child h3,a:first-child h4,a:first-child h5,a:first-child h6{margin-top:0;padding-top:0}h1 p,h2 p,h3 p,h4 p,h5 p,h6 p{margin-top:0}li p.first{display:inline-block}ul,ol{padding-left:30px}ul :first-child,ol :first-child{margin-top:0}ul :last-child,ol :last-child{margin-bottom:0}dl{padding:0}dl dt{font-size:14px;font-weight:700;font-style:italic;padding:0;margin:15px 0 5px}dl dt:first-child{padding:0}dl dt > :first-child{margin-top:0}dl dt > :last-child{margin-bottom:0}dl dd{margin:0 0 15px;padding:0 15px}dl dd > :first-child{margin-top:0}dl dd > :last-child{margin-bottom:0}blockquote{border-left:4px solid #ddd;padding:0 15px;color:#777}blockquote > :first-child{margin-top:0}blockquote > :last-child{margin-bottom:0}table{padding:0}table tr{border-top:1px solid #ccc;background-color:#fff;margin:0;padding:0}table tr:nth-child(2n){background-color:#f8f8f8}table tr th{font-weight:700;border:1px solid #ccc;text-align:left;margin:0;padding:6px 13px}table tr td{border:1px solid #ccc;text-align:left;margin:0;padding:6px 13px}table tr th :first-child,table tr td :first-child{margin-top:0}table tr th :last-child,table tr td :last-child{margin-bottom:0}img{max-width:100%}span.frame{display:block;overflow:hidden}span.frame > span{border:1px solid #ddd;display:block;float:left;overflow:hidden;margin:13px 0 0;padding:7px;width:auto}span.frame span img{display:block;float:left}span.frame span span{clear:both;color:#333;display:block;padding:5px 0 0}span.align-center{display:block;overflow:hidden;clear:both}span.align-center > span{display:block;overflow:hidden;margin:13px auto 0;text-align:center}span.align-center span img{margin:0 auto;text-align:center}span.align-right{display:block;overflow:hidden;clear:both}span.align-right > span{display:block;overflow:hidden;margin:13px 0 0;text-align:right}span.align-right span img{margin:0;text-align:right}span.float-left{display:block;margin-right:13px;overflow:hidden;float:left}span.float-left span{margin:13px 0 0}span.float-right{display:block;margin-left:13px;overflow:hidden;float:right}span.float-right > span{display:block;overflow:hidden;margin:13px auto 0;text-align:right}code,tt{margin:0 2px;padding:0 5px;white-space:nowrap;border:1px solid #eaeaea;background-color:#f8f8f8;border-radius:3px}pre code{margin:0;padding:0;white-space:pre;border:none;background:transparent}.highlight pre{background-color:#f8f8f8;border:1px solid #ccc;font-size:13px;line-height:19px;overflow:auto;padding:6px 10px;border-radius:3px}pre{background-color:#f8f8f8;border:1px solid #ccc;font-size:13px;line-height:19px;overflow:auto;padding:6px 10px;border-radius:3px}pre code,pre tt{background-color:transparent;border:none}.slasher{color:#000000}</style></head>
+<body>
+
+<h1>Привет, HOC</h1>
+
+<p><a href="https://ru.reactjs.org/docs/higher-order-components.html">HOC</a> (от англ. High-Order Component, «компонент высшего порядка») — это удобный способ повторно использовать логику ваших компонентов.</p>
+
+<p>Например, вы делаете онлайн-кинотеатр и хотите по нажатию на клавишу <code>F</code> разворачивать видео в полноэкранный режим (вызывать <a href="https://developer.mozilla.org/en-US/docs/Web/API/Fullscreen_API">Fullscreen API</a>). Для этого нужно подписаться на событие <code>keyup</code>.</p>
+
+<p>Как это сделать? Напишем компонент:</p>
+
+<pre><code class="language-tsx">export default class AdvVideo extends React.Component {
+  private onKeyUp = (e: KeyboardEvent) =&gt; {
+    if (e.key === 'f') {
+      // Do business  
+    }
+  };
+
+  public componentDidMount() {
+    window.addEventListener(&quot;keyup&quot;, this.onKeyUp);
+  }
+
+  public componentWillUnmount() {
+    window.removeEventListener(&quot;keyup&quot;, this.onKeyUp);
+  }
+
+  public render() {
+    return &lt;div /&gt;;
+  }
+}
+</code></pre>
+
+<p>Если вы сделали подписку в <code>componentDidMount</code>, не забудьте отписаться в <code>componentWillUnmount</code>. То же самое относится к выделению дополнительной памяти. Если вы выделили дополнительную память — убедитесь, что она не утекает.</p>
+
+<p>Казалось бы, всё просто. Есть жизненный цикл, в нём можно делать всё, что захотим. Здесь появляются две проблемы:</p>
+
+<ul>
+<li>Что делать, когда такая логика повторяется из компонента в компонент?</li>
+<li>Что делать, когда такой логики очень много?</li>
+</ul>
+
+<p>Ведь видео в сервисе может быть не одно: реклама, трейлеры, фильмы, и это реализовано разными компонентами.</p>
+
+<p>Со временем компонент превратится во что-то такое:</p>
+
+<pre><code class="language-tsx">export default class AdvVideo extends React.Component {
+  private onKeyUp = (e: KeyboardEvent) =&gt; {
+    if (e.key === 'f') {
+      // Do business  
+    }
+  };
+
+  // Ещё 400 строчек хендлеров и «помогаторов» логики 
+
+  public componentDidMount() {
+    window.addEventListener(&quot;keyup&quot;, this.onKeyUp);
+    preloadSome();
+    fetchData().then()....then().catch().then().......
+    // Строчек 80 логики
+    doSomeBusiness();
+  }
+
+  public componentWillUnmount() {
+    window.removeEventListener(&quot;keyup&quot;, this.onKeyUp);
+    // Наверняка в componentDidMount сделали что-то такое, что здесь забыли подчистить
+  }
+
+  // Это уже на 1421-й строчке кода, куда вы вряд ли долистаете
+  public render() {
+    return &lt;div /&gt;;
+  }
+}
+</code></pre>
+
+<p>В результате он становится нечитаемым, сложным, слишком умным и крайне недекларативным.</p>
+
+<p>Что хочется увидеть, открыв файл с JSX-разметкой? В первую очередь сам компонент — что он реализует и содержит, какую цель для бизнеса выполняет. Чаще всего взгляд первым делом обращается к следующим местам в коде:</p>
+
+<ul>
+<li>Метод <code>render</code> — чтобы понять, какими данными оперирует компонент в отображении.</li>
+<li><a href="https://ru.reactjs.org/docs/typechecking-with-proptypes.html">PropTypes</a> или типизации <code>state</code> и <code>props</code> — чтобы охватить набор данных, доступных для использования.</li>
+<li>Метод <code>componentDidMount</code> — чтобы понять, какие действия будут выполнены на старте жизненного цикла компонента. Возможно, там начнутся какие-то асинхронные запросы на получение данных.</li>
+</ul>
+
+<p>Путешествие между этими точками в коде способно дать исчерпывающее представление о компоненте и его логике. А куда же поместить повторяющуюся логику? В компоненты высшего порядка, которые рассмотрим далее.</p>
+
+<h2>Как написать HOC</h2>
+
+<p>Создать компонент высшего порядка — не rocket science. Важно помнить, что Higher Order Components — не встроенный в React механизм, а просто концепция, реализуемая везде, где могут быть компоненты. HOC — это просто функция, которая принимает компонент и возвращает <strong>новый</strong> компонент.</p>
+
+<p>Представьте, что вы работаете над крупным интернет-магазином, и вам поставили задачу — отображать часть баннеров и кнопки получения скидок только по выходным дням. Таких баннеров и кнопок в проекте много, все они разбросаны по файловой структуре, и надо придумать, как решить задачу элегантно.</p>
+
+<p>Можно пойти наивным путем: изменить все нужные компоненты, вписав в них соответствующую логику. Во-первых, как показывает пример кода в предыдущем уроке, — это затратно. Можно легко запутаться, если нагружать одинаковой функциональностью множество разных компонентов — каким баннерам или кнопкам надо, каким не надо&hellip;  А с изменением бизнес-требований придётся опять обходить все компоненты и вносить в них правки. Например, менеджер поставит задачу кроме выходных эти баннеры и кнопки надо показывать ещё по пятницам. Представляете себе эту боль — опять менять десятки компонентов?</p>
+
+<p>Предлагаем решить эту задачу с помощью HOC.</p>
+
+<p>Вспомним определение: компонент высшего порядка — это функция, которая принимает компонент и возвращает новый компонент. Начнём с заготовки, соответствующей определению:</p>
+
+<pre><code class="language-tsx">function renderOnWeekends(WrappedComponent: React.ComponentType) {
+  class NewComponent extends React.Component {
+     // То ли ещё будет
+  }
+
+  return NewComponent;
+};
+</code></pre>
+
+<p>Что здесь написано?</p>
+
+<p>Во-первых, типы. Функция принимает компонент, у него есть тип <code>ComponentType</code>.</p>
+
+<p>Во-вторых, внутри функции создаётся новый компонент. В данном случае классовый компонент. Обязательно ли делать именно классовый компонент? Нет, можете также сделать функциональный.</p>
+
+<p>Переименуем создаваемый компонент для чистоты кода и добавим логики:</p>
+
+<pre><code class="language-tsx">function renderOnWeekends(WrappedComponent: React.ComponentType) {
+  class OnWeekendComponent extends React.Component {
+		private isWeekend = false;
+
+		constructor(props) {
+			super(props);
+			const currentDay = new Date().getDay();
+			this.isWeekend = [6, 7].includes(currentDay);
+		}
+
+    public render() {
+      return this.isWeekend ? &lt;WrappedComponent {...this.props} /&gt; : null;
+    }
+  }
+
+  return OnWeekendComponent;
+}
+</code></pre>
+
+<p>Что добавилось?</p>
+
+<p>Во-первых, появился конструктор нового компонента, где происходит расчёт бизнес-логики, в нашем случае — определение выходного дня. Почему в конструкторе и почему значение храним в экземпляре, а не в <code>state</code>? Потому что это простая логика, которую достаточно посчитать один раз, и после этого она не изменяется. Конструктор является идеальным местом для этого — он будет вызван раньше всех, всё посчитает, и компонент к моменту отрисовки будет владеть нужной информацией.</p>
+
+<p>Во-вторых, добавился <code>render</code>, в котором учитывается результат работы бизнес-логики: если посчитано, что день выходной — будет отрисован оборачиваемый компонент; если нет — ничего.</p>
+
+<p>В третьих, происходит проброс <code>props</code> в оборачиваемый компонент. Компонент <code>OnWeekendComponent</code> должен принимать ровно те же пропсы, что и оборачиваемый компонент. Нужно это для того, чтобы передать ему эти пропсы. Это важно — в коде мы будем использовать созданный HOC-ом компонент так же, как оригинальный. Поэтому HOC должен уметь принимать всё те же входные данные, что и оригинальный компонент. Может ли HOC иметь или пробрасывать дополнительные пропсы? Да, об этом в следующем уроке.</p>
+
+<p>Важно помнить смысл совершенных действий: убрать дублирование и сделать бизнес-компоненты более читаемыми, переместив лишнюю логику (в нашем случае расчёт выходного дня) в компоненты высшего порядка.</p>
+
+<p>На этом можно сказать, что базовая версия HOC для отображения компонентов по выходным дням готова. Посмотрим, как использовать этот HOC:</p>
+
+<pre><code class="language-jsx">function Banner1() { ... }  // этот баннер показывать только по выходным
+function Banner2() { ... }
+function SaleButton1() { ... } // эту кнопку показывать только по выходным
+function SaleButton2() { ... }
+
+const WeekendBanner1 = renderOnWeekends(Banner1);
+const WeekendSaleButton1 = renderOnWeekends(SaleButton1);
+
+// Теперь в разметке надо применять обёрнутые в HOC компоненты:
+function App() {
+	return &lt;div&gt;
+		&lt;WeekendBanner1 /&gt; {/* будет показан только в выходные */}
+	&lt;/div&gt;
+}
+</code></pre>
+
+<p>Но будьте уверены, менеджеры на этом не остановятся. :) Например, они захотят ещё:</p>
+
+<ul>
+<li>Чтобы определённые баннеры показывались по понедельникам.</li>
+<li>Поэкспериментировать с кнопкой на главной странице и посмотреть, по каким дням она поднимает конверсию.</li>
+</ul>
+
+<p>Эти задачи будут решены в следующем уроке.</p>
+
+</body>
+</html>

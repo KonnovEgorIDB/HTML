@@ -1,0 +1,191 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Пишем тесты</title>
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+  <meta charset="utf-8">
+<style>body{font-family:Helvetica,arial,sans-serif;font-size:14px;line-height:1.6;background-color:#fff;padding:30px;color:#333;max-width:1140px;margin:0 auto}body > :first-child{margin-top:0!important}body > :last-child{margin-bottom:0!important}a{color:#4183C4;text-decoration:none}a.absent{color:#c00}a.anchor{display:block;padding-left:30px;margin-left:-30px;cursor:pointer;position:absolute;top:0;left:0;bottom:0}h1,h2,h3,h4,h5,h6{margin:20px 0 10px;padding:0;font-weight:700;-webkit-font-smoothing:antialiased;cursor:text;position:relative}h2:first-child,h1:first-child,h1:first-child + h2,h3:first-child,h4:first-child,h5:first-child,h6:first-child{margin-top:0;padding-top:0}h1:hover a.anchor,h2:hover a.anchor,h3:hover a.anchor,h4:hover a.anchor,h5:hover a.anchor,h6:hover a.anchor{text-decoration:none}h1 tt,h1 code{font-size:inherit}h2 tt,h2 code{font-size:inherit}h3 tt,h3 code{font-size:inherit}h4 tt,h4 code{font-size:inherit}h5 tt,h5 code{font-size:inherit}h6 tt,h6 code{font-size:inherit}h1{font-size:28px;color:#000}h2{font-size:24px;border-bottom:1px solid #ccc;color:#000}h3{font-size:18px}h4{font-size:16px}h5{font-size:14px}h6{color:#777;font-size:14px}p,blockquote,ul,ol,dl,li,table,pre{margin:15px 0}hr {padding:0;margin-bottom:-8px;height:1px;border:none;background:black}body > h2:first-child{margin-top:0;padding-top:0}body > h1:first-child{margin-top:0;padding-top:0}body > h1:first-child + h2{margin-top:0;padding-top:0}body > h3:first-child,body > h4:first-child,body > h5:first-child,body > h6:first-child{margin-top:0;padding-top:0}a:first-child h1,a:first-child h2,a:first-child h3,a:first-child h4,a:first-child h5,a:first-child h6{margin-top:0;padding-top:0}h1 p,h2 p,h3 p,h4 p,h5 p,h6 p{margin-top:0}li p.first{display:inline-block}ul,ol{padding-left:30px}ul :first-child,ol :first-child{margin-top:0}ul :last-child,ol :last-child{margin-bottom:0}dl{padding:0}dl dt{font-size:14px;font-weight:700;font-style:italic;padding:0;margin:15px 0 5px}dl dt:first-child{padding:0}dl dt > :first-child{margin-top:0}dl dt > :last-child{margin-bottom:0}dl dd{margin:0 0 15px;padding:0 15px}dl dd > :first-child{margin-top:0}dl dd > :last-child{margin-bottom:0}blockquote{border-left:4px solid #ddd;padding:0 15px;color:#777}blockquote > :first-child{margin-top:0}blockquote > :last-child{margin-bottom:0}table{padding:0}table tr{border-top:1px solid #ccc;background-color:#fff;margin:0;padding:0}table tr:nth-child(2n){background-color:#f8f8f8}table tr th{font-weight:700;border:1px solid #ccc;text-align:left;margin:0;padding:6px 13px}table tr td{border:1px solid #ccc;text-align:left;margin:0;padding:6px 13px}table tr th :first-child,table tr td :first-child{margin-top:0}table tr th :last-child,table tr td :last-child{margin-bottom:0}img{max-width:100%}span.frame{display:block;overflow:hidden}span.frame > span{border:1px solid #ddd;display:block;float:left;overflow:hidden;margin:13px 0 0;padding:7px;width:auto}span.frame span img{display:block;float:left}span.frame span span{clear:both;color:#333;display:block;padding:5px 0 0}span.align-center{display:block;overflow:hidden;clear:both}span.align-center > span{display:block;overflow:hidden;margin:13px auto 0;text-align:center}span.align-center span img{margin:0 auto;text-align:center}span.align-right{display:block;overflow:hidden;clear:both}span.align-right > span{display:block;overflow:hidden;margin:13px 0 0;text-align:right}span.align-right span img{margin:0;text-align:right}span.float-left{display:block;margin-right:13px;overflow:hidden;float:left}span.float-left span{margin:13px 0 0}span.float-right{display:block;margin-left:13px;overflow:hidden;float:right}span.float-right > span{display:block;overflow:hidden;margin:13px auto 0;text-align:right}code,tt{margin:0 2px;padding:0 5px;white-space:nowrap;border:1px solid #eaeaea;background-color:#f8f8f8;border-radius:3px}pre code{margin:0;padding:0;white-space:pre;border:none;background:transparent}.highlight pre{background-color:#f8f8f8;border:1px solid #ccc;font-size:13px;line-height:19px;overflow:auto;padding:6px 10px;border-radius:3px}pre{background-color:#f8f8f8;border:1px solid #ccc;font-size:13px;line-height:19px;overflow:auto;padding:6px 10px;border-radius:3px}pre code,pre tt{background-color:transparent;border:none}.slasher{color:#000000}</style></head>
+<body>
+
+<h1>Пишем тесты</h1>
+
+<h2>Советы</h2>
+
+<p>Пара небольших советов, которые помогут писать эффективные и красивые тесты.</p>
+
+<h3>Правильно их описывайте и структурируйте</h3>
+
+<p>Не стоит дублировать название группы тестов в каждом отдельном тест-кейсе данного дерева. Кроме того, не стоит группировать не связанные по логике тест-кейсы (например, вы проверяете авторизацию, а в одном из тест-кейсов рядом решили проверить утилиту). Вот так делать не стоит:</p>
+
+<pre><code class="language-JavaScript">describe('Авторизация', () =&gt; {
+  it('Авторизация должна уметь в signin', () =&gt; {
+  });
+
+  it('Авторизация должна уметь в signup', () =&gt; {
+  });
+
+  it('Авторизация должна уметь в logout', () =&gt; {
+  });
+
+  it('Что-то дополнительно связанное с авторизацией', () =&gt; {
+  });
+});
+</code></pre>
+
+<p>Вместо такого дерева можно сделать немного иное:</p>
+
+<pre><code class="language-JavaScript">describe('Авторизация', () =&gt; {
+  it('Проверяем корректный logout', () =&gt; {
+  });
+
+  describe('Проверка авторизации через форму', () =&gt; {
+    it('Проверяем валидные данные в signin', () =&gt; {
+    });
+
+    it('Проверяем валидные данные в signup', () =&gt; {
+    });
+  });
+
+  describe('Дополнительный функционал при авторизации', () =&gt; {
+    it('Что-то дополнительно связанное с авторизацией', () =&gt; {
+    });
+  });
+});
+</code></pre>
+
+<p>Тесты пишутся не только, чтобы проверить функционал, но также, чтобы их читали ваши коллеги. Вы пишете и для них в том числе (как и весь другой код в проекте). Не стоит пренебрегать качеством описания тестов.</p>
+
+<h3>Не комментируйте тесты</h3>
+
+<p>Never. Ever.</p>
+
+<p>Не нужно комментировать тесты, потому что они долгие или ресурсоёмкие. Тесты также стоит декомпозировать и делать лёгкими.</p>
+
+<p>Не стоит делать, как в <a href="https://www.youtube.com/watch?v=rR4n-0KYeKQ">этом забавном видео</a> (<strong>не удаляйте тесты</strong>). Если это выстрелило даже у вас, значит, по Закону Мёрфи, выстрелит и у пользователя. Вероятно, в самый неподходящий момент.</p>
+
+<h3>Избегайте логики в тестах</h3>
+
+<p>Используйте простые выражения. Не используйте циклы или условия. Если вы это добавите, то примете риск, что появится новая потенциальная ошибка в самом тесте.</p>
+
+<p>При добавлении условий вы не знаете, по какому пути пойдёт тест. И каждый тест будет неопределённым поведением с возможностью пропустить в продакшн код с багом.</p>
+
+<p>При добавлении цикла вы не упрощаете себе жизнь, а делаете так, что не можете разделять состояния между тест-кейсами. Автоматизация в данном случае вредна (кроме частных случаев, которые легко обговариваются).</p>
+
+<pre><code class="language-JavaScript">it('что-то проверяем', () =&gt; {
+  const testValues = {
+	'Выход 1'         : 'Вход 1',
+	'Выход 2'         : 'Вход 2',
+	...
+  };
+
+  for (let result in testValues) {
+    expect(mySuperFunc(testValues[result])).toBe(result);
+  }
+});
+</code></pre>
+
+<p>Избавившись от циклов, ваши тест-кейсы станут легче, будут проходить быстрее и также будут логически верно разбиты заголовками:</p>
+
+<pre><code class="language-JavaScript">it('что-то проверяем', () =&gt; {
+  expect(mySuperFunc('Вход 1')).toBe('Выход 1');
+  expect(mySuperFunc('Вход 2')).toBe('Выход 2');
+});
+</code></pre>
+
+<p>А можно сделать совсем хорошо. Давайте разобьём на разные тест-кейсы, ведь мы пишем код для коллег:</p>
+
+<pre><code class="language-JavaScript">it('конкретно описываем, что проверяем', () =&gt; {
+  expect(mySuperFunc('Вход 1')).toBe('Выход 1');
+});
+
+it('конкретно описываем, что проверяем', () =&gt; {
+  expect(mySuperFunc('Вход 2')).toBe('Выход 2');
+});
+</code></pre>
+
+<h3>Используйте Фабрики</h3>
+
+<p>Паттерн <a href="https://refactoring.guru/ru/design-patterns/abstract-factory">«Фабрика»</a> поможет писать тесты таким образом, чтобы:</p>
+
+<ul>
+<li>можно было уменьшить настройку тестов (<code>before</code>, <code>beforeEach</code>, &hellip;);</li>
+<li>каждый тест стал более читабельным (улучшает в том числе DRY);</li>
+<li>обеспечить гибкость при создании новых экземпляров сущностей.</li>
+</ul>
+
+<p>Пример без Фабрики:</p>
+
+<pre><code class="language-JavaScript">describe('Что-то про MyEntity', () =&gt; {
+  let myEntity;
+
+  beforeEach(() =&gt; {
+    myEntity = new MyEntity({...});
+  });
+
+  it('что-то проверяем', () =&gt; {
+		...
+		myEntity.someMethod();
+		...
+  });
+
+  it('что-то ещё проверяем', () =&gt; {
+		...
+		myEntity.someOtherMethod();
+		myEntity.someOtherOtherMethod();
+		...
+  });
+});
+</code></pre>
+
+<p>Пример с Фабрикой:</p>
+
+<pre><code class="language-JavaScript">describe('Что-то про MyEntity', () =&gt; {
+	function createEntity({...options}) {
+		return new MyEntity({...options});
+	}
+
+  it('что-то проверяем', () =&gt; {
+		const myEntity = createEntity({...});
+
+		...
+		myEntity.someMethod();
+		...
+  });
+
+  it('что-то ещё проверяем', () =&gt; {
+		const myEntity = createEntity({...});
+
+		...
+		myEntity.someOtherMethod();
+		myEntity.someOtherOtherMethod();
+		...
+  });
+});
+</code></pre>
+
+<p>Теперь тесты стали более читабельными и простыми. То есть не нужно думать, «а есть ли выше <code>beforeEach</code>, от которого зависит кейс?». Теперь кейс стал прозрачным и «плоским».</p>
+
+<h3>Не используйте единый тест для всех кейсов</h3>
+
+<p>Если какой-то метод возвращает разные результаты при разных входных данных, не проверяйте всё в одном кейсе. Если где-то «выстрелит» баг, будет проще понять, на каких входных данных падает, нежели получить ошибку «упало в кейсе &lt;проверить всё&gt; на строчке N, символ K»:</p>
+
+<pre><code class="language-JavaScript">// Не стоит делать так
+
+it('проверить всё', () =&gt; {
+  // expect(...).to(...);
+  // expect(...).to(...);
+});
+
+// Стоит делать так
+
+it('функция должна обработать такие-то данные', () =&gt; {
+  // expect(...).to(...);
+});
+
+it('функция должна не упасть на таких-то данных', () =&gt; {
+  // expect(...).to(...);
+});
+</code></pre>
+
+</body>
+</html>

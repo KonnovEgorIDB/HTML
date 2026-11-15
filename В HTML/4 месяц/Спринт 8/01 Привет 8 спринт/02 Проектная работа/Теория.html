@@ -1,0 +1,502 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Проектная работа</title>
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+  <meta charset="utf-8">
+<style>body{font-family:Helvetica,arial,sans-serif;font-size:14px;line-height:1.6;background-color:#fff;padding:30px;color:#333;max-width:1140px;margin:0 auto}body > :first-child{margin-top:0!important}body > :last-child{margin-bottom:0!important}a{color:#4183C4;text-decoration:none}a.absent{color:#c00}a.anchor{display:block;padding-left:30px;margin-left:-30px;cursor:pointer;position:absolute;top:0;left:0;bottom:0}h1,h2,h3,h4,h5,h6{margin:20px 0 10px;padding:0;font-weight:700;-webkit-font-smoothing:antialiased;cursor:text;position:relative}h2:first-child,h1:first-child,h1:first-child + h2,h3:first-child,h4:first-child,h5:first-child,h6:first-child{margin-top:0;padding-top:0}h1:hover a.anchor,h2:hover a.anchor,h3:hover a.anchor,h4:hover a.anchor,h5:hover a.anchor,h6:hover a.anchor{text-decoration:none}h1 tt,h1 code{font-size:inherit}h2 tt,h2 code{font-size:inherit}h3 tt,h3 code{font-size:inherit}h4 tt,h4 code{font-size:inherit}h5 tt,h5 code{font-size:inherit}h6 tt,h6 code{font-size:inherit}h1{font-size:28px;color:#000}h2{font-size:24px;border-bottom:1px solid #ccc;color:#000}h3{font-size:18px}h4{font-size:16px}h5{font-size:14px}h6{color:#777;font-size:14px}p,blockquote,ul,ol,dl,li,table,pre{margin:15px 0}hr {padding:0;margin-bottom:-8px;height:1px;border:none;background:black}body > h2:first-child{margin-top:0;padding-top:0}body > h1:first-child{margin-top:0;padding-top:0}body > h1:first-child + h2{margin-top:0;padding-top:0}body > h3:first-child,body > h4:first-child,body > h5:first-child,body > h6:first-child{margin-top:0;padding-top:0}a:first-child h1,a:first-child h2,a:first-child h3,a:first-child h4,a:first-child h5,a:first-child h6{margin-top:0;padding-top:0}h1 p,h2 p,h3 p,h4 p,h5 p,h6 p{margin-top:0}li p.first{display:inline-block}ul,ol{padding-left:30px}ul :first-child,ol :first-child{margin-top:0}ul :last-child,ol :last-child{margin-bottom:0}dl{padding:0}dl dt{font-size:14px;font-weight:700;font-style:italic;padding:0;margin:15px 0 5px}dl dt:first-child{padding:0}dl dt > :first-child{margin-top:0}dl dt > :last-child{margin-bottom:0}dl dd{margin:0 0 15px;padding:0 15px}dl dd > :first-child{margin-top:0}dl dd > :last-child{margin-bottom:0}blockquote{border-left:4px solid #ddd;padding:0 15px;color:#777}blockquote > :first-child{margin-top:0}blockquote > :last-child{margin-bottom:0}table{padding:0}table tr{border-top:1px solid #ccc;background-color:#fff;margin:0;padding:0}table tr:nth-child(2n){background-color:#f8f8f8}table tr th{font-weight:700;border:1px solid #ccc;text-align:left;margin:0;padding:6px 13px}table tr td{border:1px solid #ccc;text-align:left;margin:0;padding:6px 13px}table tr th :first-child,table tr td :first-child{margin-top:0}table tr th :last-child,table tr td :last-child{margin-bottom:0}img{max-width:100%}span.frame{display:block;overflow:hidden}span.frame > span{border:1px solid #ddd;display:block;float:left;overflow:hidden;margin:13px 0 0;padding:7px;width:auto}span.frame span img{display:block;float:left}span.frame span span{clear:both;color:#333;display:block;padding:5px 0 0}span.align-center{display:block;overflow:hidden;clear:both}span.align-center > span{display:block;overflow:hidden;margin:13px auto 0;text-align:center}span.align-center span img{margin:0 auto;text-align:center}span.align-right{display:block;overflow:hidden;clear:both}span.align-right > span{display:block;overflow:hidden;margin:13px 0 0;text-align:right}span.align-right span img{margin:0;text-align:right}span.float-left{display:block;margin-right:13px;overflow:hidden;float:left}span.float-left span{margin:13px 0 0}span.float-right{display:block;margin-left:13px;overflow:hidden;float:right}span.float-right > span{display:block;overflow:hidden;margin:13px auto 0;text-align:right}code,tt{margin:0 2px;padding:0 5px;white-space:nowrap;border:1px solid #eaeaea;background-color:#f8f8f8;border-radius:3px}pre code{margin:0;padding:0;white-space:pre;border:none;background:transparent}.highlight pre{background-color:#f8f8f8;border:1px solid #ccc;font-size:13px;line-height:19px;overflow:auto;padding:6px 10px;border-radius:3px}pre{background-color:#f8f8f8;border:1px solid #ccc;font-size:13px;line-height:19px;overflow:auto;padding:6px 10px;border-radius:3px}pre code,pre tt{background-color:transparent;border:none}.slasher{color:#000000}</style></head>
+<body>
+
+<h1>Проектная работа</h1>
+
+<h2>Основные задачи</h2>
+
+<ol>
+<li>Настроить Express для Server Side Rendering (без Redux, просто отдавать React-страничку).</li>
+<li>Настроить Redux и Router в SSR.</li>
+<li>Научиться пересоздавать клиентское Redux-хранилище из серверного (<code>initialState</code> должен быть из стейта, который был на сервере).</li>
+<li>Добавить OAuth-авторизацию в проект.</li>
+<li>Добавить API для лидерборда.</li>
+<li>Добавить ещё одно WEB API (кроме Canvas, Fetch).</li>
+</ol>
+
+<h3>Дополнительно (не обязательно)</h3>
+
+<ul>
+<li>Проверить проект на утечки памяти.</li>
+<li>Устранить утечки памяти в проекте.</li>
+<li>Добавить работу с <code>localStorage</code> (например, сохранять формы или результат, если в офлайне, и отправлять после появления в сети).</li>
+<li>Добавить работу с middleware HMR и dev-server для Express и настроить hot-reload для проекта (это нужно будет сделать также и в Webpack).</li>
+</ul>
+
+<h2>По результатам 7-го спринта:</h2>
+
+<ul>
+<li>В проект добавлен файл <code>MEMORYLEAKS.md</code> или новый раздел в <code>README.md</code>, в котором описаны, какие утечки были и как они исправлены. В случае, если утечек не было, также написать об этом и приложить отчёт с текущим результатом.</li>
+<li>Внедрён SSR. На клиент приходит заполненная контентом HTML-страница.</li>
+<li>Готова страница рекордов игры (лидерборд) с интегрированным API.</li>
+<li>Добавлено ещё одно WebAPI.</li>
+<li>Добавлена OAuth-авторизация в проект.</li>
+</ul>
+
+<h2>Распределение задач в команде</h2>
+
+<p>Один из способов распределения задач:</p>
+
+<p><strong>Первый разработчик:</strong></p>
+
+<ol>
+<li>Настраивает Redux и Router в SSR.</li>
+<li>Добавляет ещё одно WEB API (кроме Canvas, Fetch).</li>
+</ol>
+
+<p><strong>Второй разработчик:</strong></p>
+
+<ol>
+<li>Настраивает Express для Server Side Rendering.</li>
+<li>Добавляет OAuth-авторизацию в проект.</li>
+</ol>
+
+<p><strong>Третий разработчик:</strong></p>
+
+<ol>
+<li>Настраивает пересоздание клиентского Redux-хранилища из серверного.</li>
+<li>Добавляет API для лидерборда.</li>
+</ol>
+
+<p>Традиционно напоминаем, что задачи можно перераспределить, обсудив это с ментором, и у вас могут добавиться дополнительные задания, если это требуется для реализации игры.</p>
+
+<p>Обратите внимание, что в предложенном варианте распределения нет дополнительного задания, поскольку оно необязательное. Если решите его сделать, определите внутри команды, кому оно достанется.</p>
+
+<h2>Рекомендации по SSR</h2>
+
+<p>Server Side Rendering — это большая и сложная тема, которой в этом спринте уделяется много времени. В теории описан путь его внедрения <a href="https://github.com/Yandex-Practicum/ssr-example">на примере</a>. Крайне рекомендуем ознакомиться, прежде чем внедрять SSR в свой проект.</p>
+
+<p>И несколько советов:</p>
+
+<ul>
+<li>Сначала нужно формировать стейт и только после рендерить React-приложение. Это нужно, чтобы получить на сервере «слепок приложения» за один рендер.</li>
+<li>У каждой библиотеки для работы с сайд-эффектами свои подходы к работе на сервере. Например, в Redux Thunk достаточно просто задиспатчить асинхронный экшен, а в Redux Saga нужно вручную запустить сагу, и после выполнения экшенов, также вручную завершить её выполнение.</li>
+<li>Для различных ассетов при серверной сборке можно использовать <a href="https://webpack.js.org/loaders/null-loader/">null-loader</a>, который просто не будет обрабатывать указанные модули.</li>
+</ul>
+
+</body>
+</html>
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Проектная работа</title>
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+  <meta charset="utf-8">
+<style>body{font-family:Helvetica,arial,sans-serif;font-size:14px;line-height:1.6;background-color:#fff;padding:30px;color:#333;max-width:1140px;margin:0 auto}body > :first-child{margin-top:0!important}body > :last-child{margin-bottom:0!important}a{color:#4183C4;text-decoration:none}a.absent{color:#c00}a.anchor{display:block;padding-left:30px;margin-left:-30px;cursor:pointer;position:absolute;top:0;left:0;bottom:0}h1,h2,h3,h4,h5,h6{margin:20px 0 10px;padding:0;font-weight:700;-webkit-font-smoothing:antialiased;cursor:text;position:relative}h2:first-child,h1:first-child,h1:first-child + h2,h3:first-child,h4:first-child,h5:first-child,h6:first-child{margin-top:0;padding-top:0}h1:hover a.anchor,h2:hover a.anchor,h3:hover a.anchor,h4:hover a.anchor,h5:hover a.anchor,h6:hover a.anchor{text-decoration:none}h1 tt,h1 code{font-size:inherit}h2 tt,h2 code{font-size:inherit}h3 tt,h3 code{font-size:inherit}h4 tt,h4 code{font-size:inherit}h5 tt,h5 code{font-size:inherit}h6 tt,h6 code{font-size:inherit}h1{font-size:28px;color:#000}h2{font-size:24px;border-bottom:1px solid #ccc;color:#000}h3{font-size:18px}h4{font-size:16px}h5{font-size:14px}h6{color:#777;font-size:14px}p,blockquote,ul,ol,dl,li,table,pre{margin:15px 0}hr {padding:0;margin-bottom:-8px;height:1px;border:none;background:black}body > h2:first-child{margin-top:0;padding-top:0}body > h1:first-child{margin-top:0;padding-top:0}body > h1:first-child + h2{margin-top:0;padding-top:0}body > h3:first-child,body > h4:first-child,body > h5:first-child,body > h6:first-child{margin-top:0;padding-top:0}a:first-child h1,a:first-child h2,a:first-child h3,a:first-child h4,a:first-child h5,a:first-child h6{margin-top:0;padding-top:0}h1 p,h2 p,h3 p,h4 p,h5 p,h6 p{margin-top:0}li p.first{display:inline-block}ul,ol{padding-left:30px}ul :first-child,ol :first-child{margin-top:0}ul :last-child,ol :last-child{margin-bottom:0}dl{padding:0}dl dt{font-size:14px;font-weight:700;font-style:italic;padding:0;margin:15px 0 5px}dl dt:first-child{padding:0}dl dt > :first-child{margin-top:0}dl dt > :last-child{margin-bottom:0}dl dd{margin:0 0 15px;padding:0 15px}dl dd > :first-child{margin-top:0}dl dd > :last-child{margin-bottom:0}blockquote{border-left:4px solid #ddd;padding:0 15px;color:#777}blockquote > :first-child{margin-top:0}blockquote > :last-child{margin-bottom:0}table{padding:0}table tr{border-top:1px solid #ccc;background-color:#fff;margin:0;padding:0}table tr:nth-child(2n){background-color:#f8f8f8}table tr th{font-weight:700;border:1px solid #ccc;text-align:left;margin:0;padding:6px 13px}table tr td{border:1px solid #ccc;text-align:left;margin:0;padding:6px 13px}table tr th :first-child,table tr td :first-child{margin-top:0}table tr th :last-child,table tr td :last-child{margin-bottom:0}img{max-width:100%}span.frame{display:block;overflow:hidden}span.frame > span{border:1px solid #ddd;display:block;float:left;overflow:hidden;margin:13px 0 0;padding:7px;width:auto}span.frame span img{display:block;float:left}span.frame span span{clear:both;color:#333;display:block;padding:5px 0 0}span.align-center{display:block;overflow:hidden;clear:both}span.align-center > span{display:block;overflow:hidden;margin:13px auto 0;text-align:center}span.align-center span img{margin:0 auto;text-align:center}span.align-right{display:block;overflow:hidden;clear:both}span.align-right > span{display:block;overflow:hidden;margin:13px 0 0;text-align:right}span.align-right span img{margin:0;text-align:right}span.float-left{display:block;margin-right:13px;overflow:hidden;float:left}span.float-left span{margin:13px 0 0}span.float-right{display:block;margin-left:13px;overflow:hidden;float:right}span.float-right > span{display:block;overflow:hidden;margin:13px auto 0;text-align:right}code,tt{margin:0 2px;padding:0 5px;white-space:nowrap;border:1px solid #eaeaea;background-color:#f8f8f8;border-radius:3px}pre code{margin:0;padding:0;white-space:pre;border:none;background:transparent}.highlight pre{background-color:#f8f8f8;border:1px solid #ccc;font-size:13px;line-height:19px;overflow:auto;padding:6px 10px;border-radius:3px}pre{background-color:#f8f8f8;border:1px solid #ccc;font-size:13px;line-height:19px;overflow:auto;padding:6px 10px;border-radius:3px}pre code,pre tt{background-color:transparent;border:none}.slasher{color:#000000}</style></head>
+<body>
+
+<h1>Проектная работа</h1>
+
+<h2>Основные задачи</h2>
+
+<ol>
+<li>Настроить Express для Server Side Rendering (без Redux, просто отдавать React-страничку).</li>
+<li>Настроить Redux и Router в SSR.</li>
+<li>Научиться пересоздавать клиентское Redux-хранилище из серверного (<code>initialState</code> должен быть из стейта, который был на сервере).</li>
+<li>Добавить OAuth-авторизацию в проект.</li>
+<li>Добавить API для лидерборда.</li>
+<li>Добавить ещё одно WEB API (кроме Canvas, Fetch).</li>
+</ol>
+
+<h3>Дополнительно (не обязательно)</h3>
+
+<ul>
+<li>Проверить проект на утечки памяти.</li>
+<li>Устранить утечки памяти в проекте.</li>
+<li>Добавить работу с <code>localStorage</code> (например, сохранять формы или результат, если в офлайне, и отправлять после появления в сети).</li>
+<li>Добавить работу с middleware HMR и dev-server для Express и настроить hot-reload для проекта (это нужно будет сделать также и в Webpack).</li>
+</ul>
+
+<h2>По результатам 7-го спринта:</h2>
+
+<ul>
+<li>В проект добавлен файл <code>MEMORYLEAKS.md</code> или новый раздел в <code>README.md</code>, в котором описаны, какие утечки были и как они исправлены. В случае, если утечек не было, также написать об этом и приложить отчёт с текущим результатом.</li>
+<li>Внедрён SSR. На клиент приходит заполненная контентом HTML-страница.</li>
+<li>Готова страница рекордов игры (лидерборд) с интегрированным API.</li>
+<li>Добавлено ещё одно WebAPI.</li>
+<li>Добавлена OAuth-авторизация в проект.</li>
+</ul>
+
+<h2>Распределение задач в команде</h2>
+
+<p>Один из способов распределения задач:</p>
+
+<p><strong>Первый разработчик:</strong></p>
+
+<ol>
+<li>Настраивает Redux и Router в SSR.</li>
+<li>Добавляет ещё одно WEB API (кроме Canvas, Fetch).</li>
+</ol>
+
+<p><strong>Второй разработчик:</strong></p>
+
+<ol>
+<li>Настраивает Express для Server Side Rendering.</li>
+<li>Добавляет OAuth-авторизацию в проект.</li>
+</ol>
+
+<p><strong>Третий разработчик:</strong></p>
+
+<ol>
+<li>Настраивает пересоздание клиентского Redux-хранилища из серверного.</li>
+<li>Добавляет API для лидерборда.</li>
+</ol>
+
+<p>Традиционно напоминаем, что задачи можно перераспределить, обсудив это с ментором, и у вас могут добавиться дополнительные задания, если это требуется для реализации игры.</p>
+
+<p>Обратите внимание, что в предложенном варианте распределения нет дополнительного задания, поскольку оно необязательное. Если решите его сделать, определите внутри команды, кому оно достанется.</p>
+
+<h2>Рекомендации по SSR</h2>
+
+<p>Server Side Rendering — это большая и сложная тема, которой в этом спринте уделяется много времени. В теории описан путь его внедрения <a href="https://github.com/Yandex-Practicum/ssr-example">на примере</a>. Крайне рекомендуем ознакомиться, прежде чем внедрять SSR в свой проект.</p>
+
+<p>И несколько советов:</p>
+
+<ul>
+<li>Сначала нужно формировать стейт и только после рендерить React-приложение. Это нужно, чтобы получить на сервере «слепок приложения» за один рендер.</li>
+<li>У каждой библиотеки для работы с сайд-эффектами свои подходы к работе на сервере. Например, в Redux Thunk достаточно просто задиспатчить асинхронный экшен, а в Redux Saga нужно вручную запустить сагу, и после выполнения экшенов, также вручную завершить её выполнение.</li>
+<li>Для различных ассетов при серверной сборке можно использовать <a href="https://webpack.js.org/loaders/null-loader/">null-loader</a>, который просто не будет обрабатывать указанные модули.</li>
+</ul>
+
+</body>
+</html>
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Проектная работа</title>
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+  <meta charset="utf-8">
+<style>body{font-family:Helvetica,arial,sans-serif;font-size:14px;line-height:1.6;background-color:#fff;padding:30px;color:#333;max-width:1140px;margin:0 auto}body > :first-child{margin-top:0!important}body > :last-child{margin-bottom:0!important}a{color:#4183C4;text-decoration:none}a.absent{color:#c00}a.anchor{display:block;padding-left:30px;margin-left:-30px;cursor:pointer;position:absolute;top:0;left:0;bottom:0}h1,h2,h3,h4,h5,h6{margin:20px 0 10px;padding:0;font-weight:700;-webkit-font-smoothing:antialiased;cursor:text;position:relative}h2:first-child,h1:first-child,h1:first-child + h2,h3:first-child,h4:first-child,h5:first-child,h6:first-child{margin-top:0;padding-top:0}h1:hover a.anchor,h2:hover a.anchor,h3:hover a.anchor,h4:hover a.anchor,h5:hover a.anchor,h6:hover a.anchor{text-decoration:none}h1 tt,h1 code{font-size:inherit}h2 tt,h2 code{font-size:inherit}h3 tt,h3 code{font-size:inherit}h4 tt,h4 code{font-size:inherit}h5 tt,h5 code{font-size:inherit}h6 tt,h6 code{font-size:inherit}h1{font-size:28px;color:#000}h2{font-size:24px;border-bottom:1px solid #ccc;color:#000}h3{font-size:18px}h4{font-size:16px}h5{font-size:14px}h6{color:#777;font-size:14px}p,blockquote,ul,ol,dl,li,table,pre{margin:15px 0}hr {padding:0;margin-bottom:-8px;height:1px;border:none;background:black}body > h2:first-child{margin-top:0;padding-top:0}body > h1:first-child{margin-top:0;padding-top:0}body > h1:first-child + h2{margin-top:0;padding-top:0}body > h3:first-child,body > h4:first-child,body > h5:first-child,body > h6:first-child{margin-top:0;padding-top:0}a:first-child h1,a:first-child h2,a:first-child h3,a:first-child h4,a:first-child h5,a:first-child h6{margin-top:0;padding-top:0}h1 p,h2 p,h3 p,h4 p,h5 p,h6 p{margin-top:0}li p.first{display:inline-block}ul,ol{padding-left:30px}ul :first-child,ol :first-child{margin-top:0}ul :last-child,ol :last-child{margin-bottom:0}dl{padding:0}dl dt{font-size:14px;font-weight:700;font-style:italic;padding:0;margin:15px 0 5px}dl dt:first-child{padding:0}dl dt > :first-child{margin-top:0}dl dt > :last-child{margin-bottom:0}dl dd{margin:0 0 15px;padding:0 15px}dl dd > :first-child{margin-top:0}dl dd > :last-child{margin-bottom:0}blockquote{border-left:4px solid #ddd;padding:0 15px;color:#777}blockquote > :first-child{margin-top:0}blockquote > :last-child{margin-bottom:0}table{padding:0}table tr{border-top:1px solid #ccc;background-color:#fff;margin:0;padding:0}table tr:nth-child(2n){background-color:#f8f8f8}table tr th{font-weight:700;border:1px solid #ccc;text-align:left;margin:0;padding:6px 13px}table tr td{border:1px solid #ccc;text-align:left;margin:0;padding:6px 13px}table tr th :first-child,table tr td :first-child{margin-top:0}table tr th :last-child,table tr td :last-child{margin-bottom:0}img{max-width:100%}span.frame{display:block;overflow:hidden}span.frame > span{border:1px solid #ddd;display:block;float:left;overflow:hidden;margin:13px 0 0;padding:7px;width:auto}span.frame span img{display:block;float:left}span.frame span span{clear:both;color:#333;display:block;padding:5px 0 0}span.align-center{display:block;overflow:hidden;clear:both}span.align-center > span{display:block;overflow:hidden;margin:13px auto 0;text-align:center}span.align-center span img{margin:0 auto;text-align:center}span.align-right{display:block;overflow:hidden;clear:both}span.align-right > span{display:block;overflow:hidden;margin:13px 0 0;text-align:right}span.align-right span img{margin:0;text-align:right}span.float-left{display:block;margin-right:13px;overflow:hidden;float:left}span.float-left span{margin:13px 0 0}span.float-right{display:block;margin-left:13px;overflow:hidden;float:right}span.float-right > span{display:block;overflow:hidden;margin:13px auto 0;text-align:right}code,tt{margin:0 2px;padding:0 5px;white-space:nowrap;border:1px solid #eaeaea;background-color:#f8f8f8;border-radius:3px}pre code{margin:0;padding:0;white-space:pre;border:none;background:transparent}.highlight pre{background-color:#f8f8f8;border:1px solid #ccc;font-size:13px;line-height:19px;overflow:auto;padding:6px 10px;border-radius:3px}pre{background-color:#f8f8f8;border:1px solid #ccc;font-size:13px;line-height:19px;overflow:auto;padding:6px 10px;border-radius:3px}pre code,pre tt{background-color:transparent;border:none}.slasher{color:#000000}</style></head>
+<body>
+
+<h1>Проектная работа</h1>
+
+<h2>Основные задачи</h2>
+
+<ol>
+<li>Добавьте в проект темизацию:
+
+<ul>
+<li>Стек для работы: PostgreSQL (версия 12+), Sequelize, Docker (Compose).</li>
+<li>Должно быть не менее двух тем с их переключением на клиентской части (реализация хранения цветовой гаммы любая: например, в базе через JSONB, на клиенте файлами или константами). Для управления достаточно, чтобы были «ручки», которые за это отвечают.</li>
+<li>Добавьте индексы на поля таблиц.</li>
+<li>Добавьте правильные Foreign Key.</li>
+<li>Не используйте подзапросы без необходимой аргументации. Используйте JOIN&rsquo;ы.</li>
+</ul></li>
+<li>Добавьте в проект функционал форума:
+
+<ul>
+<li>Стек для работы: PostgreSQL (версия 12+), Sequelize, Docker (Compose).</li>
+<li>Необходимо «закрыть» «ручки» за авторизацией.</li>
+<li>В форуме должна быть возможность добавить разные топики. Минимальный набор сущностей:
+
+<ol>
+<li>топик,</li>
+<li>комментарий,</li>
+<li>ответы на комментарии (могут быть рекурсивными и в виде дерева),</li>
+<li>эмоции комментариев,</li>
+<li>защита от XSS и SQL-Injection.</li>
+</ol></li>
+</ul></li>
+</ol>
+
+<h3>Дополнительные задачи (не обязательно)</h3>
+
+<ul>
+<li>Реализуйте динамическое управление темами. «Ручки», которые за это отвечают, должны корректно отвечать только пользователям, ответственным за таблицы. Возможности:
+
+<ol>
+<li>добавить тему,</li>
+<li>скрыть тему (их нельзя полностью удалять из базы, можно только скрыть не актуальные от клиента),</li>
+<li>изменить существующую тему (например, поменять цвет фона тёмной темы с чёрного на синий).</li>
+</ol></li>
+<li>После отправки обратной связи, помимо её складирования в базе данных, добавьте также оповещение на почту или в телеграм разработчикам проекта.</li>
+<li>После ответа на комментарий, необходимо оповестить участника в телеграм, что ему пришло новое сообщение (для этого нужно добавить поле телеграма пользователя).</li>
+<li>Добавьте в телеграм канал оповещения о новом релизе в окружение (тестовое или продакшн).</li>
+<li>Добавьте в проект функционал монетизации для авторизованных пользователей.
+
+<ol>
+<li>Необходимо использовать Яндекс.Оплату для взаимодействия с платежами и использовать <strong>точно такие данные</strong>, какие указаны в уроке про Биллинг для регистрации.</li>
+<li>«Ручка» оплаты должна быть закрыта за общей авторизацией (например, через middleware).</li>
+<li>В качестве оплаты могут быть как услуги (подписка за что-то), так и товары (внутриигровая валюта).</li>
+<li>Оплата должна происходить через сервис Яндекс.Оплат.</li>
+<li>Тестовый аккаунт для продукта должен быть с такими данными:
+
+<ol>
+<li>ИНН: <strong>7704282033,</strong></li>
+<li>Приложение Яндекс и Яндекс.Браузер,</li>
+<li>Категория: Автомойки.</li>
+</ol></li>
+<li>Должно быть минимум два варианта либо подписки (премиум доступ, преимущества в игре), либо товара (например, внутриигровая монета, толстовки, кружки).</li>
+<li>Получение ссылки на оплату должно происходить через NodeJS.</li>
+</ol></li>
+<li>Добавьте в проект функционал обратной связи.
+
+<ol>
+<li>Стек для работы: MongoDB, Docker (Compose). Сделайте по аналогии с PostgreSQL. MongoDB необходимо добавить самим.</li>
+<li>Добавьте форму обратной связи.</li>
+<li>Напишите «ручку» для сбора данных.</li>
+</ol></li>
+<li>Добавьте в телеграм канал оповещения о новом пул реквесте.</li>
+<li>Добавьте бота для оповещения коллег о призывах на ревью в пул реквестах (вы выбрали кого-то ревьюером, через вебхук идёт сообщение в чат, что призвали такого-то коллегу).</li>
+<li>Добавьте телеграм бота, который будет показывать количество пул реквестов в чате (сколько всего, сколько успешно прошло ревью, сколько ожидает ревью, сколько ожидает правок, сколько не прошли чекеры).</li>
+</ul>
+
+<h2>Чеклист для самопроверки</h2>
+
+<ol>
+<li>Темизация настроена и работает корректно:
+
+<ul>
+<li>Переключение делается через «ручки» на NodeJS.</li>
+<li>Переключить тему может любой: авторизованный или не авторизованный пользователь.</li>
+<li>Есть минимум две темы, которые отличаются стилями на клиенте.</li>
+<li>Стили переключаются мгновенно и без перезагрузки страницы.</li>
+<li>Для хранения тем используется база данных PostgreSQL версии 12+.</li>
+<li>В таблице темы привязаны к пользователю.</li>
+<li>Используется корректный (или корректные) индексы для ваших таблиц.</li>
+<li>Не используются подзапросы в SQL-запросах (если не можете объяснить, зачем они и почему JOIN не решит вашу проблему быстрее).</li>
+</ul></li>
+<li>Форум корректно работает:
+
+<ul>
+<li>Должна быть возможность создавать топик, писать комментарии к топику, отвечать на комментарии комментарием (дерево комментариев).</li>
+<li>Форум должен быть доступен только для авторизованных пользователей.
+
+<ol>
+<li>На NodeJS необходимо возвращать 403-й код ответа, если пользователь не авторизован.</li>
+<li>На клиенте необходимо поставить заглушку с переходом на авторизацию (либо не показывать форум вообще, пока пользователь не авторизован).</li>
+</ol></li>
+<li>При написании комментария нужно добавить минимум одно дополнительное действие с текстом. Например, возможность выбирать emoji из интерфейса.</li>
+</ul></li>
+<li>Общие требования к NodeJS.
+
+<ul>
+<li>Сервер и базы должны быть «обёрнуты» в Docker.</li>
+<li>Между сервисами в docker-compose (если запускается через него) должны быть <a href="https://docs.docker.com/compose/extends/">корректные зависимости</a> (например, сервис А стартует перед сервисом Б).</li>
+<li>Должен быть мидлвар для проверки авторизации пользователя через общее API. Мидлвар должен «пробрасываться» к «ручкам» через специальный аргумент
+<code>app.method(url, [...middlewares], handler)</code>.</li>
+<li>Все сущности для БД должны быть разбиты на отдельные сервисы. Контроллер (хендлер роута в NodeJS) должен отвечать только за бизнес-логику «ручки».</li>
+<li>Токены и доступы к базам и третьим сервисам не должны находиться в репозитории (можно только если это тестовые данные для входа в локальных системах).</li>
+<li>Явки / пароли должны добавляться в проект через <code>env</code>.</li>
+</ul></li>
+</ol>
+
+<h2>Распределение задач в команде</h2>
+
+<p><strong>Первый разработчик:</strong></p>
+
+<ol>
+<li>Настраивает PostgreSQL в проекте (Docker + запуск локально проекта) и убеждается, что работает CRUD.</li>
+<li>Реализует функционал форума: управление комментариями и ответами.</li>
+<li>Реализует на клиенте управление топиками форума.</li>
+</ol>
+
+<p><strong>Второй разработчик:</strong></p>
+
+<ol>
+<li>Описывает модели для функционала форума.</li>
+<li>Реализует функционал форума: управление топиками.</li>
+</ol>
+
+<p><strong>Третий разработчик:</strong></p>
+
+<ol>
+<li>Реализует ручки по работе с темизацией.</li>
+<li>Реализует на клиенте работу с комментариями на форуме.</li>
+</ol>
+
+<p>Как и в предыдущих спринтах, вы можете распределить задачи по-другому и, если это нужно для вашей игры, сделать что-то ещё. Только не забудьте посоветоваться с ментором.</p>
+
+<h2>Рекомендации, которые не стоит игнорировать</h2>
+
+<ol>
+<li><p>Не дублируйте логику. Выносите повторяющуюся логику по сущности в отдельный общий сервис.</p></li>
+
+<li><p>Не делайте сервис-космолёт. Сервис не должен уметь всё <del>(ещё и готовить завтрак по утрам).</del> Сервис должен делать только относительно атомарные вещи. Например, обработать и записать в базу или отправить запрос. Сервис не должен полностью преобразовывать данные перед отправкой. Он должен только валидировать и отправлять. Подготавливать данные — дело контроллера (хендлера роута). Ведь везде формат может быть разный.</p></li>
+
+<li><p>Не делайте «макаронные» связи или «копипасты» сервисов. Применяйте паттерн Медиатор для устранения лишних связей. Активно пользуйтесь фабриками, если один и тот же сервис не хочется раздувать, но нужно сделать «копию».</p></li>
+
+<li><p>Используйте масштабирование процессов в NodeJS. Даже без кластеризации NodeJS может утереть нос многим Web-серверам. А с кластеризацией — уффф&hellip; Берегитесь все! Подробнее можно <a href="https://medium.com/@evilj0e/масштабирование-node-js-b575bd5e47e">почитать тут</a>.</p></li>
+
+<li><p>Не создавайте все роуты для express-сервера в едином месте. Разбивайте на логические единичные файлы и добавляйте отдельно. Пример:</p>
+
+<p>&rdquo;`tsx
+// Было
+// /server/app.ts</p>
+
+<p>app
+  .use(cookieParser())
+  .use(&hellip;)
+  .get(&lsquo;/my-api/path&rsquo;, handler1)
+  .post(&lsquo;my-api/theme/&rsquo;, changeUserTheme)
+  .put()
+  &hellip;
+  .use(express.static(&hellip;))
+  .use(notFoundHandler);</p>
+
+<p>// Стало
+// /server/routes/index.ts</p>
+
+<p>const router: Router = Router();</p>
+
+<p>themeRoutes(router);
+forumRoutes(router);
+&hellip;
+/**</p>
+
+<ul>
+<li><p>Например, можно сделать так:
+export const healthcheckRoutes = (router: Router) =&gt; {
+const healthcheck: Router = Router();</p>
+
+<p>healthcheck
+    .get(&lsquo;/ping&rsquo;, [logger, cookieParser, otherMiddleware], pingHealthcheck);</p>
+
+<p>router
+    .use(&lsquo;/healthcheck&rsquo;, healthRouter);
+};
+*/
+healthcheckRoutes(router); // /ping, например</p></li>
+</ul>
+
+<p>export {router};</p>
+
+<p>// /server/app.ts</p>
+
+<p>import {router} from &lsquo;server/router&rsquo;;</p>
+
+<p>app
+  .use(cookieParser())
+  .use(&hellip;)
+  .use(router)
+  .use(notFound);
+&ldquo;`</p></li>
+
+<li><p>Не пишите прокси своими руками. Если вам нужна прокси, уже есть готовый материал: <a href="https://github.com/chimurai/http-proxy-middleware">http-proxy-middleware</a>. Он используется в <code>webpack-dev-server</code>, потому синтаксис может быть крайне знакомым. Библиотека позволяет использовать огромное количество параметров, чтобы сделать прокси на абсолютно любой изощрённый вкус.</p></li>
+
+<li><p>Пишите свои мидлвари. Например, контроллер (хендлер роута) не должен заниматься тем, чтобы 40% кода проверять наличие ключа в <code>body</code>, и корректно ли он передан. Контроллер должен уже получать валидный объект на входе. И контроллер не должен выполняться в обратном случае. Пример такой мидлвари:</p>
+
+<pre><code class="language-tsx">// Было
+
+
+async function createHandler(req, res) {
+  const {data} = req.body;
+
+
+  if (!data.key1) {
+    res.sendStatus(HttpStatuses.BadRequest).send({reason: 'key1 is required'});
+    return;
+  }
+
+
+  if (!data.key2 || !data.key2.includes('substring')) {
+    res.sendStatus(HttpStatuses.BadRequest).send({reason: 'key2 is required'});
+  }
+
+
+  // Куча других проверок
+
+
+  // Оставшаяся малая часть бизнес-логики 
+  const {id} = await entity.create(data);
+  res.sendStatus(HttpStatuses.Created).send({...data, id});
+}
+
+
+router.post('/some-entity-create-route', createHandler);
+
+
+// Стало
+
+
+// Это можно сделать фабричной функцией!
+function validator&lt;T extends object&gt;(rules: SomeRulesType&lt;keyof T, T[keyof T]&gt; = []) {
+  return (request: Request, response: Response, next: NextFunction) =&gt; {
+		try {
+			const {body} = req; // Можно сделать такое и для query
+
+
+      for (const {key, validator, required} of rules) {
+        // Делаем нужные проверки по ключам, типам данных и так далее
+      }
+
+
+      next(); // Если всё хорошо, пускаем уже в контроллер дальше
+    } catch (reason: ErrorType) {
+      // Ловим ошибку, но не стоит выбрасывать полный стектрейс в продакшн окружении
+      response.sendStatus(/* Bad code (500, 400) */).send({reason})
+    }
+  };
+}
+
+
+async function createHandler(req, res) {
+  // Мы уже должны быть уверены в корректности форматов data 
+  const {data} = req.body;
+
+
+  const {id} = await entity.create(data);
+  res.sendStatus(HttpStatuses.Created).send({...data, id});
+}
+
+
+router.post(
+	'/some-entity-create-route', 
+  // Добавляем любые наши проверки над полями
+	[validator([{key: 'key1', validator: value =&gt; typeof value !== 'string', required: false}])],
+	createHandler,
+);
+</code></pre>
+<p>Такой формат позволяет абстрагировать логику проверки ключей в отдельный мидлвар и сделать гибким процесс проверки полей. Кроме того, у вас появляется единый формат ответов при невалидных объектах или query-запросов на входе.</p></li>
+
+<li><p>Везде применяйте один и тот же формат ответа. Не должно быть такого, что где-то вы клиенту отвечаете в API строкой, где-то через JSON, а где-то через XML (не надо так). Если выбрали единый формат общения между клиентом и сервером — придерживайтесь его.</p>
+
+<pre><code class="language-tsx">// Было
+
+
+// auth.ts
+response.sendStatus(401).send('Bad cookies');
+
+
+// theme.ts
+response.sendStatus(400).send({reason: 'bad request'});
+
+
+// Стало
+
+
+// auth.ts
+// Даже строка должна начинаться всегда либо с маленькой, либо с большой.
+// Но всегда единый стиль даже для ответов.
+response.sendStatus(401).send({reason: 'bad cookies'});
+
+
+// theme.ts
+// Можно дополнять ошибки контекстом, чтобы клиенту было проще понимать, что за ошибка
+response.sendStatus(400).send({reason: 'bad request', message: 'key1 is required'});
+</code></pre></li>
+
+<li><p>Используйте <code>enum</code> или константы с HTTP-кодами, но не абстрактные цифры. Пример:</p>
+
+<pre><code class="language-tsx">// Было
+
+
+response.sendStatus(201).send(data);
+
+
+// Стало
+
+
+response.sendStatus(HttpStatuses.Created).send(data);
+</code></pre></li>
+</ol>
+
+</body>
+</html>

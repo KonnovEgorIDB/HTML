@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Рабочие и гибкие фреймворки</title>
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+  <meta charset="utf-8">
+<style>body{font-family:Helvetica,arial,sans-serif;font-size:14px;line-height:1.6;background-color:#fff;padding:30px;color:#333;max-width:1140px;margin:0 auto}body > :first-child{margin-top:0!important}body > :last-child{margin-bottom:0!important}a{color:#4183C4;text-decoration:none}a.absent{color:#c00}a.anchor{display:block;padding-left:30px;margin-left:-30px;cursor:pointer;position:absolute;top:0;left:0;bottom:0}h1,h2,h3,h4,h5,h6{margin:20px 0 10px;padding:0;font-weight:700;-webkit-font-smoothing:antialiased;cursor:text;position:relative}h2:first-child,h1:first-child,h1:first-child + h2,h3:first-child,h4:first-child,h5:first-child,h6:first-child{margin-top:0;padding-top:0}h1:hover a.anchor,h2:hover a.anchor,h3:hover a.anchor,h4:hover a.anchor,h5:hover a.anchor,h6:hover a.anchor{text-decoration:none}h1 tt,h1 code{font-size:inherit}h2 tt,h2 code{font-size:inherit}h3 tt,h3 code{font-size:inherit}h4 tt,h4 code{font-size:inherit}h5 tt,h5 code{font-size:inherit}h6 tt,h6 code{font-size:inherit}h1{font-size:28px;color:#000}h2{font-size:24px;border-bottom:1px solid #ccc;color:#000}h3{font-size:18px}h4{font-size:16px}h5{font-size:14px}h6{color:#777;font-size:14px}p,blockquote,ul,ol,dl,li,table,pre{margin:15px 0}hr {padding:0;margin-bottom:-8px;height:1px;border:none;background:black}body > h2:first-child{margin-top:0;padding-top:0}body > h1:first-child{margin-top:0;padding-top:0}body > h1:first-child + h2{margin-top:0;padding-top:0}body > h3:first-child,body > h4:first-child,body > h5:first-child,body > h6:first-child{margin-top:0;padding-top:0}a:first-child h1,a:first-child h2,a:first-child h3,a:first-child h4,a:first-child h5,a:first-child h6{margin-top:0;padding-top:0}h1 p,h2 p,h3 p,h4 p,h5 p,h6 p{margin-top:0}li p.first{display:inline-block}ul,ol{padding-left:30px}ul :first-child,ol :first-child{margin-top:0}ul :last-child,ol :last-child{margin-bottom:0}dl{padding:0}dl dt{font-size:14px;font-weight:700;font-style:italic;padding:0;margin:15px 0 5px}dl dt:first-child{padding:0}dl dt > :first-child{margin-top:0}dl dt > :last-child{margin-bottom:0}dl dd{margin:0 0 15px;padding:0 15px}dl dd > :first-child{margin-top:0}dl dd > :last-child{margin-bottom:0}blockquote{border-left:4px solid #ddd;padding:0 15px;color:#777}blockquote > :first-child{margin-top:0}blockquote > :last-child{margin-bottom:0}table{padding:0}table tr{border-top:1px solid #ccc;background-color:#fff;margin:0;padding:0}table tr:nth-child(2n){background-color:#f8f8f8}table tr th{font-weight:700;border:1px solid #ccc;text-align:left;margin:0;padding:6px 13px}table tr td{border:1px solid #ccc;text-align:left;margin:0;padding:6px 13px}table tr th :first-child,table tr td :first-child{margin-top:0}table tr th :last-child,table tr td :last-child{margin-bottom:0}img{max-width:100%}span.frame{display:block;overflow:hidden}span.frame > span{border:1px solid #ddd;display:block;float:left;overflow:hidden;margin:13px 0 0;padding:7px;width:auto}span.frame span img{display:block;float:left}span.frame span span{clear:both;color:#333;display:block;padding:5px 0 0}span.align-center{display:block;overflow:hidden;clear:both}span.align-center > span{display:block;overflow:hidden;margin:13px auto 0;text-align:center}span.align-center span img{margin:0 auto;text-align:center}span.align-right{display:block;overflow:hidden;clear:both}span.align-right > span{display:block;overflow:hidden;margin:13px 0 0;text-align:right}span.align-right span img{margin:0;text-align:right}span.float-left{display:block;margin-right:13px;overflow:hidden;float:left}span.float-left span{margin:13px 0 0}span.float-right{display:block;margin-left:13px;overflow:hidden;float:right}span.float-right > span{display:block;overflow:hidden;margin:13px auto 0;text-align:right}code,tt{margin:0 2px;padding:0 5px;white-space:nowrap;border:1px solid #eaeaea;background-color:#f8f8f8;border-radius:3px}pre code{margin:0;padding:0;white-space:pre;border:none;background:transparent}.highlight pre{background-color:#f8f8f8;border:1px solid #ccc;font-size:13px;line-height:19px;overflow:auto;padding:6px 10px;border-radius:3px}pre{background-color:#f8f8f8;border:1px solid #ccc;font-size:13px;line-height:19px;overflow:auto;padding:6px 10px;border-radius:3px}pre code,pre tt{background-color:transparent;border:none}.slasher{color:#000000}</style></head>
+<body>
+
+<h1>Рабочие и гибкие фреймворки</h1>
+
+<h3>Введение. Почему процессы важны</h3>
+
+<p>Итак, технологии позволяют проще и быстрее создавать качественные продукты. В этом уроке  рассмотрим организацию процесса разработки в компании.</p>
+
+<p>Почему это важно? Даже от идеального кода на самых современных технологиях не будет толку, если сроки сорваны, а функционал никому не нужен. Для разработки качественного продукта важна организация процессов, поскольку они определяют, как будут взаимодействовать заказчики и разработчики.</p>
+
+<h3>Водопад</h3>
+
+<blockquote>
+<p>В разработке больших приложений участвуют целые команды. Чтобы они работали быстро и слаженно, нужно организовать процесс создания продукта.</p>
+</blockquote>
+
+<p>Так подумал американский программист Уинстон Ройс и в 1970 году описал методологии разработки ПО. Правда, весь мир ошибочно решил, что он анонсировал метод “Waterfall” как эффективный, и компании тут же начали его внедрять.</p>
+
+<p>Ещё в 2000-х годах компании планировали разработку сразу на весь срок:</p>
+
+<ol>
+<li>Формировали требования – список функций в приложении, которые нужны пользователям.</li>
+<li>Оценивали работу.</li>
+<li>Составляли план на несколько месяцев, а иногда и лет. И двигались по нему.</li>
+</ol>
+
+<p>Это и есть метод разработки «Водопад». Процесс, при котором этапы разработки выполняются в строгой последовательности – от планирования до реализации. Когда разработка находится на этапе реализации – корректировать требования уже нельзя. Конечный продукт должен точно соответствовать требованиям, целям и задачам, которые команда сформулировала до начала разработки.</p>
+
+<h3>Почему «Водопад» — это плохо</h3>
+
+<p>Но на практике заказчики получали не то, что задумывали. Ведь сложно сформулировать точные требования в самом начале, когда в голове только идея проекта.</p>
+
+<p>Другая проблема – идея устаревала за время разработки и заказчик получал продукт, отставший от рынка и позже запланированного срока. Фактически проект был сделан, как описано в плане, но реальной пользы заказчик не получал.</p>
+
+<p>Сроки при «Водопаде» срывали всегда. Во время планирования команды не учитывали задержки вроде падения тестового сервера, недоступность репозитория или болезни программиста.</p>
+
+<p>Тогда разработчики поняли, что жёсткие методологии затрудняют разработку, и стали применять гибкие методики. Scrum и Kanban устранили недостатки «Водопада» и понравились разработчикам, менеджерам и заказчикам. Крупные IT-компании внедряют эти методы и подстраивают их под свои потребности.</p>
+
+<h3>Что такое Agile</h3>
+
+<p><a href="https://habr.com/ru/company/edison/blog/313410/">Agile</a> — обобщённое название для семейства гибких методологий. В разработке ПО к ним, в частности, относят <a href="https://habr.com/ru/post/247319/">Scrum</a>, <a href="https://habr.com/ru/post/216923/">BDD</a>, <a href="https://habr.com/ru/post/197760/">экстремальное программирование</a>.</p>
+
+<p>О зарождении методологии можно прочитать в <a href="https://medium.com/@allo/%D0%BE%D0%B1-agile-%D1%80%D0%B5%D0%B2%D0%BE%D0%BB%D1%8E%D1%86%D0%B8%D1%8F-%D0%B8%D0%BB%D0%B8-%D0%BE%D0%BF%D1%8B%D1%82-%D1%81%D1%82%D0%B0%D1%80%D1%88%D0%B8%D1%85-fabeb7b94bd6">статье на Medium</a>.</p>
+
+<p>Главная особенность Agile — <strong>фокус на результате и краткосрочное планирование</strong>. Работа делится на небольшие отрезки — спринты. Так проще планировать и меньше риск получить не тот результат, что нужен. В конце каждого спринта команда должна проводить демо — показывать заказчику жизнеспособный продукт, имеющий ценность для пользователей.</p>
+
+<p>Стандартный атрибут гибкой разработки — ежедневные встречи с обсуждением текущих задач. Такая синхронизация позволяет отслеживать прогресс, быть в курсе, что делают другие, и помогать друг другу устранять препятствия.</p>
+
+<p>Agile — система гибкого управления проектами, которую часто применяют в командной разработке. По своей сути Agile — это манифест разработки, а не инструкция. Это очень важный момент.</p>
+
+<p>Когда вы в первый раз попадаете в команду, которая активно использует гибкую разработку,  вас окружает множество новых терминов. Существует много техник, основанных на Agile. Кроме того, компании могут экспериментировать и модифицировать процессы под свои нужды.</p>
+
+<p>Здесь мы рассмотрим элементы процесса разработки по Agile на примере Scrum. Для каждого элемента Agile мы расскажем, зачем он нужен, как работает и чем может быть полезен вам, как разработчику.</p>
+
+<h3>Спринт</h3>
+
+<p>Разработка по Agile ведётся короткими итерациями — спринтами. За спринт должен быть разработан и выпущен в продакшн полезный для пользователя функционал. Это иногда называют инкрементом ценности продукта.</p>
+
+<p>Каждая команда разработки индивидуально определяет длину спринта в зависимости от потребностей продукта. Одни компании выпускают частые и мелкие релизы, другие релизятся редко, но сразу с большим количеством новых фич.</p>
+
+<h3>Бэклог</h3>
+
+<p>Бэклог — список задач. Бывает двух типов:</p>
+
+<ul>
+<li>Бэклог продукта — включает в себя все задачи, которые должны быть реализованы в продукте. Создаётся один раз в начале разработки продукта. После дополняется новыми задачами по мере развития продукта и «чистится» от задач, которые потеряли актуальность.</li>
+<li>Бэклог спринта — список задач, которые планируется реализовать в текущем спринте. Создаётся в начале каждого спринта и наполняется задачами из бэклога продукта. Из него разработчики берут задачи и начинают делать.</li>
+</ul>
+
+<h3>Доска с задачами</h3>
+
+<p>Типичный атрибут Agile — доска с задачами. Это может быть или физическая доска со стикерами, или электронный вариант — трекер задач. Каждый столбец соответствует статусу задачи. Список может быть таким: «открыт», «в работе», «ревью», «тестируется», «готов», «в продакшне». В процессе спринта задачи переезжают с левой части доски на правую.</p>
+
+<p>У визуализации текущих статусов задач есть много плюсов. Любой участник разработки может узнать, что сделано, а что нет, чтобы лучше спланировать свою работу. Кроме того, посмотрев на статусы, можно понять текущее положение дел. Например, увидеть, что часть фич зависла, одновременно выполняется слишком много задач или задачи не успевают тестироваться. Вся эта информация помогает лучше управлять разработкой и принимать решения вовремя.</p>
+
+<h3>Планирование</h3>
+
+<p>Планирование — процедура наполнения бэклога спринта из бэклога всего продукта. Во время планирования происходит оценка задач, разработчики говорят, сколько времени займёт написание каждой фичи.</p>
+
+<h3>Стендап</h3>
+
+<p>Стендап (митинг, дейли, летучка, синки) — короткая, обычно 15-минутная или 30-минутная встреча для синхронизации команды разработки.</p>
+
+<p>На ней каждый участник говорит:</p>
+
+<ul>
+<li>что он делал за прошлый период,</li>
+<li>что будет делать в текущем периоде,</li>
+<li>что его тормозит.</li>
+</ul>
+
+<p>Все обсуждения проблем и способов решения происходят вне стендапа. На стендапе все участники разработки должны понять, что делают их коллеги.</p>
+
+<p>Это важная часть процесса, поскольку она позволяет вовремя узнать о проблемах разработки: например, какая-то задача зависла и для важной задачи есть не все необходимые данные.</p>
+
+<h3>Ретро/рефлексия</h3>
+
+<p>Ретроспектива — мероприятие, где участники процесса разработки обсуждают, насколько хорошо прошёл спринт. Каждый говорит, что хорошего произошло за спринт, а что плохого и что, по его мнению, можно улучшить. В культуре Agile не принято скрывать ошибки. Любые неудачи нужно разобрать, чтобы не повторять тех же ошибок в будущем.</p>
+
+<h3>Заключение. Разный Agile</h3>
+
+<p>В этом уроке вы узнали, из каких частей состоит процесс разработки Agile. Это позволит вам лучше ориентироваться в современной разработке и понимать, почему процессы устроены именно так.</p>
+
+<p><strong>Agile</strong> — не свод чётких правил, а скорее набор принципов о том, как построить разработку и выпускать качественный продукт в динамично меняющемся мире. Поэтому разные компании могут модифицировать части процесса. Вы можете столкнуться с самыми разными вариантами Agile, но зная главные принципы и понимая, зачем всё это нужно, вы быстро во всём разберётесь.</p>
+
+</body>
+</html>
